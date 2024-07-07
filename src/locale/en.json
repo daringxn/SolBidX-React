@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "form": {
+      "required": "{{name}} field is required."
+    }
+  }
+}
