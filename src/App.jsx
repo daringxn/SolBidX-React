@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
 
 // components
 import Preloader from "./components/elements/Preloader";
@@ -9,6 +10,7 @@ import router from "./router";
 
 // config
 import "./config/i18n";
+import store from "./config/store";
 
 // styles
 import "./App.css";
@@ -20,7 +22,11 @@ function App() {
       setLoading(false);
     }, 1000);
   }, []);
-  return <>{!loading ? <RouterProvider router={router} /> : <Preloader />}</>;
+  return (
+    <Provider store={store}>
+      {!loading ? <RouterProvider router={router} /> : <Preloader />}
+    </Provider>
+  );
 }
 
 export default App;
