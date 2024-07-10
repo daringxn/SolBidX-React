@@ -5,3 +5,19 @@
 .mt-5px {
   margin-top: 5px;
 }
+
+.mt-10px {
+  margin-top: 10px;
+}
+
+.tf-button.w90 {
+  width: 90px;
+}
+
+.mt-20px {
+  margin-top: 20px;
+}
+
+.tf-card-collection.selected {
+  border: 1px solid #dee8e8;
+}

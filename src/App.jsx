@@ -10,7 +10,6 @@ import router from "./router";
 
 // config
 import "./config/i18n";
-import store from "./config/store";
 
 // styles
 import "./App.css";
@@ -22,11 +21,7 @@ function App() {
       setLoading(false);
     }, 1000);
   }, []);
-  return (
-    <Provider store={store}>
-      {!loading ? <RouterProvider router={router} /> : <Preloader />}
-    </Provider>
-  );
+  return <>{!loading ? <RouterProvider router={router} /> : <Preloader />}</>;
 }
 
 export default App;

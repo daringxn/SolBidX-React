@@ -30,7 +30,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                       <Link to="/home" rel="home" className="main-logo">
                         <img
                           id="logo_header"
-                          src="assets/images/logo/logo.png"
+                          src="/assets/images/logo/logo.png"
                           data-retina="assets/images/logo/logo@2x.png"
                         />
                       </Link>
@@ -46,24 +46,50 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                       <li
                         className={classNames([
                           "menu-item",
+                          "menu-item-has-children",
                           {
                             "current-menu-item":
-                              location.pathname === "/create",
+                              location.pathname === "/create/nft" ||
+                              location.pathname === "/create/collection",
                           },
                         ])}
                       >
-                        <Link to="/create">Create</Link>
+                        <a href="#">Create</a>
+                        <ul className="sub-menu">
+                          <li
+                            className={classNames([
+                              "menu-item",
+                              {
+                                "current-item":
+                                  location.pathname === "/create/item",
+                              },
+                            ])}
+                          >
+                            <Link to="/create/item">NFT</Link>
+                          </li>
+                          <li
+                            className={classNames([
+                              "menu-item",
+                              {
+                                "current-item":
+                                  location.pathname === "/create/collection",
+                              },
+                            ])}
+                          >
+                            <Link to="/create/collection">Collection</Link>
+                          </li>
+                        </ul>
                       </li>
                       <li
                         className={classNames([
                           "menu-item",
                           {
                             "current-menu-item":
-                              location.pathname === "/explorer",
+                              location.pathname === "/explore",
                           },
                         ])}
                       >
-                        <Link to="/explorer">Explorer</Link>
+                        <Link to="/explore">Explore</Link>
                       </li>
                     </ul>
                   </nav>

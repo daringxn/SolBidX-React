@@ -6,8 +6,10 @@ import AddClassBody from "./components/elements/AddClassBody";
 // pages
 import Login from "./pages/login";
 import Home from "./pages/home";
-import Create from "./pages/create/index";
-import Explorer from "./pages/explorer";
+import CreateItem from "./pages/create_item/index";
+import CreateCollection from "./pages/create_collection/index";
+import Explore from "./pages/explore";
+import Item from "./pages/item";
 
 export default createBrowserRouter([
   {
@@ -28,12 +30,20 @@ export default createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/create",
-        element: <Create />,
+        path: "/create/item",
+        element: <CreateItem />,
       },
       {
-        path: "/explorer",
-        element: <Explorer />,
+        path: "/create/collection",
+        element: <CreateCollection />,
+      },
+      {
+        path: "/explore",
+        element: <Explore />,
+      },
+      {
+        path: "/item/:id",
+        element: <Item />,
       },
     ],
   },
