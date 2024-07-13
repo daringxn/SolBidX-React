@@ -85,7 +85,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                           "menu-item",
                           {
                             "current-menu-item":
-                              location.pathname === "/explore",
+                              location.pathname === "/explore/collections",
                           },
                         ])}
                       >

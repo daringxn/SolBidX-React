@@ -219,7 +219,7 @@ export default function () {
                           )}
                         </div>
                         {(item.offers || []).map((offer) => (
-                          <div className="table-item">
+                          <div className="table-item" key={offer.id}>
                             <div className="column">
                               <h6 className="price gem">{offer.price} SOL</h6>
                             </div>
@@ -299,7 +299,7 @@ export default function () {
                         <div className="column">Date</div>
                       </div>
                       {(item.activities || []).map((activity) => (
-                        <div className="table-item">
+                        <div className="table-item" key={activity.id}>
                           <div className="column flex items-center">
                             {
                               { mint: "Mint", list: "List", sale: "Sale" }[

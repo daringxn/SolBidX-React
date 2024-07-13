@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
-import { Provider } from "react-redux";
 
 // components
 import Preloader from "./components/elements/Preloader";

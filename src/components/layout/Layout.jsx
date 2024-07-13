@@ -23,10 +23,9 @@ export default function Layout({
   const handleMobileMenu = () => setMobileMenu(!isMobileMenu);
 
   useEffect(() => {
-    const wow = new WOW({
+    new WOW({
       live: false,
-    });
-    wow.init();
+    }).init();
 
     document.addEventListener("scroll", () => {
       const scrollCheck = window.scrollY > 100;

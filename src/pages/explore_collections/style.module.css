@@ -1,0 +1,27 @@
+.collection-card {
+  margin-top: 20px;
+  transition: transform 0.2s;
+}
+
+.collection-card img {
+  cursor: pointer;
+}
+
+.collection-card:hover {
+  transform: scale(1.07);
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-input input,
+.search-input input:focus {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.loading {
+  width: 50px;
+  margin-bottom: 20px;
+}

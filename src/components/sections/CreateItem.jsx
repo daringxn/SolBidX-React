@@ -251,6 +251,7 @@ export default function ({ onSubmit }) {
                       <div className="d-flex gap-2">
                         {collections.map((collection) => (
                           <div
+                            key={collection.id}
                             className="ml-3"
                             onClick={() =>
                               setFieldValue("collection_id", collection.id)

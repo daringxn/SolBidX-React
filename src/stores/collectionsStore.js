@@ -9,4 +9,15 @@ export default create((set) => ({
     const response = await axios.post("/api/collections", collection);
     return response.data;
   },
+  getCollections: async ({ pageIndex, pageSize, searchValue }) => {
+    const response = await axios.get(
+      "/api/collections?pageIndex=" +
+        pageIndex +
+        "&pageSize=" +
+        pageSize +
+        "&searchValue=" +
+        searchValue
+    );
+    return response.data;
+  },
 }));
