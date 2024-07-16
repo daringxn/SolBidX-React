@@ -1,6 +1,9 @@
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+// components
+import ItemCard2 from "@/components/sections/ItemCard2";
+
 const swiperOptions = {
   modules: [Autoplay, Pagination, Navigation],
   loop: false,
@@ -40,7 +43,7 @@ const swiperOptions = {
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import BidModal from "../elements/BidModal";
-export default function Seller3() {
+export default function Seller3({ items }) {
   const [isBidModal, setBidModal] = useState(false);
   const handleBidModal = () => setBidModal(!isBidModal);
   return (
@@ -50,25 +53,7 @@ export default function Seller3() {
           <div className="row">
             <div className="col-md-12">
               <div className="heading-section">
-                <h2 className="tf-title pb-20">
-                  Popular items in last
-                  <span className="dropdown" id="select-day">
-                    <span className="btn-selector tf-color">
-                      <span>1 day</span>
-                    </span>
-                    <ul>
-                      <li>
-                        <span>1 day</span>
-                      </li>
-                      <li>
-                        <span>3 day</span>
-                      </li>
-                      <li>
-                        <span>7 day</span>
-                      </li>
-                    </ul>
-                  </span>
-                </h2>
+                <h2 className="tf-title pb-20">Featured Items</h2>
               </div>
             </div>
             <div className="col-md-12">
@@ -77,241 +62,11 @@ export default function Seller3() {
                 className="featured pt-10 swiper-container carousel"
               >
                 <div className="swiper-wrapper">
-                  <SwiperSlide>
-                    <div className="tf-card-box style-1">
-                      <div className="card-media">
-                        <Link href="#">
-                          <img
-                            src="/assets/images/box-item/card-item-09.jpg"
-                            alt=""
-                          />
-                        </Link>
-                        <span className="wishlist-button icon-heart" />
-                        <div className="button-place-bid">
-                          <a
-                            onClick={handleBidModal}
-                            href="#"
-                            className="tf-button"
-                          >
-                            <span>Place Bid</span>
-                          </a>
-                        </div>
-                      </div>
-                      <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
-                      </h5>
-                      <div className="author flex items-center">
-                        <div className="avatar">
-                          <img
-                            src="/assets/images/avatar/avatar-box-01.jpg"
-                            alt="Image"
-                          />
-                        </div>
-                        <div className="info">
-                          <span>Posted by:</span>
-                          <h6>
-                            <Link href="/author-2">Cody Fisher</Link>{" "}
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="divider" />
-                      <div className="meta-info flex items-center justify-between">
-                        <span className="text-bid">Current Bid</span>
-                        <h6 className="price gem">
-                          <i className="icon-gem" />
-                          0,34
-                        </h6>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="tf-card-box style-1">
-                      <div className="card-media">
-                        <Link href="#">
-                          <img
-                            src="/assets/images/box-item/card-item-10.jpg"
-                            alt=""
-                          />
-                        </Link>
-                        <span className="wishlist-button icon-heart" />
-                        <div className="button-place-bid">
-                          <a
-                            onClick={handleBidModal}
-                            href="#"
-                            className="tf-button"
-                          >
-                            <span>Place Bid</span>
-                          </a>
-                        </div>
-                      </div>
-                      <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
-                      </h5>
-                      <div className="author flex items-center">
-                        <div className="avatar">
-                          <img
-                            src="/assets/images/avatar/avatar-box-02.jpg"
-                            alt="Image"
-                          />
-                        </div>
-                        <div className="info">
-                          <span>Posted by:</span>
-                          <h6>
-                            <Link href="/author-2">Cody Fisher</Link>{" "}
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="divider" />
-                      <div className="meta-info flex items-center justify-between">
-                        <span className="text-bid">Current Bid</span>
-                        <h6 className="price gem">
-                          <i className="icon-gem" />
-                          0,34
-                        </h6>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="tf-card-box style-1">
-                      <div className="card-media">
-                        <Link href="#">
-                          <img
-                            src="/assets/images/box-item/card-item-11.jpg"
-                            alt=""
-                          />
-                        </Link>
-                        <span className="wishlist-button icon-heart" />
-                        <div className="button-place-bid">
-                          <a
-                            onClick={handleBidModal}
-                            href="#"
-                            className="tf-button"
-                          >
-                            <span>Place Bid</span>
-                          </a>
-                        </div>
-                      </div>
-                      <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
-                      </h5>
-                      <div className="author flex items-center">
-                        <div className="avatar">
-                          <img
-                            src="/assets/images/avatar/avatar-box-03.jpg"
-                            alt="Image"
-                          />
-                        </div>
-                        <div className="info">
-                          <span>Posted by:</span>
-                          <h6>
-                            <Link href="/author-2">Cody Fisher</Link>{" "}
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="divider" />
-                      <div className="meta-info flex items-center justify-between">
-                        <span className="text-bid">Current Bid</span>
-                        <h6 className="price gem">
-                          <i className="icon-gem" />
-                          0,34
-                        </h6>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="tf-card-box style-1">
-                      <div className="card-media">
-                        <Link href="#">
-                          <img
-                            src="/assets/images/box-item/card-item-12.jpg"
-                            alt=""
-                          />
-                        </Link>
-                        <span className="wishlist-button icon-heart" />
-                        <div className="button-place-bid">
-                          <a
-                            onClick={handleBidModal}
-                            href="#"
-                            className="tf-button"
-                          >
-                            <span>Place Bid</span>
-                          </a>
-                        </div>
-                      </div>
-                      <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
-                      </h5>
-                      <div className="author flex items-center">
-                        <div className="avatar">
-                          <img
-                            src="/assets/images/avatar/avatar-box-04.jpg"
-                            alt="Image"
-                          />
-                        </div>
-                        <div className="info">
-                          <span>Posted by:</span>
-                          <h6>
-                            <Link href="/author-2">Cody Fisher</Link>{" "}
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="divider" />
-                      <div className="meta-info flex items-center justify-between">
-                        <span className="text-bid">Current Bid</span>
-                        <h6 className="price gem">
-                          <i className="icon-gem" />
-                          0,34
-                        </h6>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="tf-card-box style-1">
-                      <div className="card-media">
-                        <Link href="#">
-                          <img
-                            src="/assets/images/box-item/card-item-13.jpg"
-                            alt=""
-                          />
-                        </Link>
-                        <span className="wishlist-button icon-heart" />
-                        <div className="button-place-bid">
-                          <a
-                            onClick={handleBidModal}
-                            href="#"
-                            className="tf-button"
-                          >
-                            <span>Place Bid</span>
-                          </a>
-                        </div>
-                      </div>
-                      <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
-                      </h5>
-                      <div className="author flex items-center">
-                        <div className="avatar">
-                          <img
-                            src="/assets/images/avatar/avatar-box-05.jpg"
-                            alt="Image"
-                          />
-                        </div>
-                        <div className="info">
-                          <span>Posted by:</span>
-                          <h6>
-                            <Link href="/author-2">Cody Fisher</Link>{" "}
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="divider" />
-                      <div className="meta-info flex items-center justify-between">
-                        <span className="text-bid">Current Bid</span>
-                        <h6 className="price gem">
-                          <i className="icon-gem" />
-                          0,34
-                        </h6>
-                      </div>
-                    </div>
-                  </SwiperSlide>
+                  {items.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <ItemCard2 item={item}></ItemCard2>
+                    </SwiperSlide>
+                  ))}
                 </div>
               </Swiper>
             </div>

@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-export default function Action4() {
+export default function Action4({ onExploreNowButtonClicked }) {
   return (
     <>
       <div className="tf-section action">
@@ -19,10 +18,14 @@ export default function Action4() {
                   NFTS
                 </h2>
                 <div className="flat-button flex justify-center">
-                  <Link href="#" className="tf-button style-2 h50 w190">
+                  <a
+                    href="#"
+                    className="tf-button style-2 h50 w190"
+                    onClick={onExploreNowButtonClicked}
+                  >
                     Explore now
                     <i className="icon-arrow-up-right2" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

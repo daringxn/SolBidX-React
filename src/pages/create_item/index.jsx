@@ -6,14 +6,14 @@ import Layout from "@/components/layout/Layout";
 import CreateItem from "@/components/sections/CreateItem";
 
 // redux
-import useUserStore from "@/stores/userStore";
+import useAuthStore from "@/stores/authStore";
 import useItemsStore from "@/stores/itemsStore";
 
 // styles
 import styles from "./style.module.css";
 
 export default function () {
-  const user = useUserStore();
+  const user = useAuthStore();
   const { createOrUpdateItem } = useItemsStore();
   const navigate = useNavigate();
 

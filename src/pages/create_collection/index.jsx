@@ -5,14 +5,14 @@ import Layout from "@/components/layout/Layout";
 import CreateCollection from "@/components/sections/CreateCollection";
 
 // stores
-import useUserStore from "@/stores/userStore";
+import useAuthStore from "@/stores/authStore";
 import useCollectionsStore from "@/stores/collectionsStore";
 
 // styles
 import styles from "./style.module.css";
 
 export default function () {
-  const user = useUserStore();
+  const user = useAuthStore();
   const { createCollection } = useCollectionsStore();
 
   return (

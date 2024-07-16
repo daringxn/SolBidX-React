@@ -9,6 +9,10 @@ export default create((set) => ({
     const response = await axios.post("/api/items", item);
     return response.data;
   },
+  getItems: async (data) => {
+    const response = await axios.get("/api/items?" + new URLSearchParams(data));
+    return response.data;
+  },
   getItem: async (id) => {
     const response = await axios.get("/api/items/" + id);
     return response.data;

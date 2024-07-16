@@ -21,3 +21,13 @@
 .tf-card-collection.selected {
   border: 1px solid #dee8e8;
 }
+
+.tf-card-box .card-media img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.mx-16px {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}

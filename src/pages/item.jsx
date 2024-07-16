@@ -7,14 +7,14 @@ import moment from "moment";
 import Layout from "@/components/layout/Layout";
 
 // stores
-import useUserStore from "@/stores/userStore";
+import useAuthStore from "@/stores/authStore";
 import useItemsStore from "@/stores/itemsStore";
 import useOffersStore from "@/stores/offersStore";
 
 export default function () {
   const [item, setItem] = useState({});
 
-  const user = useUserStore();
+  const user = useAuthStore();
   const { createOrUpdateItem, getItem } = useItemsStore();
   const { createOffer } = useOffersStore();
 

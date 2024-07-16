@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
 import TitileSlider1 from "../slider/TitileSlider1";
-export default function FlatTitle1() {
+
+export default function FlatTitle1({
+  onAllCollectionsButtonClicked,
+  collections,
+}) {
   return (
     <>
       <div className="flat-pages-title">
@@ -36,12 +39,16 @@ export default function FlatTitle1() {
                   data-wow-delay="0.2s"
                   className=" wow fadeInUp flat-button flex justify-center"
                 >
-                  <Link href="#" className="tf-button style-1 h50 w190 mr-16">
+                  <a href="#" className="tf-button style-1 h50 w190 mr-16">
                     Discover more <i className="icon-arrow-up-right2" />
-                  </Link>
-                  <Link href="#" className="tf-button style-1 h50 w190 active">
+                  </a>
+                  <a
+                    href="#"
+                    className="tf-button style-1 h50 w190 active"
+                    onClick={onAllCollectionsButtonClicked}
+                  >
                     All collections <i className="icon-arrow-up-right2" />
-                  </Link>
+                  </a>
                 </div>
               </div>
               <div className="icon-background">
@@ -87,7 +94,7 @@ export default function FlatTitle1() {
                 />
               </div>
               <div className="relative">
-                <TitileSlider1 />
+                <TitileSlider1 collections={collections} />
               </div>
             </div>
           </div>

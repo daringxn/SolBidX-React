@@ -8,7 +8,7 @@ import CreateCollection from "@/components/sections/CreateCollection";
 import CollectionCard1 from "@/components/sections/CollectionCard1";
 
 // stores
-import useUserStore from "@/stores/userStore";
+import useAuthStore from "@/stores/authStore";
 import useCollectionsStore from "@/stores/collectionsStore";
 
 export default function ({ onSubmit }) {
@@ -18,7 +18,7 @@ export default function ({ onSubmit }) {
 
   const { t } = useTranslation();
 
-  const { user, getCollections } = useUserStore((state) => ({
+  const { user, getCollections } = useAuthStore((state) => ({
     user: { id: state.id, wallet_address: state.wallet_address },
     getCollections: state.getCollections,
   }));
