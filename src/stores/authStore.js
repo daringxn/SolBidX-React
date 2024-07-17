@@ -13,6 +13,9 @@ export default create((set, get) => ({
     });
     return response.data;
   },
+  signout: async () => {
+    set({ wallet_address: "" });
+  },
   getCollections: async () => {
     const { id } = get();
     if (!id) {

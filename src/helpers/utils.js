@@ -1,3 +1,5 @@
+export const LAMPORTS_PER_SOL = 1000000000;
+
 export const simplifyWalletAddress = (walletAddress) => {
   return (
     walletAddress.substring(0, 4) +
@@ -13,3 +15,8 @@ export const delay = (duration) => {
     }, duration);
   });
 };
+
+export function toFixed(num, fixed) {
+  const re = new RegExp(`^-?\\d+(?:\\.\\d{0,${fixed || -1}})?`);
+  return num.toString().match(re)[0];
+}

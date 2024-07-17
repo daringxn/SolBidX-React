@@ -27,7 +27,7 @@ export default function CollectionItem1({
       <div className={styles.image} onClick={onImageClicked}>
         <Square>
           {!loading && <img src={"/" + collection?.image} alt="" />}
-          {loading && <RectLoader height="100%" />}
+          {loading && <RectLoader width="100%" height="100%" />}
         </Square>
       </div>
       <div className={classNames(["card-bottom", styles.bottom])}>

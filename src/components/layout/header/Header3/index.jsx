@@ -1,6 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 
 // components
 import MobileMenu from "../../MobileMenu";
@@ -14,7 +16,11 @@ import useAuthStore from "@/stores/authStore";
 import useItemsStore from "@/stores/itemsStore";
 
 // helpers
-import { simplifyWalletAddress } from "@/helpers/utils";
+import {
+  simplifyWalletAddress,
+  toFixed,
+  LAMPORTS_PER_SOL,
+} from "@/helpers/utils";
 
 // styles
 import styles from "./style.module.css";
@@ -24,37 +30,66 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [showSearchResult, setShowSearchResult] = useState(false);
-
-  const location = useLocation();
+  const [balance, setBalance] = useState(null);
 
   const isAuth = useIsAuth();
   const device = useDevice();
 
-  const { user, signin, updateInfo } = useAuthStore((state) => ({
+  const location = useLocation();
+  const { connection } = useConnection();
+  const { wallets, publicKey, disconnect, connecting } = useWallet();
+  const { visible, setVisible } = useWalletModal();
+
+  const { user, signin, signout, updateInfo } = useAuthStore((state) => ({
     user: {
       wallet_address: state.wallet_address,
       avatar: state.avatar,
       name: state.name,
     },
     signin: state.signin,
+    signout: state.signout,
     updateInfo: state.updateInfo,
   }));
   const { getItems } = useItemsStore();
 
-  const connectWallect = useCallback(() => {
-    return {
-      wallet_name: "Phantom",
-      wallet_address: "GkpXEwtTuwgTdBWRDrwu2xNb3jbXWXhoMs5CQzKLrDZs",
-    };
+  const userWalletAddress = useMemo(() => {
+    return publicKey ? publicKey.toBase58() : "";
+  }, [publicKey]);
+
+  const onLogout = useCallback(() => {
+    disconnect();
   }, []);
 
-  const onWallectConnectButtonClicked = useCallback(async () => {
-    const { wallet_address: walletAddress } = connectWallect();
-    const { status, data } = await signin(walletAddress);
-    if (status) {
-      updateInfo(data);
+  useEffect(() => {
+    if (!connection || !publicKey) {
+      return;
     }
-  }, [signin, updateInfo]);
+    connection.onAccountChange(
+      publicKey,
+      (updatedAccountInfo) => {
+        setBalance(updatedAccountInfo.lamports / LAMPORTS_PER_SOL);
+      },
+      "confirmed"
+    );
+    connection.getAccountInfo(publicKey).then((info) => {
+      if (info) {
+        setBalance(info?.lamports / LAMPORTS_PER_SOL);
+      }
+    });
+  }, [publicKey, connection]);
+
+  useEffect(() => {
+    (async () => {
+      if (userWalletAddress) {
+        const { status, data } = await signin(userWalletAddress);
+        if (status) {
+          updateInfo(data);
+        }
+      } else {
+        signout();
+      }
+    })();
+  }, [signin, signout, updateInfo, userWalletAddress]);
 
   const onSearch = useCallback(
     async (e) => {
@@ -198,14 +233,13 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                           href="#"
                           id="connectbtn"
                           className="tf-button style-1"
-                          onClick={onWallectConnectButtonClicked}
+                          onClick={() => {
+                            setVisible(true);
+                          }}
                         >
-                          {/* {user.wallet_address && (
                           <span>
-                            {simplifyWalletAddress(user.wallet_address)}
+                            {!connecting ? "Wallet connect" : "Connecting..."}
                           </span>
-                        )} */}
-                          <span>Wallet connect</span>
                           <i className="icon-wa" />
                         </a>
                       </div>
@@ -238,15 +272,27 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                           >
                             <div>
                               <div className="links">
+                                <a>
+                                  {balance ? (
+                                    <div>{toFixed(balance, 2)} SOL</div>
+                                  ) : (
+                                    <div>0 SOL</div>
+                                  )}
+                                </a>
                                 <Link className="block mb-30" to="/setting">
                                   <span>My Profile</span>
                                 </Link>
                                 <Link className="block mb-30" to="/me">
                                   <span>My Items</span>
                                 </Link>
-                                <Link className="block" to="/" id="logout">
+                                <a
+                                  className="block"
+                                  href="#"
+                                  id="logout"
+                                  onClick={onLogout}
+                                >
                                   <span>Log out</span>
-                                </Link>
+                                </a>
                               </div>
                             </div>
                           </div>

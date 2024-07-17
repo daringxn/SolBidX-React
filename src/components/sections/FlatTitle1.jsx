@@ -94,7 +94,7 @@ export default function FlatTitle1({
                 />
               </div>
               <div className="relative">
-                <TitileSlider1 collections={collections} loading={true} />
+                <TitileSlider1 collections={collections} loading={loading} />
               </div>
             </div>
           </div>

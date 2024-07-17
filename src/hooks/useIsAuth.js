@@ -9,9 +9,7 @@ export default function () {
   const user = useAuthStore();
 
   useEffect(() => {
-    if (user.wallet_address) {
-      setIsAuth(true);
-    }
+    setIsAuth(!!user.wallet_address);
   }, [user]);
 
   return isAuth;

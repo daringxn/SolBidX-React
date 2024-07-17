@@ -11,6 +11,11 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-react-ui": "^0.9.35",
+    "@solana/wallet-adapter-wallets": "^0.19.32",
+    "@solana/web3.js": "^1.95.0",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
     "classnames": "^2.5.1",
