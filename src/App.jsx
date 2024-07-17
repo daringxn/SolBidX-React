@@ -14,11 +14,11 @@ import "./config/i18n";
 import "./App.css";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 1000);
   }, []);
   return <>{!loading ? <RouterProvider router={router} /> : <Preloader />}</>;
 }

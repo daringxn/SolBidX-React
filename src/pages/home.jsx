@@ -12,6 +12,9 @@ import Action4 from "@/components/sections/Action4";
 import useCollectionsStore from "@/stores/collectionsStore";
 import useItemsStore from "@/stores/itemsStore";
 
+// helpers
+import { delay } from "@/helpers/utils";
+
 export default function () {
   const [featuredCollections, setFeaturedCollections] = useState([]);
   const [featuredItems, setFeaturedItems] = useState([]);
@@ -44,6 +47,7 @@ export default function () {
       setFeaturedItems(data);
     };
     (async () => {
+      await delay(500);
       await getCollectionsData();
       await getItemsData();
       setLoading(false);

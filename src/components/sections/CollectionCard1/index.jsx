@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 // components
 import Square from "@/components/sections/Square";
+import RectLoader from "@/components/elements/RectLoader";
 
 // styles
 import styles from "./style.module.css";
@@ -12,6 +13,7 @@ export default function CollectionItem1({
   selected,
   className,
   onImageClicked,
+  loading,
 }) {
   return (
     <div
@@ -24,36 +26,50 @@ export default function CollectionItem1({
     >
       <div className={styles.image} onClick={onImageClicked}>
         <Square>
-          <img src={"/" + collection?.image} alt="" />
+          {!loading && <img src={"/" + collection?.image} alt="" />}
+          {loading && <RectLoader height="100%" />}
         </Square>
       </div>
       <div className={classNames(["card-bottom", styles.bottom])}>
         <div className="author">
-          <h5 className="mb-3">
-            <a href="#">{collection?.name}</a>
-          </h5>
+          {!loading && (
+            <h5 className="mb-3">
+              <a href="#">{collection?.name}</a>
+            </h5>
+          )}
+          {loading && (
+            <RectLoader width="200px" height="25px" className="mb-3" />
+          )}
         </div>
         <div className="d-flex justify-content-between">
           <div className="author flex items-center">
             <div className="avatar">
-              <img
-                src={
-                  "/" + collection?.user.avatar ||
-                  "assets/images/avatar/avatar-box-02.jpg"
-                }
-                alt=""
-              />
+              {!loading && (
+                <img
+                  src={
+                    "/" + collection?.user.avatar ||
+                    "assets/images/avatar/avatar-box-02.jpg"
+                  }
+                  alt=""
+                />
+              )}
+              {loading && <RectLoader width="100%" height="100%" />}
             </div>
-            <div className="info">
+            <div className={classNames("info", styles["collector-info"])}>
               <span>Created by:</span>
-              <h6>
-                <Link href="author-2.html">
-                  {collection?.user.name || "Marvin McKinney"}
-                </Link>
-              </h6>
+              {!loading && (
+                <h6>
+                  <Link href="author-2.html">
+                    {collection?.user.name || "Marvin McKinney"}
+                  </Link>
+                </h6>
+              )}
+              {loading && (
+                <RectLoader width="50px" height="20px" className="ml-1" />
+              )}
             </div>
           </div>
-          <div className="bottom-right">
+          <div className={classNames("bottom-right", styles["bottom-right"])}>
             <div className={classNames(["shop", styles.items])}>
               <div className="icon">
                 <svg
@@ -72,8 +88,11 @@ export default function CollectionItem1({
                   />
                 </svg>
               </div>
-              <p>{collection?.items.length} Item</p>
+              {!loading && <p>{collection?.items.length} Item</p>}
             </div>
+            {loading && (
+              <RectLoader width="45px" height="20px" className="mt-1" />
+            )}
           </div>
         </div>
       </div>

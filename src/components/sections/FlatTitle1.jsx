@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+
+// components
 import TitileSlider1 from "../slider/TitileSlider1";
 
 export default function FlatTitle1({
@@ -18,10 +21,15 @@ export default function FlatTitle1({
         <div className="themesflat-container w1490">
           <div className="row">
             <div className="col-12 pages-title">
-              <div className="content">
-                <h1 data-wow-delay="0s" className="wow fadeInUp">
-                  World of top works
-                </h1>
+              <motion.div
+                className="content"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                }}
+              >
+                <h1>World of top works</h1>
                 <p className="wow fadeInUp" data-wow-delay="0.1s">
                   Welcome to the world of rare digital art. Explore the best art
                   from hand-picked digital artist out there and find the hidden
@@ -42,7 +50,7 @@ export default function FlatTitle1({
                     All collections <i className="icon-arrow-up-right2" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
               <div className="icon-background">
                 <img
                   className="absolute item1"
@@ -85,16 +93,9 @@ export default function FlatTitle1({
                   alt=""
                 />
               </div>
-              {loading && (
-                <div className="d-flex justify-content-center mt-100px">
-                  <img src="/assets/images/loading.gif" className="w-100px" />
-                </div>
-              )}
-              {!loading && (
-                <div className="relative">
-                  <TitileSlider1 collections={collections} />
-                </div>
-              )}
+              <div className="relative">
+                <TitileSlider1 collections={collections} loading={true} />
+              </div>
             </div>
           </div>
         </div>

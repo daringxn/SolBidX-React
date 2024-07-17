@@ -66,7 +66,7 @@ const swiperOptions = {
 // components
 import CollectionCard1 from "@/components/sections/CollectionCard1";
 
-export default function TitileSlider1({ collections }) {
+export default function TitileSlider1({ collections, loading }) {
   const navigate = useNavigate();
   return (
     <>
@@ -74,17 +74,26 @@ export default function TitileSlider1({ collections }) {
         {...swiperOptions}
         className="swiper swiper-3d-7 swiper-container-horizontal"
       >
-        {collections.map((collection) => (
-          <SwiperSlide key={collection.id}>
-            <CollectionCard1
-              className={styles["collection-card"]}
-              collection={collection}
-              onImageClicked={() =>
-                navigate("/explore/collections/" + collection.id + "/items")
-              }
-            />
-          </SwiperSlide>
-        ))}
+        {!loading &&
+          collections.map((collection) => (
+            <SwiperSlide key={collection.id}>
+              <CollectionCard1
+                className={styles["collection-card"]}
+                collection={collection}
+                onImageClicked={() =>
+                  navigate("/explore/collections/" + collection.id + "/items")
+                }
+              />
+            </SwiperSlide>
+          ))}
+        {loading &&
+          Array(7)
+            .fill(null)
+            .map((_, index) => (
+              <SwiperSlide key={index}>
+                <CollectionCard1 loading={true} />
+              </SwiperSlide>
+            ))}
       </Swiper>
       <div className="swiper-button-next next-3d over" />
       <div className="swiper-button-prev prev-3d over" />
