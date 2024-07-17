@@ -272,13 +272,14 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                           >
                             <div>
                               <div className="links">
-                                <a>
-                                  {balance ? (
-                                    <div>{toFixed(balance, 2)} SOL</div>
-                                  ) : (
-                                    <div>0 SOL</div>
-                                  )}
-                                </a>
+                                <p className="h3">
+                                  Balance:
+                                  <span className="ml-3 mr-2">
+                                    {balance ? toFixed(balance, 2) : 0}
+                                  </span>
+                                  SOL
+                                </p>
+                                <div className="divider mt-20px mb-20px"></div>
                                 <Link className="block mb-30" to="/setting">
                                   <span>My Profile</span>
                                 </Link>

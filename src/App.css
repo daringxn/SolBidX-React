@@ -44,6 +44,14 @@
   font-size: 20px;
 }
 
+.mt-20px {
+  margin-top: 20px;
+}
+
+.mb-20px {
+  margin-bottom: 20px;
+}
+
 .tf-card-collection.selected {
   border: 1px solid #dee8e8;
 }
