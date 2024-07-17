@@ -63,7 +63,8 @@
 
 .admin_active .popup-user .avatar_popup2,
 .admin_active .popup-notification .avatar_popup {
-  padding-bottom: 30px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .button-place-bid {
