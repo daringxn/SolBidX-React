@@ -82,3 +82,8 @@
 .modal-body .image img {
   border-radius: 10px;
 }
+
+.wallet-adapter-modal-button-close,
+.wallet-adapter-modal-list-more {
+  height: unset;
+}
