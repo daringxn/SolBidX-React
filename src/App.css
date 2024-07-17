@@ -18,6 +18,32 @@
   margin-top: 20px;
 }
 
+.mt-100px {
+  margin-top: 100px;
+}
+
+.mx-16px {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+.mx-100px {
+  margin-top: 100px !important;
+  margin-bottom: 100px !important;
+}
+
+.w-100px {
+  width: 100px;
+}
+
+.fs-11px {
+  font-size: 11px;
+}
+
+.fs-20px {
+  font-size: 20px;
+}
+
 .tf-card-collection.selected {
   border: 1px solid #dee8e8;
 }
@@ -27,7 +53,24 @@
   height: 100% !important;
 }
 
-.mx-16px {
-  margin-top: 16px !important;
-  margin-bottom: 16px !important;
+.admin_active .popup-user .avatar_popup2,
+.admin_active .popup-notification .avatar_popup {
+  padding-bottom: 30px;
+}
+
+.button-place-bid {
+  height: 80px;
+}
+
+.modal-body fieldset {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.modal-body .image {
+  background-color: unset;
+}
+
+.modal-body .image img {
+  border-radius: 10px;
 }

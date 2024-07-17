@@ -15,7 +15,7 @@ export default function Settings({ className, onSubmit }) {
   const { t } = useTranslation();
 
   const onAvatarInputChanged = useCallback((e) => {
-    setUserAvatar(URL.createObjectURL(e.target.files[0]));
+    // setUserAvatar(URL.createObjectURL(e.target.files[0]));
     onSubmit({ avatar: e.target.files[0] });
   }, []);
 
@@ -71,18 +71,18 @@ export default function Settings({ className, onSubmit }) {
                 bio: user.bio || "",
               }}
               validationSchema={Yup.object().shape({
-                name: Yup.string().required(
-                  t("errors.form.required", { name: "Name" })
-                ),
-                email: Yup.string().required(
-                  t("errors.form.required", { name: "Email" })
-                ),
-                phone_number: Yup.string().required(
-                  t("errors.form.required", { name: "Phone Number" })
-                ),
-                bio: Yup.string().required(
-                  t("errors.form.required", { name: "Bio" })
-                ),
+                // name: Yup.string().required(
+                //   t("errors.form.required", { name: "Name" })
+                // ),
+                // email: Yup.string().required(
+                //   t("errors.form.required", { name: "Email" })
+                // ),
+                // phone_number: Yup.string().required(
+                //   t("errors.form.required", { name: "Phone Number" })
+                // ),
+                // bio: Yup.string().required(
+                //   t("errors.form.required", { name: "Bio" })
+                // ),
               })}
               onSubmit={onSubmit}
               enableReinitialize={true}

@@ -5,6 +5,7 @@ import moment from "moment";
 
 // components
 import Layout from "@/components/layout/Layout";
+import OfferModal from "@/components/elements/OfferModal";
 
 // stores
 import useAuthStore from "@/stores/authStore";
@@ -13,6 +14,7 @@ import useOffersStore from "@/stores/offersStore";
 
 export default function () {
   const [item, setItem] = useState({});
+  const [showOfferModal, setShowOfferModal] = useState(false);
 
   const user = useAuthStore();
   const { createOrUpdateItem, getItem } = useItemsStore();
@@ -47,19 +49,23 @@ export default function () {
     getItemData(item.id);
   }, [sendSellTransaction, item, getItemData]);
 
-  const onMakeOfferButtonClicked = useCallback(async () => {
-    sendMakeOfferTransaction();
-    const response = await createOffer({
-      item_id: item.id,
-      from_wallet_address: user.wallet_address,
-      price: item.price,
-    });
-    if (!response.status) {
-      alert(response.error);
-      return;
-    }
-    getItemData(item.id);
-  }, [sendMakeOfferTransaction, item, user]);
+  const onOfferModalSubmitted = useCallback(
+    async (values) => {
+      sendMakeOfferTransaction();
+      const response = await createOffer({
+        item_id: item.id,
+        from_wallet_address: user.wallet_address,
+        price: values.price,
+      });
+      if (!response.status) {
+        alert(response.error);
+        return;
+      }
+      setShowOfferModal(false);
+      getItemData(item.id);
+    },
+    [sendMakeOfferTransaction, item, user]
+  );
 
   const onAcceptButtonClicked = useCallback(
     async (offer) => {
@@ -90,7 +96,7 @@ export default function () {
       return;
     }
     getItemData(item.id);
-  }, [sendBuyNowTransaction, item]);
+  }, [sendBuyNowTransaction, item, user]);
 
   useEffect(() => {
     getItemData(params.id);
@@ -110,7 +116,6 @@ export default function () {
                         <img src={"/" + item.image} alt="" />
                       </Link>
                     </div>
-                    <div className="featured-countdown"></div>
                   </div>
                 </div>
                 <div className="col-md-6">
@@ -123,8 +128,9 @@ export default function () {
                       <div className="avatar">
                         <img
                           src={
-                            item.collector?.avatar ||
-                            "/assets/images/avatar/avatar-box-05.jpg"
+                            item.collector?.avatar
+                              ? "/" + item.collector?.avatar
+                              : "/assets/images/avatar/avatar-box-05.jpg"
                           }
                           alt="Image"
                         />
@@ -132,9 +138,7 @@ export default function () {
                       <div className="info">
                         <span>Owned by:</span>
                         <h6>
-                          <Link href="/author01">
-                            {item.collector?.name || "Unknown"}
-                          </Link>{" "}
+                          <a href="#">{item.collector?.name || "Unknown"}</a>
                         </h6>
                       </div>
                     </div>
@@ -152,32 +156,32 @@ export default function () {
                             {user.wallet_address ===
                               item.collector?.wallet_address &&
                               item.status !== "list" && (
-                                <Link
+                                <a
                                   href="#"
                                   className="tf-button style-1 h50 w216"
                                   onClick={onSellButtonClicked}
                                 >
                                   Sell
-                                </Link>
+                                </a>
                               )}
                             {user.wallet_address !==
                               item.collector?.wallet_address &&
                               item.status === "list" && (
                                 <>
-                                  <Link
+                                  <a
                                     href="#"
                                     className="tf-button style-1 h50"
-                                    onClick={onMakeOfferButtonClicked}
+                                    onClick={() => setShowOfferModal(true)}
                                   >
-                                    Make a offer
-                                  </Link>
-                                  <Link
+                                    Make offer
+                                  </a>
+                                  <a
                                     href="#"
                                     className="tf-button style-1 h50"
                                     onClick={onBuyNowButtonClicked}
                                   >
                                     Buy Now
-                                  </Link>
+                                  </a>
                                 </>
                               )}
                           </>
@@ -334,6 +338,12 @@ export default function () {
           </div>
         </div>
       </Layout>
+      <OfferModal
+        item={item}
+        onClose={() => setShowOfferModal(false)}
+        open={showOfferModal}
+        onSubmit={onOfferModalSubmitted}
+      />
     </>
   );
 }

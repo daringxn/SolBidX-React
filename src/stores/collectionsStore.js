@@ -15,4 +15,8 @@ export default create((set) => ({
     );
     return response.data;
   },
+  getCollection: async (id) => {
+    const response = await axios.get("/api/collections/" + id);
+    return response.data;
+  },
 }));

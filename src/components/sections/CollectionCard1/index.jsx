@@ -7,7 +7,12 @@ import Square from "@/components/sections/Square";
 // styles
 import styles from "./style.module.css";
 
-export default function CollectionItem1({ collection, selected, className }) {
+export default function CollectionItem1({
+  collection,
+  selected,
+  className,
+  onImageClicked,
+}) {
   return (
     <div
       className={classNames([
@@ -17,7 +22,7 @@ export default function CollectionItem1({ collection, selected, className }) {
         styles["collection-card-1"],
       ])}
     >
-      <div className={styles.image}>
+      <div className={styles.image} onClick={onImageClicked}>
         <Square>
           <img src={"/" + collection?.image} alt="" />
         </Square>

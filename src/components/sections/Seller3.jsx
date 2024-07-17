@@ -1,8 +1,11 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // components
 import ItemCard2 from "@/components/sections/ItemCard2";
+import BidModal from "../elements/BidModal";
 
 const swiperOptions = {
   modules: [Autoplay, Pagination, Navigation],
@@ -40,12 +43,13 @@ const swiperOptions = {
   },
 };
 
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import BidModal from "../elements/BidModal";
-export default function Seller3({ items }) {
+export default function Seller3({ items, loading }) {
   const [isBidModal, setBidModal] = useState(false);
+
+  const navigate = useNavigate();
+
   const handleBidModal = () => setBidModal(!isBidModal);
+
   return (
     <>
       <div className="tf-section-1 seller ">
@@ -56,20 +60,32 @@ export default function Seller3({ items }) {
                 <h2 className="tf-title pb-20">Featured Items</h2>
               </div>
             </div>
-            <div className="col-md-12">
-              <Swiper
-                {...swiperOptions}
-                className="featured pt-10 swiper-container carousel"
-              >
-                <div className="swiper-wrapper">
-                  {items.map((item) => (
-                    <SwiperSlide key={item.id}>
-                      <ItemCard2 item={item}></ItemCard2>
-                    </SwiperSlide>
-                  ))}
-                </div>
-              </Swiper>
-            </div>
+            {loading && (
+              <div className="col-md-12 d-flex justify-content-center mx-100px">
+                <img src="/assets/images/loading.gif" className="w-100px" />
+              </div>
+            )}
+            {!loading && (
+              <div className="col-md-12">
+                <Swiper
+                  {...swiperOptions}
+                  className="featured pt-10 swiper-container carousel"
+                >
+                  <div className="swiper-wrapper">
+                    {items.map((item) => (
+                      <SwiperSlide key={item.id}>
+                        <ItemCard2
+                          item={item}
+                          onImageClicked={() => {
+                            navigate("/item/" + item.id);
+                          }}
+                        ></ItemCard2>
+                      </SwiperSlide>
+                    ))}
+                  </div>
+                </Swiper>
+              </div>
+            )}
           </div>
         </div>
       </div>

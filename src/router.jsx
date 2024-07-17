@@ -13,6 +13,7 @@ import ExploreCollections from "./pages/explore_collections";
 import ExploreItems from "./pages/explore_items";
 import Item from "./pages/item";
 import Setting from "./pages/setting";
+import MyPage from "./pages/mypage";
 
 export default createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export default createBrowserRouter([
       </>
     ),
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "/login",
         element: <Login />,
@@ -53,6 +58,10 @@ export default createBrowserRouter([
         element: <ExploreCollections />,
       },
       {
+        path: "/explore/collections/:id/items",
+        element: <ExploreItems />,
+      },
+      {
         path: "/explore/items",
         element: <ExploreItems />,
       },
@@ -65,6 +74,14 @@ export default createBrowserRouter([
         element: (
           <ProtectedPage>
             <Setting />
+          </ProtectedPage>
+        ),
+      },
+      {
+        path: "/me",
+        element: (
+          <ProtectedPage>
+            <MyPage />
           </ProtectedPage>
         ),
       },

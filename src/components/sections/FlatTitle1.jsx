@@ -3,21 +3,13 @@ import TitileSlider1 from "../slider/TitileSlider1";
 export default function FlatTitle1({
   onAllCollectionsButtonClicked,
   collections,
+  loading,
 }) {
   return (
     <>
       <div className="flat-pages-title">
         <div className="widget-bg-line">
           <div className="wraper">
-            {/* <div className="bg-grid-line y top">
-                      <div className="bg-line"></div>
-                  </div>
-                  <div className="bg-grid-line x left">
-                      <div className="bg-line"></div>
-                  </div>
-                  <div className="bg-grid-line x right">
-                      <div className="bg-line"></div>
-                  </div> */}
             <div className="bg-grid-line y bottom">
               <div className="bg-line" />
             </div>
@@ -93,9 +85,16 @@ export default function FlatTitle1({
                   alt=""
                 />
               </div>
-              <div className="relative">
-                <TitileSlider1 collections={collections} />
-              </div>
+              {loading && (
+                <div className="d-flex justify-content-center mt-100px">
+                  <img src="/assets/images/loading.gif" className="w-100px" />
+                </div>
+              )}
+              {!loading && (
+                <div className="relative">
+                  <TitileSlider1 collections={collections} />
+                </div>
+              )}
             </div>
           </div>
         </div>

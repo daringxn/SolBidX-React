@@ -15,6 +15,7 @@ import useItemsStore from "@/stores/itemsStore";
 export default function () {
   const [featuredCollections, setFeaturedCollections] = useState([]);
   const [featuredItems, setFeaturedItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -42,8 +43,11 @@ export default function () {
       }
       setFeaturedItems(data);
     };
-    getCollectionsData();
-    getItemsData();
+    (async () => {
+      await getCollectionsData();
+      await getItemsData();
+      setLoading(false);
+    })();
   }, [getCollections, getItems]);
 
   return (
@@ -54,9 +58,10 @@ export default function () {
           onAllCollectionsButtonClicked={() => {
             navigate("/explore/collections");
           }}
+          loading={loading}
         />
         <CreateSell1 />
-        <Seller3 items={featuredItems} />
+        <Seller3 items={featuredItems} loading={loading} />
         <Action4
           onExploreNowButtonClicked={() => {
             navigate("/explore/collections");

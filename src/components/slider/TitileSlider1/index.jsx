@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Autoplay,
   EffectCoverflow,
@@ -6,6 +7,9 @@ import {
   Pagination,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+// styles
+import styles from "./style.module.css";
 
 const swiperOptions = {
   modules: [Autoplay, Pagination, Navigation, FreeMode, EffectCoverflow],
@@ -63,6 +67,7 @@ const swiperOptions = {
 import CollectionCard1 from "@/components/sections/CollectionCard1";
 
 export default function TitileSlider1({ collections }) {
+  const navigate = useNavigate();
   return (
     <>
       <Swiper
@@ -71,7 +76,13 @@ export default function TitileSlider1({ collections }) {
       >
         {collections.map((collection) => (
           <SwiperSlide key={collection.id}>
-            <CollectionCard1 collection={collection} />
+            <CollectionCard1
+              className={styles["collection-card"]}
+              collection={collection}
+              onImageClicked={() =>
+                navigate("/explore/collections/" + collection.id + "/items")
+              }
+            />
           </SwiperSlide>
         ))}
       </Swiper>

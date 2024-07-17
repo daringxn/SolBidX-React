@@ -1,14 +1,174 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, useRef, useCallback } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import classNames from "classnames";
+import InfiniteScroll from "react-infinite-scroller";
+import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 
 // components
-import BidModal from "@/components/elements/BidModal";
 import Layout from "@/components/layout/Layout";
+import ItemCard2 from "@/components/sections/ItemCard2";
+import SearchInput1 from "@/components/sections/SearchInput1";
+import OfferModal from "@/components/elements/OfferModal";
+
+// stores
+import useItemsStore from "@/stores/itemsStore";
+import useCollectionsStore from "@/stores/collectionsStore";
+import useOffersStore from "@/stores/offersStore";
+import useAuthStore from "@/stores/authStore";
+
+// styles
+import styles from "./style.module.css";
 
 export default function () {
   const [isBidModal, setBidModal] = useState(false);
+  const [collection, setCollection] = useState({});
+  const [items, setItems] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [hasMore, setHasMore] = useState(true);
+  const [statusList, setStatusList] = useState([]);
+  const [priceList, setPriceList] = useState([]);
+  const [sortKey, setSortKey] = useState(null);
+  const [sortArrow, setSortArrow] = useState(null);
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showOfferModal, setShowOfferModal] = useState(false);
+  const pageIndex = useRef(0);
 
   const handleBidModal = () => setBidModal(!isBidModal);
+
+  const { id: collectionId } = useParams();
+  const navigate = useNavigate();
+
+  const { getItems, createOrUpdateItem } = useItemsStore();
+  const { getCollection } = useCollectionsStore();
+  const { createOffer } = useOffersStore();
+  const user = useAuthStore();
+
+  const getItemsData = useCallback(async () => {
+    const pageSize = 20;
+    const response = await getItems({
+      pageIndex: pageIndex.current,
+      pageSize,
+      name: searchValue,
+      collection_id: collectionId,
+      status: statusList.join(),
+      // price: priceList.join(),
+      sort_key: sortKey,
+      sort_arrow: sortArrow,
+      min_price: minPrice,
+      max_price: maxPrice,
+    });
+    if (!response.status) {
+      alert(response.error);
+      return;
+    }
+    setItems((items) => [...items, ...response.data]);
+    if (response.data.length < pageSize) {
+      setHasMore(false);
+    }
+  }, [
+    searchValue,
+    collectionId,
+    statusList,
+    priceList,
+    sortKey,
+    sortArrow,
+    minPrice,
+    maxPrice,
+  ]);
+
+  const onStatusCheckBoxChanged = useCallback((e) => {
+    if (e.target.checked) {
+      if (e.target.value === "all") {
+        setStatusList([]);
+      } else {
+        setStatusList([e.target.value]);
+      }
+      pageIndex.current = 0;
+      setItems([]);
+      setHasMore(true);
+    } else {
+      // setStatusList((statusList) =>
+      //   statusList.filter((status) => status != e.target.value)
+      // );
+    }
+  }, []);
+
+  const onSortByItemClicked = useCallback((sortKey, sortArrow) => {
+    setSortKey(sortKey);
+    setSortArrow(sortArrow);
+    pageIndex.current = 0;
+    setItems([]);
+    setHasMore(true);
+  }, []);
+
+  // const onPriceCheckBoxChanged = useCallback((e) => {
+  //   if (e.target.checked) {
+  //     setPriceList((priceList) => priceList.concat([e.target.value]));
+  //   } else {
+  //     setPriceList((priceList) =>
+  //       priceList.filter((status) => status != e.target.value)
+  //     );
+  //   }
+  //   pageIndex.current = 0;
+  //   setItems([]);
+  //   setHasMore(true);
+  // }, []);
+
+  const onMakeOfferButtonClicked = useCallback((item) => {
+    setSelectedItem(item);
+    setShowOfferModal(true);
+  }, []);
+
+  const onOfferModalSubmitted = useCallback(
+    async (values) => {
+      const response = await createOffer({
+        item_id: selectedItem.id,
+        from_wallet_address: user.wallet_address,
+        price: values.price,
+      });
+      if (!response.status) {
+        alert(response.error);
+        return;
+      }
+      setShowOfferModal(false);
+    },
+    [selectedItem]
+  );
+
+  const onBuyNowButtonClicked = useCallback(
+    async (item) => {
+      const response = await createOrUpdateItem({
+        id: item.id,
+        buyer_wallet_address: user.wallet_address,
+        status: "sale",
+      });
+      if (!response.status) {
+        alert(response.error);
+        return;
+      }
+      pageIndex.current = 0;
+      setItems([]);
+      setHasMore(true);
+    },
+    [user]
+  );
+
+  useEffect(() => {
+    if (!collectionId) return;
+    const getCollectionData = async () => {
+      const { status, data, error } = await getCollection(collectionId);
+      if (!status) {
+        alert(error);
+        return;
+      }
+      setCollection(data);
+    };
+    (async () => {
+      await getCollectionData();
+    })();
+  }, [collectionId, getCollection]);
 
   return (
     <>
@@ -18,1147 +178,344 @@ export default function () {
             <div className="themesflat-container">
               <div className="row">
                 <div className="col-12">
-                  <h1 className="heading text-center">Items</h1>
+                  <h1 className="heading text-center">
+                    Items in <a href="#">"{collection.name}"</a> collection
+                  </h1>
                 </div>
               </div>
             </div>
           </div>
-          <div className="tf-section-2 artwork loadmore-12-item-1">
-            <div className="">
-              <div className="row">
-                <div className="col-md-4 col-lg-3 col-xl-2">
-                  <div className="widget-category-checkbox mb-30">
-                    <h5>Status</h5>
-                    <div className="content-wg-category-checkbox">
-                      <form action="#">
-                        <label>
-                          Buy now
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          On auction
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          New
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Featured
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                      </form>
-                    </div>
+          <div className="tf-section-2 artwork loadmore-12-item-1 pr-3 pl-3 pr-lg-5 pl-lg-5">
+            <div className="row">
+              <div className="col-md-4 col-lg-3 col-xl-2">
+                <div className="widget-category-checkbox mb-30">
+                  <h5>Status</h5>
+                  <div className="content-wg-category-checkbox">
+                    <form action="#">
+                      <label>
+                        Show All
+                        <input
+                          type="checkbox"
+                          value="all"
+                          checked={statusList.length === 0}
+                          onChange={onStatusCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      <label>
+                        For Sale
+                        <input
+                          type="checkbox"
+                          value="list"
+                          checked={statusList.indexOf("list") > -1}
+                          onChange={onStatusCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      {/* <label>
+                        Sale
+                        <input
+                          type="checkbox"
+                          value="sale"
+                          checked={statusList.indexOf("sale") > -1}
+                          onChange={onStatusCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      <label>
+                        Featured
+                        <input
+                          type="checkbox"
+                          value="featured"
+                          checked={statusList.indexOf("featured") > -1}
+                          onChange={onStatusCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br /> */}
+                    </form>
                   </div>
-                  <div className="widget-category-checkbox mb-30">
-                    <h5>Collection</h5>
-                    <div className="content-wg-category-checkbox">
-                      <form action="#">
-                        <label>
-                          Digital Art
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Gaming
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Gaming
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Music
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Photography
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Typo
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Crypto
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                      </form>
-                    </div>
+                </div>
+                <div className="widget-category-checkbox mb-30">
+                  <h5>Price (SOL)</h5>
+                  <div className="d-flex align-items-center mb-3">
+                    <input
+                      type="number"
+                      placeholder="Min"
+                      value={minPrice}
+                      onChange={(e) => setMinPrice(e.target.value)}
+                      onKeyUp={(e) => {
+                        if (e.keyCode === 13) {
+                          pageIndex.current = 0;
+                          setItems([]);
+                          setHasMore(true);
+                        }
+                      }}
+                    />
+                    <span className="fs-20px ml-2 mr-2">~</span>
+                    <input
+                      type="number"
+                      placeholder="Max"
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(e.target.value)}
+                      onKeyUp={(e) => {
+                        if (e.keyCode === 13) {
+                          pageIndex.current = 0;
+                          setItems([]);
+                          setHasMore(true);
+                        }
+                      }}
+                    />
                   </div>
-                  <div className="widget-category-checkbox mb-30">
-                    <h5>Filter by price</h5>
-                    <div className="content-wg-category-checkbox">
-                      <form action="#">
-                        <label>
-                          $0 - $100
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          $100 - $200
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          $200 - $300
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          $300 - $400
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          $400 - $500
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          $500 - $600
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Over $600
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                      </form>
-                    </div>
+                  <span className="fs-11px">Press enter to update price</span>
+                </div>
+                {/* <div className="widget-category-checkbox mb-30">
+                  <h5>Filter by price</h5>
+                  <div className="content-wg-category-checkbox">
+                    <form action="#">
+                      <label>
+                        $0 - $100
+                        <input
+                          type="checkbox"
+                          value="0~100"
+                          checked={priceList.indexOf("0~100") > -1}
+                          onChange={onPriceCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      <label>
+                        $100 - $200
+                        <input
+                          type="checkbox"
+                          value="100~200"
+                          checked={priceList.indexOf("100~200") > -1}
+                          onChange={onPriceCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      <label>
+                        $200 - $300
+                        <input
+                          type="checkbox"
+                          value="200~300"
+                          checked={priceList.indexOf("200~300") > -1}
+                          onChange={onPriceCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      <label>
+                        $300 - $400
+                        <input
+                          type="checkbox"
+                          value="300~400"
+                          checked={priceList.indexOf("300~400") > -1}
+                          onChange={onPriceCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      <label>
+                        $400 - $500
+                        <input
+                          type="checkbox"
+                          value="400~500"
+                          checked={priceList.indexOf("400~500") > -1}
+                          onChange={onPriceCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      <label>
+                        $500 - $600
+                        <input
+                          type="checkbox"
+                          value="500~600"
+                          checked={priceList.indexOf("500~600") > -1}
+                          onChange={onPriceCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                      <label>
+                        Over $600
+                        <input
+                          type="checkbox"
+                          value="600"
+                          checked={priceList.indexOf("600") > -1}
+                          onChange={onPriceCheckBoxChanged}
+                        />
+                        <span className="btn-checkbox" />
+                      </label>
+                      <br />
+                    </form>
                   </div>
-                  <div className="widget-category-checkbox mb-30">
-                    <h5>Chains</h5>
-                    <div className="content-wg-category-checkbox">
-                      <form action="#">
-                        <label>
-                          Bitcoin
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Ethereum
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Cardano
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Solana
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          Litecoin
-                          <input type="checkbox" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                      </form>
-                    </div>
-                  </div>
-                  <div className="widget-category-checkbox mb-30">
-                    <h5>Ratings</h5>
-                    <div className="content-wg-category-checkbox">
-                      <form action="#">
-                        <label>
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <input type="radio" name="rating" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star" /> &amp; Up
-                          <input type="radio" name="rating" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star" />
-                          <i className="icon-star" /> &amp; Up
-                          <input type="radio" name="rating" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          <i className="icon-star active" />
-                          <i className="icon-star active" />
-                          <i className="icon-star" />
-                          <i className="icon-star" />
-                          <i className="icon-star" /> &amp; Up
-                          <input type="radio" name="rating" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                        <label>
-                          <i className="icon-star active" />
-                          <i className="icon-star" />
-                          <i className="icon-star" />
-                          <i className="icon-star" />
-                          <i className="icon-star" /> &amp; Up
-                          <input type="radio" name="rating" />
-                          <span className="btn-checkbox" />
-                        </label>
-                        <br />
-                      </form>
+                </div> */}
+              </div>
+              <div className="col-md-8 col-lg-9 col-xl-10">
+                <div className="d-flex mb-5">
+                  <SearchInput1
+                    placeholder="Search By Item Name"
+                    className={classNames(styles["search-input"])}
+                    value={searchValue}
+                    onChange={(value) => setSearchValue(value)}
+                    onSearch={() => {
+                      pageIndex.current = 0;
+                      setItems([]);
+                      setHasMore(true);
+                    }}
+                  />
+                  <div className="tf-soft">
+                    <div className="soft-right h-100">
+                      <Menu as="div" className="dropdown ml-2 h-100">
+                        <MenuButton
+                          className="btn btn-secondary dropdown-toggle h-100"
+                          type="button"
+                          id="dropdownMenuButton4"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <svg
+                            width={20}
+                            height={20}
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10"
+                              stroke="white"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          {(!sortKey || !sortArrow) && <span>Sory By</span>}
+                          {sortKey === "price" && sortArrow === "asc" && (
+                            <span>Lowest Price</span>
+                          )}
+                          {sortKey === "price" && sortArrow === "desc" && (
+                            <span>Highest Price</span>
+                          )}
+                          {sortKey === "featured" && sortArrow === "desc" && (
+                            <span>Featured</span>
+                          )}
+                        </MenuButton>
+                        <MenuItems
+                          className="dropdown-menu d-block show"
+                          aria-labelledby="dropdownMenuButton"
+                        >
+                          <h6>Sort by</h6>
+                          <a
+                            href="#"
+                            className="dropdown-item"
+                            onClick={() => onSortByItemClicked("price", "asc")}
+                          >
+                            <div className="sort-filter active" href="#">
+                              <span>Lowest Price</span>
+                              {sortKey === "price" && sortArrow === "asc" && (
+                                <span className="icon-tick">
+                                  <span className="path2" />
+                                </span>
+                              )}
+                            </div>
+                          </a>
+                          <a
+                            href="#"
+                            className="dropdown-item"
+                            onClick={() => onSortByItemClicked("price", "desc")}
+                          >
+                            <div className="sort-filter active" href="#">
+                              <span>Highest Price</span>
+                              {sortKey === "price" && sortArrow === "desc" && (
+                                <span className="icon-tick">
+                                  <span className="path2" />
+                                </span>
+                              )}
+                            </div>
+                          </a>
+                          <a
+                            href="#"
+                            className="dropdown-item"
+                            onClick={() =>
+                              onSortByItemClicked("featured", "desc")
+                            }
+                          >
+                            <div className="sort-filter active" href="#">
+                              <span>Featured</span>
+                              {sortKey === "featured" &&
+                                sortArrow === "desc" && (
+                                  <span className="icon-tick">
+                                    <span className="path2" />
+                                  </span>
+                                )}
+                            </div>
+                          </a>
+                        </MenuItems>
+                      </Menu>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-8 col-lg-9 col-xl-10">
+                <InfiniteScroll
+                  loadMore={() => {
+                    pageIndex.current += 1;
+                    getItemsData();
+                  }}
+                  hasMore={hasMore}
+                  loader={
+                    <div className="d-flex justify-content-center">
+                      <img
+                        src="/assets/images/loading.gif"
+                        alt="loading..."
+                        className={styles.loading}
+                      />
+                    </div>
+                  }
+                >
                   <div className="row">
-                    <div
-                      data-wow-delay="0s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-53.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
+                    {items.map((item) => (
+                      <div
+                        key={item.id}
+                        data-wow-delay="0s"
+                        className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
+                      >
+                        <ItemCard2
+                          item={item}
+                          onImageClicked={() => {
+                            navigate("/item/" + item.id);
+                          }}
+                          onMakeOfferButtonClicked={() =>
+                            onMakeOfferButtonClicked(item)
+                          }
+                          onBuyNowButtonClicked={() => {
+                            onBuyNowButtonClicked(item);
+                          }}
+                        />
                       </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.1s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-54.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.2s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-55.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-56.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.1s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-27.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-05.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.2s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-28.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-06.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-29.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-07.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.1s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-30.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-01.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.2s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-12.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-13.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.1s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-14.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.2s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-15.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-57.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.1s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-58.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-wow-delay="0.2s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                    >
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-59.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="fl-item-1 col-md-6" col-lg-3 col-xl-2>
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-60.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="fl-item-1 col-md-6" col-lg-3 col-xl-2>
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-15.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="fl-item-1 col-md-6" col-lg-3 col-xl-2>
-                      <div className="tf-card-box style-1">
-                        <div className="card-media">
-                          <Link href="#">
-                            <img
-                              src="/assets/images/box-item/card-item-57.jpg"
-                              alt=""
-                            />
-                          </Link>
-                          <span className="wishlist-button icon-heart" />
-                          <div className="button-place-bid">
-                            <a
-                              onClick={handleBidModal}
-                              href="#"
-                              className="tf-button"
-                            >
-                              <span>Place Bid</span>
-                            </a>
-                          </div>
-                        </div>
-                        <h5 className="name">
-                          <Link href="#">Dayco serpentine belt</Link>
-                        </h5>
-                        <div className="author flex items-center">
-                          <div className="avatar">
-                            <img
-                              src="/assets/images/avatar/avatar-box-03.jpg"
-                              alt="Image"
-                            />
-                          </div>
-                          <div className="info">
-                            <span>Created by:</span>
-                            <h6>
-                              <Link href="/author-2">Kathryn Murphy</Link>{" "}
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="divider" />
-                        <div className="meta-info flex items-center justify-between">
-                          <span className="text-bid">Current Bid</span>
-                          <h6 className="price gem">
-                            <i className="icon-gem" />
-                            0,34
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-12 load-more">
-                      <a id="button-loadmore" className="tf-button-loadmore">
-                        <span>Load More</span>
-                        <i className="icon-loading-1" />
-                      </a>
-                    </div>
+                    ))}
                   </div>
-                </div>
+                  {items.length === 0 && (
+                    <div>
+                      <p className="text-center">No Items</p>
+                    </div>
+                  )}
+                </InfiniteScroll>
               </div>
             </div>
           </div>
         </div>
-
-        <BidModal handleBidModal={handleBidModal} isBidModal={isBidModal} />
       </Layout>
+      <OfferModal
+        item={selectedItem}
+        onClose={() => setShowOfferModal(false)}
+        open={showOfferModal}
+        onSubmit={onOfferModalSubmitted}
+      />
     </>
   );
 }

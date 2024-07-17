@@ -7,7 +7,6 @@ import Footer2 from "./footer/Footer2";
 import Header1 from "./header/Header1";
 import Header2 from "./header/Header2";
 import Header3 from "./header/Header3";
-import { WOW } from "wowjs";
 
 export default function Layout({
   headerStyle,
@@ -23,10 +22,6 @@ export default function Layout({
   const handleMobileMenu = () => setMobileMenu(!isMobileMenu);
 
   useEffect(() => {
-    new WOW({
-      live: false,
-    }).init();
-
     document.addEventListener("scroll", () => {
       const scrollCheck = window.scrollY > 100;
       if (scrollCheck !== scroll) {
@@ -35,6 +30,7 @@ export default function Layout({
     });
     // document.querySelector("body").classList.add("body")
   }, []);
+
   return (
     <>
       <PageHead headTitle={headTitle} />

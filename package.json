@@ -25,7 +25,6 @@
     "react-infinite-scroller": "^1.2.6",
     "react-router-dom": "^6.24.1",
     "swiper": "^11.1.4",
-    "wowjs": "^1.1.3",
     "yup": "^1.4.0",
     "zustand": "^4.5.4"
   },

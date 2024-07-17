@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu } from "@headlessui/react";
 import InfiniteScroll from "react-infinite-scroller";
 
@@ -21,6 +21,8 @@ export default function () {
   const [hasMore, setHasMore] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const pageIndex = useRef(0);
+
+  const navigate = useNavigate();
 
   const { getCollections } = useCollectionsStore();
 
@@ -74,8 +76,7 @@ export default function () {
           <div className="themesflat-container w1490">
             <div className="row">
               <div className="col-md-12 pb-30">
-                <div className="tf-soft flex items-center justify-between">
-                  <div></div>
+                <div className="tf-soft flex items-center justify-end">
                   <SearchInput1
                     value={searchValue}
                     onChange={setSearchValue}
@@ -98,6 +99,11 @@ export default function () {
                   <CollectionCard1
                     className={styles["collection-card"]}
                     collection={collection}
+                    onImageClicked={() => {
+                      navigate(
+                        "/explore/collections/" + collection.id + "/items"
+                      );
+                    }}
                   />
                 </div>
               ))}
