@@ -31,7 +31,7 @@ export default function CollectionItem1({
         </Square>
       </div>
       <div className={classNames(["card-bottom", styles.bottom])}>
-        <div className="author">
+        {/* <div className="author">
           {!loading && (
             <h5 className="mb-3">
               <a href="#">{collection?.name}</a>
@@ -40,10 +40,10 @@ export default function CollectionItem1({
           {loading && (
             <RectLoader width="200px" height="25px" className="mb-3" />
           )}
-        </div>
+        </div> */}
         <div className="d-flex justify-content-between">
-          <div className="author flex items-center">
-            <div className="avatar">
+          <div className="author">
+            {/* <div className="avatar">
               {!loading && (
                 <img
                   src={
@@ -67,7 +67,23 @@ export default function CollectionItem1({
               {loading && (
                 <RectLoader width="50px" height="20px" className="ml-1" />
               )}
-            </div>
+            </div> */}
+            {!loading && (
+              <h5 className="mb-3">
+                <a href="#">{collection?.name}</a>
+              </h5>
+            )}
+            {loading && (
+              <RectLoader width="170px" height="25px" className="mb-3" />
+            )}
+            {!loading && (
+              <p className={classNames(styles.description)}>
+                {collection?.description}
+              </p>
+            )}
+            {loading && (
+              <RectLoader width="200px" height="25px" className="mb-3" />
+            )}
           </div>
           <div className={classNames("bottom-right", styles["bottom-right"])}>
             <div className={classNames(["shop", styles.items])}>

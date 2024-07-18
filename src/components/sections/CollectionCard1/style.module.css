@@ -29,6 +29,14 @@
   flex-direction: column;
 }
 
+.bottom .description {
+  max-width: 250px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
 .collector-info {
   display: flex;
   align-items: center;
