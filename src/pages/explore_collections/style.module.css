@@ -1,15 +1,14 @@
 .collection-card {
-  margin-top: 20px;
   transition: transform 0.2s;
+  margin-bottom: 10px;
 }
 
 .collection-card:hover {
-  transform: scale(1.07);
+  transform: scale(1.02);
 }
 
 .search-input {
   width: 100%;
-  max-width: 500px;
 }
 
 .search-input input,

@@ -6,7 +6,7 @@ import InfiniteScroll from "react-infinite-scroller";
 // components
 import BidModal from "@/components/elements/BidModal";
 import Layout from "@/components/layout/Layout";
-import CollectionCard1 from "@/components/sections/CollectionCard1";
+import CollectionCard2 from "@/components/sections/CollectionCard2";
 import SearchInput1 from "@/components/sections/SearchInput1/index";
 
 // stores
@@ -63,40 +63,29 @@ export default function () {
           </div>
         }
       >
-        <div className="flat-title-page">
-          <div className="themesflat-container">
-            <div className="row">
-              <div className="col-12">
-                <h1 className="heading text-center">Collections</h1>
-              </div>
-            </div>
+        <div className="tf-section-2 discover-item loadmore-12-item p-2 p-md-5">
+          <div className="row m-0 mb-4">
+            <SearchInput1
+              value={searchValue}
+              onChange={setSearchValue}
+              className={styles["search-input"]}
+              placeholder={"Search By Collection Name"}
+              onSearch={() => {
+                pageIndex.current = 0;
+                setCollections([]);
+                setHasMore(true);
+              }}
+            />
           </div>
-        </div>
-        <div className="tf-section-2 discover-item loadmore-12-item">
-          <div className="themesflat-container w1490">
-            <div className="row">
-              <div className="col-md-12 pb-30">
-                <div className="tf-soft flex items-center justify-end">
-                  <SearchInput1
-                    value={searchValue}
-                    onChange={setSearchValue}
-                    className={styles["search-input"]}
-                    placeholder={"Search By Collection Name"}
-                    onSearch={() => {
-                      pageIndex.current = 0;
-                      setCollections([]);
-                      setHasMore(true);
-                    }}
-                  />
-                </div>
-              </div>
+          {collections.length > 0 && (
+            <div className="row m-0">
               {collections.map((collection) => (
                 <div
                   key={collection.id}
                   data-wow-delay="0s"
-                  className="wow fadeInUp fl-item col-xl-2 col-lg-4 col-md-6 col-sm-6 col-6"
+                  className="wow fadeInUp fl-item col-xl-2 col-lg-4 col-md-6 col-sm-6 col-6 pl-1 pr-2"
                 >
-                  <CollectionCard1
+                  <CollectionCard2
                     className={styles["collection-card"]}
                     collection={collection}
                     onImageClicked={() => {
@@ -104,16 +93,17 @@ export default function () {
                         "/explore/collections/" + collection.id + "/items"
                       );
                     }}
+                    // loading={true}
                   />
                 </div>
               ))}
-              {collections.length === 0 && (
-                <div className="col-12">
-                  <p className="text-center">No collections</p>
-                </div>
-              )}
             </div>
-          </div>
+          )}
+          {collections.length === 0 && (
+            <div className="row m-0">
+              <p className="text-center">No collections</p>
+            </div>
+          )}
         </div>
         <BidModal handleBidModal={handleBidModal} isBidModal={isBidModal} />
       </InfiniteScroll>

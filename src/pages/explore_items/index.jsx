@@ -9,12 +9,16 @@ import Layout from "@/components/layout/Layout";
 import ItemCard2 from "@/components/sections/ItemCard2";
 import SearchInput1 from "@/components/sections/SearchInput1";
 import OfferModal from "@/components/elements/OfferModal";
+import Square from "@/components/sections/Square";
 
 // stores
 import useItemsStore from "@/stores/itemsStore";
 import useCollectionsStore from "@/stores/collectionsStore";
 import useOffersStore from "@/stores/offersStore";
 import useAuthStore from "@/stores/authStore";
+
+// helpers
+import useDevice from "@/hooks/useDevice";
 
 // styles
 import styles from "./style.module.css";
@@ -44,6 +48,8 @@ export default function () {
   const { getCollection } = useCollectionsStore();
   const { createOffer } = useOffersStore();
   const user = useAuthStore();
+
+  const device = useDevice();
 
   const getItemsData = useCallback(async () => {
     const pageSize = 20;
@@ -173,48 +179,90 @@ export default function () {
   return (
     <>
       <Layout headerStyle={3} footerStyle={1} pageCls="home-7 pt-0">
-        <div>
-          <div className="flat-title-page">
-            <div className="themesflat-container">
-              <div className="row">
-                <div className="col-12">
-                  <h1 className="heading text-center">
-                    Items in <a href="#">"{collection.name}"</a> collection
-                  </h1>
+        <div className="tf-section-2 artwork loadmore-12-item-1 pr-3 pl-3 pr-lg-5 pl-lg-5 mt-5">
+          <div className="row mb-5">
+            <div className="col-12">
+              <Square
+                ratio={device.isBreakpoint("MD") ? 0.2 : 0.5}
+                className={styles.collection}
+              >
+                <div className={classNames("widget-social", styles.links)}>
+                  <ul className="flex">
+                    <li>
+                      <a href="#" className="icon-vt" />
+                    </li>
+                  </ul>
                 </div>
-              </div>
+                <img
+                  src={"/" + collection?.image_background}
+                  alt=""
+                  className={classNames("w-100", "h-100", styles.background)}
+                />
+                <div
+                  className={classNames(
+                    "d-flex",
+                    "align-items-center",
+                    styles.info
+                  )}
+                >
+                  <Square className={styles["base-image-square"]}>
+                    <img
+                      src={"/" + collection?.image}
+                      alt=""
+                      className={classNames(
+                        "w-100",
+                        "h-100",
+                        styles["base-image"]
+                      )}
+                    />
+                  </Square>
+                  <div className="ml-3">
+                    <h5 className="mb-2">{collection?.name}</h5>
+                    <p
+                      className={styles.description}
+                      title={collection?.description}
+                    >
+                      {collection?.description}
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.values}>
+                  <span className="h3 font-weight-bold">
+                    Total {collection?.items?.length} Items
+                  </span>
+                </div>
+              </Square>
             </div>
           </div>
-          <div className="tf-section-2 artwork loadmore-12-item-1 pr-3 pl-3 pr-lg-5 pl-lg-5">
-            <div className="row">
-              <div className="col-md-4 col-lg-3 col-xl-2">
-                <div className="widget-category-checkbox mb-30">
-                  <h5>Status</h5>
-                  <div className="content-wg-category-checkbox">
-                    <form action="#">
-                      <label>
-                        Show All
-                        <input
-                          type="checkbox"
-                          value="all"
-                          checked={statusList.length === 0}
-                          onChange={onStatusCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      <label>
-                        For Sale
-                        <input
-                          type="checkbox"
-                          value="list"
-                          checked={statusList.indexOf("list") > -1}
-                          onChange={onStatusCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      {/* <label>
+          <div className="row">
+            <div className="col-md-4 col-lg-3 col-xl-2">
+              <div className="widget-category-checkbox mb-30">
+                <h5>Status</h5>
+                <div className="content-wg-category-checkbox">
+                  <form action="#">
+                    <label>
+                      Show All
+                      <input
+                        type="checkbox"
+                        value="all"
+                        checked={statusList.length === 0}
+                        onChange={onStatusCheckBoxChanged}
+                      />
+                      <span className="btn-checkbox" />
+                    </label>
+                    <br />
+                    <label>
+                      For Sale
+                      <input
+                        type="checkbox"
+                        value="list"
+                        checked={statusList.indexOf("list") > -1}
+                        onChange={onStatusCheckBoxChanged}
+                      />
+                      <span className="btn-checkbox" />
+                    </label>
+                    <br />
+                    {/* <label>
                         Sale
                         <input
                           type="checkbox"
@@ -236,43 +284,52 @@ export default function () {
                         <span className="btn-checkbox" />
                       </label>
                       <br /> */}
-                    </form>
-                  </div>
+                  </form>
                 </div>
-                <div className="widget-category-checkbox mb-30">
-                  <h5>Price (SOL)</h5>
-                  <div className="d-flex align-items-center mb-3">
-                    <input
-                      type="number"
-                      placeholder="Min"
-                      value={minPrice}
-                      onChange={(e) => setMinPrice(e.target.value)}
-                      onKeyUp={(e) => {
-                        if (e.keyCode === 13) {
-                          pageIndex.current = 0;
-                          setItems([]);
-                          setHasMore(true);
-                        }
-                      }}
-                    />
-                    <span className="fs-20px ml-2 mr-2">~</span>
-                    <input
-                      type="number"
-                      placeholder="Max"
-                      value={maxPrice}
-                      onChange={(e) => setMaxPrice(e.target.value)}
-                      onKeyUp={(e) => {
-                        if (e.keyCode === 13) {
-                          pageIndex.current = 0;
-                          setItems([]);
-                          setHasMore(true);
-                        }
-                      }}
-                    />
-                  </div>
-                  <span className="fs-11px">Press enter to update price</span>
+              </div>
+              <div className="widget-category-checkbox mb-30">
+                <h5>Price (SOL)</h5>
+                <div className="d-flex align-items-center mb-3">
+                  <input
+                    type="number"
+                    placeholder="Min"
+                    value={minPrice}
+                    onChange={(e) => setMinPrice(e.target.value)}
+                    // onKeyUp={(e) => {
+                    //   if (e.keyCode === 13) {
+                    //     pageIndex.current = 0;
+                    //     setItems([]);
+                    //     setHasMore(true);
+                    //   }
+                    // }}
+                  />
+                  <span className="fs-15px ml-2 mr-2">to</span>
+                  <input
+                    type="number"
+                    placeholder="Max"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(e.target.value)}
+                    // onKeyUp={(e) => {
+                    //   if (e.keyCode === 13) {
+                    //     pageIndex.current = 0;
+                    //     setItems([]);
+                    //     setHasMore(true);
+                    //   }
+                    // }}
+                  />
                 </div>
-                {/* <div className="widget-category-checkbox mb-30">
+                <button
+                  className="btn-block"
+                  onClick={() => {
+                    pageIndex.current = 0;
+                    setItems([]);
+                    setHasMore(true);
+                  }}
+                >
+                  Apply
+                </button>
+              </div>
+              {/* <div className="widget-category-checkbox mb-30">
                   <h5>Filter by price</h5>
                   <div className="content-wg-category-checkbox">
                     <form action="#">
@@ -356,156 +413,154 @@ export default function () {
                     </form>
                   </div>
                 </div> */}
-              </div>
-              <div className="col-md-8 col-lg-9 col-xl-10">
-                <div className="d-flex mb-5">
-                  <SearchInput1
-                    placeholder="Search By Item Name"
-                    className={classNames(styles["search-input"])}
-                    value={searchValue}
-                    onChange={(value) => setSearchValue(value)}
-                    onSearch={() => {
-                      pageIndex.current = 0;
-                      setItems([]);
-                      setHasMore(true);
-                    }}
-                  />
-                  <div className="tf-soft">
-                    <div className="soft-right h-100">
-                      <Menu as="div" className="dropdown ml-2 h-100">
-                        <MenuButton
-                          className="btn btn-secondary dropdown-toggle h-100"
-                          type="button"
-                          id="dropdownMenuButton4"
-                          aria-haspopup="true"
-                          aria-expanded="false"
+            </div>
+            <div className="col-md-8 col-lg-9 col-xl-10">
+              <div className="d-flex mb-5">
+                <SearchInput1
+                  placeholder="Search By Item Name"
+                  className={classNames(styles["search-input"])}
+                  value={searchValue}
+                  onChange={(value) => setSearchValue(value)}
+                  onSearch={() => {
+                    pageIndex.current = 0;
+                    setItems([]);
+                    setHasMore(true);
+                  }}
+                />
+                <div className="tf-soft">
+                  <div className="soft-right h-100">
+                    <Menu as="div" className="dropdown ml-2 h-100">
+                      <MenuButton
+                        className="btn btn-secondary dropdown-toggle h-100"
+                        type="button"
+                        id="dropdownMenuButton4"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <svg
+                          width={20}
+                          height={20}
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                          <svg
-                            width={20}
-                            height={20}
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10"
-                              stroke="white"
-                              strokeWidth="1.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                          {(!sortKey || !sortArrow) && <span>Sory By</span>}
-                          {sortKey === "price" && sortArrow === "asc" && (
+                          <path
+                            d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        {(!sortKey || !sortArrow) && <span>Sory By</span>}
+                        {sortKey === "price" && sortArrow === "asc" && (
+                          <span>Lowest Price</span>
+                        )}
+                        {sortKey === "price" && sortArrow === "desc" && (
+                          <span>Highest Price</span>
+                        )}
+                        {sortKey === "featured" && sortArrow === "desc" && (
+                          <span>Featured</span>
+                        )}
+                      </MenuButton>
+                      <MenuItems
+                        className="dropdown-menu d-block show"
+                        aria-labelledby="dropdownMenuButton"
+                      >
+                        <h6>Sort by</h6>
+                        <a
+                          href="#"
+                          className="dropdown-item"
+                          onClick={() => onSortByItemClicked("price", "asc")}
+                        >
+                          <div className="sort-filter active" href="#">
                             <span>Lowest Price</span>
-                          )}
-                          {sortKey === "price" && sortArrow === "desc" && (
-                            <span>Highest Price</span>
-                          )}
-                          {sortKey === "featured" && sortArrow === "desc" && (
-                            <span>Featured</span>
-                          )}
-                        </MenuButton>
-                        <MenuItems
-                          className="dropdown-menu d-block show"
-                          aria-labelledby="dropdownMenuButton"
+                            {sortKey === "price" && sortArrow === "asc" && (
+                              <span className="icon-tick">
+                                <span className="path2" />
+                              </span>
+                            )}
+                          </div>
+                        </a>
+                        <a
+                          href="#"
+                          className="dropdown-item"
+                          onClick={() => onSortByItemClicked("price", "desc")}
                         >
-                          <h6>Sort by</h6>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            onClick={() => onSortByItemClicked("price", "asc")}
-                          >
-                            <div className="sort-filter active" href="#">
-                              <span>Lowest Price</span>
-                              {sortKey === "price" && sortArrow === "asc" && (
-                                <span className="icon-tick">
-                                  <span className="path2" />
-                                </span>
-                              )}
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            onClick={() => onSortByItemClicked("price", "desc")}
-                          >
-                            <div className="sort-filter active" href="#">
-                              <span>Highest Price</span>
-                              {sortKey === "price" && sortArrow === "desc" && (
-                                <span className="icon-tick">
-                                  <span className="path2" />
-                                </span>
-                              )}
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="dropdown-item"
-                            onClick={() =>
-                              onSortByItemClicked("featured", "desc")
-                            }
-                          >
-                            <div className="sort-filter active" href="#">
-                              <span>Featured</span>
-                              {sortKey === "featured" &&
-                                sortArrow === "desc" && (
-                                  <span className="icon-tick">
-                                    <span className="path2" />
-                                  </span>
-                                )}
-                            </div>
-                          </a>
-                        </MenuItems>
-                      </Menu>
-                    </div>
+                          <div className="sort-filter active" href="#">
+                            <span>Highest Price</span>
+                            {sortKey === "price" && sortArrow === "desc" && (
+                              <span className="icon-tick">
+                                <span className="path2" />
+                              </span>
+                            )}
+                          </div>
+                        </a>
+                        <a
+                          href="#"
+                          className="dropdown-item"
+                          onClick={() =>
+                            onSortByItemClicked("featured", "desc")
+                          }
+                        >
+                          <div className="sort-filter active" href="#">
+                            <span>Featured</span>
+                            {sortKey === "featured" && sortArrow === "desc" && (
+                              <span className="icon-tick">
+                                <span className="path2" />
+                              </span>
+                            )}
+                          </div>
+                        </a>
+                      </MenuItems>
+                    </Menu>
                   </div>
                 </div>
-                <InfiniteScroll
-                  loadMore={() => {
-                    pageIndex.current += 1;
-                    getItemsData();
-                  }}
-                  hasMore={hasMore}
-                  loader={
-                    <div className="d-flex justify-content-center">
-                      <img
-                        src="/assets/images/loading.gif"
-                        alt="loading..."
-                        className={styles.loading}
+              </div>
+              <InfiniteScroll
+                loadMore={() => {
+                  pageIndex.current += 1;
+                  getItemsData();
+                }}
+                hasMore={hasMore}
+                loader={
+                  <div className="d-flex justify-content-center">
+                    <img
+                      src="/assets/images/loading.gif"
+                      alt="loading..."
+                      className={styles.loading}
+                    />
+                  </div>
+                }
+              >
+                <div className="row">
+                  {items.map((item) => (
+                    <div
+                      key={item.id}
+                      data-wow-delay="0s"
+                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
+                    >
+                      <ItemCard2
+                        item={item}
+                        onImageClicked={() => {
+                          navigate("/item/" + item.id);
+                        }}
+                        onMakeOfferButtonClicked={() =>
+                          onMakeOfferButtonClicked(item)
+                        }
+                        onBuyNowButtonClicked={() => {
+                          onBuyNowButtonClicked(item);
+                        }}
                       />
                     </div>
-                  }
-                >
-                  <div className="row">
-                    {items.map((item) => (
-                      <div
-                        key={item.id}
-                        data-wow-delay="0s"
-                        className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
-                      >
-                        <ItemCard2
-                          item={item}
-                          onImageClicked={() => {
-                            navigate("/item/" + item.id);
-                          }}
-                          onMakeOfferButtonClicked={() =>
-                            onMakeOfferButtonClicked(item)
-                          }
-                          onBuyNowButtonClicked={() => {
-                            onBuyNowButtonClicked(item);
-                          }}
-                        />
-                      </div>
-                    ))}
+                  ))}
+                </div>
+                {items.length === 0 && (
+                  <div>
+                    <p className="text-center">No Items</p>
                   </div>
-                  {items.length === 0 && (
-                    <div>
-                      <p className="text-center">No Items</p>
-                    </div>
-                  )}
-                </InfiniteScroll>
-              </div>
+                )}
+              </InfiniteScroll>
             </div>
           </div>
         </div>

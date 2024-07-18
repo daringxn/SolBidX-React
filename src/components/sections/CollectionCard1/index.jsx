@@ -25,7 +25,7 @@ export default function CollectionItem1({
       ])}
     >
       <div className={styles.image} onClick={onImageClicked}>
-        <Square>
+        <Square ratio={1}>
           {!loading && <img src={"/" + collection?.image} alt="" />}
           {loading && <RectLoader width="100%" height="100%" />}
         </Square>

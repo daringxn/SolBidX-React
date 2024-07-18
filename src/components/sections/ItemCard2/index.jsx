@@ -28,7 +28,7 @@ export default function ({
     <div className="tf-card-box style-1">
       <div className="card-media">
         <a href="#" onClick={onImageClicked}>
-          <Square>
+          <Square ratio={1}>
             <img
               src={
                 "/" + item?.image || "/assets/images/box-item/card-item-09.jpg"

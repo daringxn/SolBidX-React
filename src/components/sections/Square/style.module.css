@@ -1,5 +1,6 @@
 .square {
-  padding-top: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .container {
