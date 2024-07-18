@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+// components
 import BackToTop from "../elements/BackToTop";
 import Breadcrumb from "./Breadcrumb";
 import PageHead from "./PageHead";
@@ -32,7 +35,11 @@ export default function Layout({
   }, []);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       <PageHead headTitle={headTitle} />
       <div id="wrapper">
         <div id="page" className={`pt-40 ${pageCls ? pageCls : ""}`}>
@@ -77,6 +84,6 @@ export default function Layout({
         </div>
       </div>
       <BackToTop />
-    </>
+    </motion.div>
   );
 }
