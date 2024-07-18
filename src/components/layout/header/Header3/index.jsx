@@ -57,6 +57,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
   }, [publicKey]);
 
   const onLogout = useCallback(() => {
+    setShowUserMenu(false);
     disconnect();
   }, []);
 
