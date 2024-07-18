@@ -12,6 +12,9 @@ import useAuthStore from "@/stores/authStore";
 import useItemsStore from "@/stores/itemsStore";
 import useOffersStore from "@/stores/offersStore";
 
+// hooks
+import useIsAuth from "@/hooks/useIsAuth";
+
 export default function () {
   const [item, setItem] = useState({});
   const [showOfferModal, setShowOfferModal] = useState(false);
@@ -21,6 +24,8 @@ export default function () {
   const { createOffer } = useOffersStore();
 
   const params = useParams();
+
+  const isAuth = useIsAuth();
 
   const getItemData = useCallback(async (id) => {
     const response = await getItem(id);
@@ -38,6 +43,8 @@ export default function () {
   const sendBuyNowTransaction = useCallback(() => {}, []);
 
   const sendAcceptTransaction = useCallback(() => {}, []);
+
+  const sendCancelTransaction = useCallback(() => {}, []);
 
   const onSellButtonClicked = useCallback(async () => {
     sendSellTransaction();
@@ -98,6 +105,19 @@ export default function () {
     getItemData(item.id);
   }, [sendBuyNowTransaction, item, user]);
 
+  const onCancelButtonClicked = useCallback(async () => {
+    sendCancelTransaction();
+    const response = await createOrUpdateItem({
+      id: item.id,
+      status: "cancel",
+    });
+    if (!response.status) {
+      alert(response.error);
+      return;
+    }
+    getItemData(item.id);
+  }, [sendCancelTransaction, item]);
+
   useEffect(() => {
     getItemData(params.id);
   }, [getItemData, params]);
@@ -151,19 +171,31 @@ export default function () {
                       <div className="text">Current price</div>
                       <div className="flex justify-between">
                         <p>{item.price} SOL</p>
-                        {user.wallet_address && (
+                        {isAuth && (
                           <>
                             {user.wallet_address ===
-                              item.collector?.wallet_address &&
-                              item.status !== "list" && (
-                                <a
-                                  href="#"
-                                  className="tf-button style-1 h50 w216"
-                                  onClick={onSellButtonClicked}
-                                >
-                                  Sell
-                                </a>
-                              )}
+                              item.collector?.wallet_address && (
+                              <>
+                                {item.status === "list" && (
+                                  <a
+                                    href="#"
+                                    className="tf-button style-1 h50 w216"
+                                    onClick={onCancelButtonClicked}
+                                  >
+                                    Cancel
+                                  </a>
+                                )}
+                                {item.status !== "list" && (
+                                  <a
+                                    href="#"
+                                    className="tf-button style-1 h50 w216"
+                                    onClick={onSellButtonClicked}
+                                  >
+                                    Sell
+                                  </a>
+                                )}
+                              </>
+                            )}
                             {user.wallet_address !==
                               item.collector?.wallet_address &&
                               item.status === "list" && (
@@ -306,24 +338,32 @@ export default function () {
                         <div className="table-item" key={activity.id}>
                           <div className="column flex items-center">
                             {
-                              { mint: "Mint", list: "List", sale: "Sale" }[
-                                activity.type
-                              ]
+                              {
+                                mint: "Mint",
+                                list: "List",
+                                sale: "Sale",
+                                cancel: "Cancel",
+                              }[activity.type]
                             }
                           </div>
-                          <div className="column">{activity.price} SOL</div>
+                          <div className="column">
+                            {activity.type !== "cancel"
+                              ? activity.price + "SOL"
+                              : "-/-"}
+                          </div>
                           <div className="column">
                             <span className="tf-color">
                               {activity.from_user.name || "Unknown"}
                             </span>
                           </div>
                           <div className="column">
-                            <span className="tf-color">
-                              {activity.type !== "mint" &&
-                              activity.type !== "list"
-                                ? activity.to_user.name || "Unknown"
-                                : "-/-"}
-                            </span>
+                            {activity.type === "sale" ? (
+                              <span className="tf-color">
+                                {activity.to_user.name || "Unknown"}
+                              </span>
+                            ) : (
+                              "-/-"
+                            )}
                           </div>
                           <div className="column">
                             {moment(activity.createdAt).format("MM/DD HH:mm")}
