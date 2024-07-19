@@ -318,8 +318,9 @@ export default function () {
                     // }}
                   />
                 </div>
-                <button
-                  className="btn-block"
+                <a
+                  href="#"
+                  className="tf-button style-1 w-100"
                   onClick={() => {
                     pageIndex.current = 0;
                     setItems([]);
@@ -327,7 +328,7 @@ export default function () {
                   }}
                 >
                   Apply
-                </button>
+                </a>
               </div>
               {/* <div className="widget-category-checkbox mb-30">
                   <h5>Filter by price</h5>

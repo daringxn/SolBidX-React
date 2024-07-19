@@ -92,3 +92,11 @@
 .wallet-adapter-modal-list-more {
   height: unset;
 }
+
+.tf-button {
+  border-radius: 5px;
+}
+
+.tf-card-collection {
+  border-radius: 10px;
+}

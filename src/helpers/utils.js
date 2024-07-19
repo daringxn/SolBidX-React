@@ -1,6 +1,7 @@
 export const LAMPORTS_PER_SOL = 1000000000;
 
 export const simplifyWalletAddress = (walletAddress) => {
+  if (typeof walletAddress !== "string") return;
   return (
     walletAddress.substring(0, 4) +
     "..." +
