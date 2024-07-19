@@ -19,6 +19,7 @@ import useAuthStore from "@/stores/authStore";
 
 // helpers
 import useDevice from "@/hooks/useDevice";
+import { delay } from "@/helpers/utils";
 
 // styles
 import styles from "./style.module.css";
@@ -37,7 +38,9 @@ export default function () {
   const [maxPrice, setMaxPrice] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showOfferModal, setShowOfferModal] = useState(false);
+  const [loadingCollections, setLoadingCollections] = useState([]);
   const pageIndex = useRef(0);
+  const loading = useRef(false);
 
   const handleBidModal = () => setBidModal(!isBidModal);
 
@@ -52,14 +55,15 @@ export default function () {
   const device = useDevice();
 
   const getItemsData = useCallback(async () => {
-    const pageSize = 20;
+    const pageSize = 5;
+    setLoadingCollections(Array(20).fill(null));
+    await delay(150);
     const response = await getItems({
       pageIndex: pageIndex.current,
       pageSize,
       name: searchValue,
       collection_id: collectionId,
       status: statusList.join(),
-      // price: priceList.join(),
       sort_key: sortKey,
       sort_arrow: sortArrow,
       min_price: minPrice,
@@ -69,10 +73,12 @@ export default function () {
       alert(response.error);
       return;
     }
+    setLoadingCollections([]);
     setItems((items) => [...items, ...response.data]);
     if (response.data.length < pageSize) {
       setHasMore(false);
     }
+    loading.current = false;
   }, [
     searchValue,
     collectionId,
@@ -84,43 +90,45 @@ export default function () {
     maxPrice,
   ]);
 
-  const onStatusCheckBoxChanged = useCallback((e) => {
-    if (e.target.checked) {
-      if (e.target.value === "all") {
-        setStatusList([]);
-      } else {
-        setStatusList([e.target.value]);
-      }
-      pageIndex.current = 0;
-      setItems([]);
-      setHasMore(true);
-    } else {
-      // setStatusList((statusList) =>
-      //   statusList.filter((status) => status != e.target.value)
-      // );
-    }
-  }, []);
+  const onLoadMore = useCallback(() => {
+    if (loading.current) return;
+    loading.current = true;
+    pageIndex.current += 1;
+    getItemsData();
+  }, [getItemsData]);
 
-  const onSortByItemClicked = useCallback((sortKey, sortArrow) => {
-    setSortKey(sortKey);
-    setSortArrow(sortArrow);
+  const onRefreshItems = useCallback(() => {
     pageIndex.current = 0;
     setItems([]);
     setHasMore(true);
   }, []);
 
-  // const onPriceCheckBoxChanged = useCallback((e) => {
-  //   if (e.target.checked) {
-  //     setPriceList((priceList) => priceList.concat([e.target.value]));
-  //   } else {
-  //     setPriceList((priceList) =>
-  //       priceList.filter((status) => status != e.target.value)
-  //     );
-  //   }
-  //   pageIndex.current = 0;
-  //   setItems([]);
-  //   setHasMore(true);
-  // }, []);
+  const onStatusCheckBoxChanged = useCallback(
+    (e) => {
+      if (e.target.checked) {
+        if (e.target.value === "all") {
+          setStatusList([]);
+        } else {
+          setStatusList([e.target.value]);
+        }
+        onRefreshItems();
+      } else {
+        // setStatusList((statusList) =>
+        //   statusList.filter((status) => status != e.target.value)
+        // );
+      }
+    },
+    [onRefreshItems]
+  );
+
+  const onSortByItemClicked = useCallback(
+    (sortKey, sortArrow) => {
+      setSortKey(sortKey);
+      setSortArrow(sortArrow);
+      onRefreshItems();
+    },
+    [onRefreshItems]
+  );
 
   const onMakeOfferButtonClicked = useCallback((item) => {
     setSelectedItem(item);
@@ -154,11 +162,9 @@ export default function () {
         alert(response.error);
         return;
       }
-      pageIndex.current = 0;
-      setItems([]);
-      setHasMore(true);
+      onRefreshItems();
     },
-    [user]
+    [user, onRefreshItems]
   );
 
   useEffect(() => {
@@ -285,11 +291,7 @@ export default function () {
                 <a
                   href="javascript:void(0)"
                   className="tf-button style-1 w-100"
-                  onClick={() => {
-                    pageIndex.current = 0;
-                    setItems([]);
-                    setHasMore(true);
-                  }}
+                  onClick={onRefreshItems}
                 >
                   Apply
                 </a>
@@ -302,11 +304,7 @@ export default function () {
                   className={styles["search-input"]}
                   value={searchValue}
                   onChange={(value) => setSearchValue(value)}
-                  onSearch={() => {
-                    pageIndex.current = 0;
-                    setItems([]);
-                    setHasMore(true);
-                  }}
+                  onSearch={onRefreshItems}
                 />
                 <div className="tf-soft">
                   <div className="soft-right h-100">
@@ -407,26 +405,11 @@ export default function () {
                   </div>
                 </div>
               </div>
-              <InfiniteScroll
-                loadMore={() => {
-                  pageIndex.current += 1;
-                  getItemsData();
-                }}
-                hasMore={hasMore}
-                loader={
-                  <div className="d-flex justify-content-center">
-                    <img
-                      src="/assets/images/loading.gif"
-                      alt="loading..."
-                      className={styles.loading}
-                    />
-                  </div>
-                }
-              >
+              <InfiniteScroll loadMore={onLoadMore} hasMore={hasMore}>
                 <div className="row m-0">
                   {items.map((item) => (
                     <div
-                      key={item.id}
+                      key={"item_" + item.id}
                       data-wow-delay="0s"
                       className={classNames(
                         "wow",
@@ -455,12 +438,32 @@ export default function () {
                       />
                     </div>
                   ))}
+                  {loadingCollections.map((_, index) => (
+                    <div
+                      key={"loading_item_" + index}
+                      data-wow-delay="0s"
+                      className={classNames(
+                        "wow",
+                        "fadeInUp",
+                        "fl-item-1",
+                        "col-6",
+                        "col-md-4",
+                        "col-lg-3",
+                        "col-xl-2",
+                        "pl-2",
+                        "pr-2",
+                        styles["item-card"]
+                      )}
+                    >
+                      <ItemCard2 loading={true} />
+                    </div>
+                  ))}
+                  {items.length === 0 && loadingCollections.length === 0 && (
+                    <div className="col-12">
+                      <p className="text-center">No Items</p>
+                    </div>
+                  )}
                 </div>
-                {items.length === 0 && (
-                  <div>
-                    <p className="text-center">No Items</p>
-                  </div>
-                )}
               </InfiniteScroll>
             </div>
           </div>
