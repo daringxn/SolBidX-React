@@ -28,7 +28,9 @@ export default function ({
   const user = useAuthStore();
 
   return (
-    <div className="tf-card-box style-1">
+    <div
+      className={classNames("tf-card-box", "style-1", styles["item-card-1"])}
+    >
       <div className="card-media">
         <a href="#" onClick={onImageClicked}>
           <Square ratio={1}>

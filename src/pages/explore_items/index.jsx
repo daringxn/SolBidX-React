@@ -262,46 +262,17 @@ export default function () {
                       <span className="btn-checkbox" />
                     </label>
                     <br />
-                    {/* <label>
-                        Sale
-                        <input
-                          type="checkbox"
-                          value="sale"
-                          checked={statusList.indexOf("sale") > -1}
-                          onChange={onStatusCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      <label>
-                        Featured
-                        <input
-                          type="checkbox"
-                          value="featured"
-                          checked={statusList.indexOf("featured") > -1}
-                          onChange={onStatusCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br /> */}
                   </form>
                 </div>
               </div>
               <div className="widget-category-checkbox mb-30">
                 <h5>Price (SOL)</h5>
-                <div className="d-flex align-items-center mb-3">
+                <div className="d-flex align-items-center mb-4">
                   <input
                     type="number"
                     placeholder="Min"
                     value={minPrice}
                     onChange={(e) => setMinPrice(e.target.value)}
-                    // onKeyUp={(e) => {
-                    //   if (e.keyCode === 13) {
-                    //     pageIndex.current = 0;
-                    //     setItems([]);
-                    //     setHasMore(true);
-                    //   }
-                    // }}
                   />
                   <span className="fs-15px ml-2 mr-2">to</span>
                   <input
@@ -309,13 +280,6 @@ export default function () {
                     placeholder="Max"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(e.target.value)}
-                    // onKeyUp={(e) => {
-                    //   if (e.keyCode === 13) {
-                    //     pageIndex.current = 0;
-                    //     setItems([]);
-                    //     setHasMore(true);
-                    //   }
-                    // }}
                   />
                 </div>
                 <a
@@ -330,93 +294,9 @@ export default function () {
                   Apply
                 </a>
               </div>
-              {/* <div className="widget-category-checkbox mb-30">
-                  <h5>Filter by price</h5>
-                  <div className="content-wg-category-checkbox">
-                    <form action="#">
-                      <label>
-                        $0 - $100
-                        <input
-                          type="checkbox"
-                          value="0~100"
-                          checked={priceList.indexOf("0~100") > -1}
-                          onChange={onPriceCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      <label>
-                        $100 - $200
-                        <input
-                          type="checkbox"
-                          value="100~200"
-                          checked={priceList.indexOf("100~200") > -1}
-                          onChange={onPriceCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      <label>
-                        $200 - $300
-                        <input
-                          type="checkbox"
-                          value="200~300"
-                          checked={priceList.indexOf("200~300") > -1}
-                          onChange={onPriceCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      <label>
-                        $300 - $400
-                        <input
-                          type="checkbox"
-                          value="300~400"
-                          checked={priceList.indexOf("300~400") > -1}
-                          onChange={onPriceCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      <label>
-                        $400 - $500
-                        <input
-                          type="checkbox"
-                          value="400~500"
-                          checked={priceList.indexOf("400~500") > -1}
-                          onChange={onPriceCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      <label>
-                        $500 - $600
-                        <input
-                          type="checkbox"
-                          value="500~600"
-                          checked={priceList.indexOf("500~600") > -1}
-                          onChange={onPriceCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                      <label>
-                        Over $600
-                        <input
-                          type="checkbox"
-                          value="600"
-                          checked={priceList.indexOf("600") > -1}
-                          onChange={onPriceCheckBoxChanged}
-                        />
-                        <span className="btn-checkbox" />
-                      </label>
-                      <br />
-                    </form>
-                  </div>
-                </div> */}
             </div>
             <div className="col-md-8 col-lg-9 col-xl-10">
-              <div className="d-flex mb-5">
+              <div className="d-flex mb-5 pl-2 pr-2">
                 <SearchInput1
                   placeholder="Search By Item Name"
                   className={classNames(styles["search-input"])}
@@ -534,12 +414,23 @@ export default function () {
                   </div>
                 }
               >
-                <div className="row">
+                <div className="row m-0">
                   {items.map((item) => (
                     <div
                       key={item.id}
                       data-wow-delay="0s"
-                      className="wow fadeInUp fl-item-1 col-6 col-md-4 col-lg-3 col-xl-2"
+                      className={classNames(
+                        "wow",
+                        "fadeInUp",
+                        "fl-item-1",
+                        "col-6",
+                        "col-md-4",
+                        "col-lg-3",
+                        "col-xl-2",
+                        "pl-2",
+                        "pr-2",
+                        styles["item-card"]
+                      )}
                     >
                       <ItemCard2
                         item={item}
