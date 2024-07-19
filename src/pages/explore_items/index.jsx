@@ -234,8 +234,8 @@ export default function () {
               </Square>
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-4 col-lg-3 col-xl-2">
+          <div className="row m-0">
+            <div className="col-md-4 col-lg-3 col-xl-2 pl-md-0">
               <div className="widget-category-checkbox mb-30">
                 <h5>Status</h5>
                 <div className="content-wg-category-checkbox">
@@ -295,11 +295,11 @@ export default function () {
                 </a>
               </div>
             </div>
-            <div className="col-md-8 col-lg-9 col-xl-10">
-              <div className="d-flex mb-5 pl-2 pr-2">
+            <div className="col-md-8 col-lg-9 col-xl-10 pl-md-0 pr-md-0">
+              <div className="d-flex mb-4 pl-2 pr-2">
                 <SearchInput1
                   placeholder="Search By Item Name"
-                  className={classNames(styles["search-input"])}
+                  className={styles["search-input"]}
                   value={searchValue}
                   onChange={(value) => setSearchValue(value)}
                   onSearch={() => {
@@ -333,12 +333,12 @@ export default function () {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        {(!sortKey || !sortArrow) && <span>Sory By</span>}
-                        {sortKey === "price" && sortArrow === "asc" && (
-                          <span>Lowest Price</span>
-                        )}
                         {sortKey === "price" && sortArrow === "desc" && (
                           <span>Highest Price</span>
+                        )}
+                        {(!sortKey || !sortArrow) && <span>Sort By</span>}
+                        {sortKey === "price" && sortArrow === "asc" && (
+                          <span>Lowest Price</span>
                         )}
                         {sortKey === "featured" && sortArrow === "desc" && (
                           <span>Featured</span>
@@ -352,11 +352,11 @@ export default function () {
                         <a
                           href="#"
                           className="dropdown-item"
-                          onClick={() => onSortByItemClicked("price", "asc")}
+                          onClick={() => onSortByItemClicked("price", "desc")}
                         >
                           <div className="sort-filter active" href="#">
-                            <span>Lowest Price</span>
-                            {sortKey === "price" && sortArrow === "asc" && (
+                            <span>Highest Price</span>
+                            {sortKey === "price" && sortArrow === "desc" && (
                               <span className="icon-tick">
                                 <span className="path2" />
                               </span>
@@ -366,11 +366,11 @@ export default function () {
                         <a
                           href="#"
                           className="dropdown-item"
-                          onClick={() => onSortByItemClicked("price", "desc")}
+                          onClick={() => onSortByItemClicked("price", "asc")}
                         >
                           <div className="sort-filter active" href="#">
-                            <span>Highest Price</span>
-                            {sortKey === "price" && sortArrow === "desc" && (
+                            <span>Lowest Price</span>
+                            {sortKey === "price" && sortArrow === "asc" && (
                               <span className="icon-tick">
                                 <span className="path2" />
                               </span>
