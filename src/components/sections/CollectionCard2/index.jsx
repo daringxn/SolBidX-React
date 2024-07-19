@@ -53,9 +53,16 @@ export default function CollectionItem1({
           )}
         </Square>
       </div>
-      <h6 className="text-right mb-3">
-        Total {collection?.items?.length} Items
-      </h6>
+      {!loading && (
+        <h6 className="text-right mb-3">
+          Total {collection?.items?.length} Items
+        </h6>
+      )}
+      {loading && (
+        <div className="d-flex justify-end mb-3">
+          <RectLoader width="100px" height="17px" />
+        </div>
+      )}
       <div className={classNames(["card-bottom", styles.bottom])}>
         <div className="author">
           {!loading && (
@@ -69,7 +76,10 @@ export default function CollectionItem1({
             </>
           )}
           {loading && (
-            <RectLoader width="150px" height="20px" className="mb-3" />
+            <>
+              <RectLoader width="150px" height="17px" className="mb-3" />
+              <RectLoader width="200px" height="15px" />
+            </>
           )}
         </div>
       </div>
