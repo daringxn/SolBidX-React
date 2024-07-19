@@ -1,11 +1,26 @@
-// hooks
-import useIsAuth from "@/hooks/useIsAuth";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-// pages
-import Home from "@/pages/home";
+// components
+import Loader from "@/components/elements/Preloader";
+
+// providers
+import { useAuth } from "@/providers/AuthProvider";
 
 export default function ({ children }) {
-  const isAuth = useIsAuth();
+  const navigate = useNavigate();
 
-  return <>{isAuth ? children : <Home />}</>;
+  const { isAuth, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && !isAuth) {
+      navigate("/home");
+    }
+  }, [isAuth, loading]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  return children;
 }

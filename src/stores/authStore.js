@@ -1,12 +1,16 @@
 import { create } from "zustand";
 import axios from "axios";
 
+// helpers
+import { delay } from "@/helpers/utils";
+
 export default create((set, get) => ({
   wallet_address: "",
   updateInfo: (values) => {
     set(values);
   },
   signin: async (walletAddress) => {
+    await delay(500);
     set({ wallet_address: walletAddress });
     const response = await axios.post("/api/auth/signin", {
       wallet_address: walletAddress,
@@ -14,6 +18,7 @@ export default create((set, get) => ({
     return response.data;
   },
   signout: async () => {
+    await delay(500);
     set({ wallet_address: "" });
   },
   getCollections: async () => {

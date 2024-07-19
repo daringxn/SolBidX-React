@@ -7,8 +7,9 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 // components
 import MobileMenu from "../../MobileMenu";
 
+// providers
+import { useAuth } from "@/providers/AuthProvider";
 // hooks
-import useIsAuth from "@/hooks/useIsAuth";
 import useDevice from "@/hooks/useDevice";
 
 // stores
@@ -16,11 +17,7 @@ import useAuthStore from "@/stores/authStore";
 import useItemsStore from "@/stores/itemsStore";
 
 // helpers
-import {
-  simplifyWalletAddress,
-  toFixed,
-  LAMPORTS_PER_SOL,
-} from "@/helpers/utils";
+import { simplifyWalletAddress, toFixed } from "@/helpers/utils";
 
 // styles
 import styles from "./style.module.css";
@@ -30,67 +27,22 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [showSearchResult, setShowSearchResult] = useState(false);
-  const [balance, setBalance] = useState(null);
 
-  const isAuth = useIsAuth();
   const device = useDevice();
 
   const location = useLocation();
-  const { connection } = useConnection();
-  const { wallets, publicKey, disconnect, connecting } = useWallet();
-  const { visible, setVisible } = useWalletModal();
+  const { disconnect, connecting } = useWallet();
+  const { setVisible } = useWalletModal();
 
-  const { user, signin, signout, updateInfo } = useAuthStore((state) => ({
-    user: {
-      wallet_address: state.wallet_address,
-      avatar: state.avatar,
-      name: state.name,
-    },
-    signin: state.signin,
-    signout: state.signout,
-    updateInfo: state.updateInfo,
-  }));
+  const { isAuth, signout } = useAuth();
+
+  const user = useAuthStore();
   const { getItems } = useItemsStore();
-
-  const userWalletAddress = useMemo(() => {
-    return publicKey ? publicKey.toBase58() : "";
-  }, [publicKey]);
 
   const onLogout = useCallback(() => {
     setShowUserMenu(false);
     disconnect();
   }, []);
-
-  useEffect(() => {
-    if (!connection || !publicKey) {
-      return;
-    }
-    connection.onAccountChange(
-      publicKey,
-      (updatedAccountInfo) => {
-        setBalance(updatedAccountInfo.lamports / LAMPORTS_PER_SOL);
-      },
-      "confirmed"
-    );
-    connection.getAccountInfo(publicKey).then((info) => {
-      if (info) {
-        setBalance(info?.lamports / LAMPORTS_PER_SOL);
-      }
-    });
-  }, [publicKey, connection]);
-
-  useEffect(() => {
-    (async () => {
-      if (userWalletAddress) {
-        const { status, data } = await signin(userWalletAddress);
-        if (status) {
-          updateInfo(data);
-        }
-      } else {
-        signout();
-      }
-    })();
-  }, [signin, signout, updateInfo, userWalletAddress]);
 
   const onSearch = useCallback(
     async (e) => {
@@ -276,7 +228,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                                 <p className="h3">
                                   Balance:
                                   <span className="ml-3 mr-2">
-                                    {balance ? toFixed(balance, 2) : 0}
+                                    {/* {balance ? toFixed(balance, 2) : 0} */}
                                   </span>
                                   SOL
                                 </p>
