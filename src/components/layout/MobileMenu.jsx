@@ -41,7 +41,7 @@ export default function MobileMenu() {
               <li className="menu-item">
                 <a
                   className="item-menu-mobile"
-                  href="#"
+                  href="javascript:void(0)"
                   onClick={onLogInItemClicked}
                 >
                   Log in
@@ -62,7 +62,7 @@ export default function MobileMenu() {
                 </Link>
               </li>
               <li className="menu-item">
-                <a className="item-menu-mobile" href="#">
+                <a className="item-menu-mobile" href="javascript:void(0)">
                   Log out
                 </a>
               </li>

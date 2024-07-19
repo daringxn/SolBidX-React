@@ -94,7 +94,7 @@ export default function () {
                           </ErrorMessage>
                         </div>
                         <div className="forget-password">
-                          <Link href="#">Forget password</Link>
+                          <Link href="javascript:void(0)">Forget password</Link>
                         </div>
                       </fieldset>
                       <div className="btn-submit mb-30">
@@ -112,15 +112,15 @@ export default function () {
                 </Formik>
                 <div className="other">or continue</div>
                 <div className="login-other">
-                  <Link href="#" className="login-other-item">
+                  <Link href="javascript:void(0)" className="login-other-item">
                     <img src="/assets/images/google.png" alt="" />
                     <span>Sign with google</span>
                   </Link>
-                  <Link href="#" className="login-other-item">
+                  <Link href="javascript:void(0)" className="login-other-item">
                     <img src="/assets/images/facebook.png" alt="" />
                     <span>Sign with facebook</span>
                   </Link>
-                  <Link href="#" className="login-other-item">
+                  <Link href="javascript:void(0)" className="login-other-item">
                     <img src="/assets/images/apple.png" alt="" />
                     <span>Sign with apple</span>
                   </Link>

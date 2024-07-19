@@ -231,7 +231,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                     {!isAuth && (
                       <div id="wallet-header">
                         <a
-                          href="#"
+                          href="javascript:void(0)"
                           id="connectbtn"
                           className="tf-button style-1"
                           onClick={() => {
@@ -289,7 +289,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                                 </Link>
                                 <a
                                   className="block"
-                                  href="#"
+                                  href="javascript:void(0)"
                                   id="logout"
                                   onClick={onLogout}
                                 >

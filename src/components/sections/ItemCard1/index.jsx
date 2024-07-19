@@ -11,20 +11,24 @@ export default function () {
   return (
     <div className="tf-card-box">
       <div className="card-media">
-        <Link href="#">
+        <Link href="javascript:void(0)">
           <img src="/assets/images/box-item/banner-02.jpg" alt="" />
         </Link>
         <span className="wishlist-button icon-heart" />
         <div className="featured-countdown">{timerx}</div>
         <div className="button-place-bid">
-          <a onClick={handleBidModal} href="#" className="tf-button">
+          <a
+            onClick={handleBidModal}
+            href="javascript:void(0)"
+            className="tf-button"
+          >
             <span>Place Bid</span>
           </a>
         </div>
       </div>
       <div className="meta-info text-center">
         <h5 className="name">
-          <Link href="#">Dayco serpentine belt</Link>
+          <Link href="javascript:void(0)">Dayco serpentine belt</Link>
         </h5>
         <h6 className="price gem">
           <i className="icon-gem" />

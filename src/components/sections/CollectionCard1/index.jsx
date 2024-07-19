@@ -34,7 +34,7 @@ export default function CollectionItem1({
         {/* <div className="author">
           {!loading && (
             <h5 className="mb-3">
-              <a href="#">{collection?.name}</a>
+              <a href="javascript:void(0)">{collection?.name}</a>
             </h5>
           )}
           {loading && (
@@ -70,7 +70,7 @@ export default function CollectionItem1({
             </div> */}
             {!loading && (
               <h5 className="mb-3">
-                <a href="#">{collection?.name}</a>
+                <a href="javascript:void(0)">{collection?.name}</a>
               </h5>
             )}
             {loading && (

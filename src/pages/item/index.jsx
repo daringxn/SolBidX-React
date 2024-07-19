@@ -183,7 +183,7 @@ export default function () {
                       <div className="info">
                         <span>Owned by:</span>
                         <h6>
-                          <a href="#">
+                          <a href="javascript:void(0)">
                             {item.collector?.name ||
                               simplifyWalletAddress(
                                 item.collector?.wallet_address
@@ -273,7 +273,7 @@ export default function () {
                                       <>
                                         {item.status === "list" && (
                                           <a
-                                            href="#"
+                                            href="javascript:void(0)"
                                             className="tf-button style-1 h50 w216"
                                             onClick={onCancelButtonClicked}
                                           >
@@ -282,7 +282,7 @@ export default function () {
                                         )}
                                         {item.status !== "list" && (
                                           <a
-                                            href="#"
+                                            href="javascript:void(0)"
                                             className="tf-button style-1 h50 w216"
                                             onClick={handleSubmit}
                                           >
@@ -296,14 +296,14 @@ export default function () {
                                       item.status === "list" && (
                                         <div className="d-flex">
                                           <a
-                                            href="#"
+                                            href="javascript:void(0)"
                                             className="tf-button style-1 h50 mr-2"
                                             onClick={onBuyNowButtonClicked}
                                           >
                                             Buy Now
                                           </a>
                                           <a
-                                            href="#"
+                                            href="javascript:void(0)"
                                             className="tf-button style-1 h50"
                                             onClick={() =>
                                               setShowOfferModal(true)
@@ -414,7 +414,7 @@ export default function () {
                               item.collector?.wallet_address && (
                               <div className="column">
                                 <a
-                                  href="#"
+                                  href="javascript:void(0)"
                                   className="tf-button style-1 w90"
                                   onClick={() => onAcceptButtonClicked(offer)}
                                 >

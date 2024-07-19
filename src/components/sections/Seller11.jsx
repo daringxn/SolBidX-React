@@ -80,7 +80,7 @@ export default function Seller11() {
                   <SwiperSlide>
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="/assets/images/box-item/card-item-54.jpg"
                             alt=""
@@ -90,7 +90,7 @@ export default function Seller11() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -98,7 +98,9 @@ export default function Seller11() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -127,7 +129,7 @@ export default function Seller11() {
                   <SwiperSlide>
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="/assets/images/box-item/card-item-52.jpg"
                             alt=""
@@ -137,7 +139,7 @@ export default function Seller11() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -145,7 +147,9 @@ export default function Seller11() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -174,7 +178,7 @@ export default function Seller11() {
                   <SwiperSlide>
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="/assets/images/box-item/card-item-56.jpg"
                             alt=""
@@ -184,7 +188,7 @@ export default function Seller11() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -192,7 +196,9 @@ export default function Seller11() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -221,7 +227,7 @@ export default function Seller11() {
                   <SwiperSlide>
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="/assets/images/box-item/card-item-53.jpg"
                             alt=""
@@ -231,7 +237,7 @@ export default function Seller11() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -239,7 +245,9 @@ export default function Seller11() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -268,7 +276,7 @@ export default function Seller11() {
                   <SwiperSlide>
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="/assets/images/box-item/card-item-56.jpg"
                             alt=""
@@ -278,7 +286,7 @@ export default function Seller11() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -286,7 +294,9 @@ export default function Seller11() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">

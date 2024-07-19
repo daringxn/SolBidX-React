@@ -58,12 +58,16 @@ export default function TitileSlider3() {
         <SwiperSlide>
           <div className="tf-card-box style-3">
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/banner-11.jpg" alt="" />
               </Link>
             </div>
             <div className="button-place-bid">
-              <a onClick={handleBidModal} href="#" className="tf-button">
+              <a
+                onClick={handleBidModal}
+                href="javascript:void(0)"
+                className="tf-button"
+              >
                 <span>Place Bid</span>
               </a>
             </div>
@@ -128,12 +132,16 @@ export default function TitileSlider3() {
         <SwiperSlide>
           <div className="tf-card-box style-3">
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/banner-12.jpg" alt="" />
               </Link>
             </div>
             <div className="button-place-bid">
-              <a onClick={handleBidModal} href="#" className="tf-button">
+              <a
+                onClick={handleBidModal}
+                href="javascript:void(0)"
+                className="tf-button"
+              >
                 <span>Place Bid</span>
               </a>
             </div>
@@ -198,12 +206,16 @@ export default function TitileSlider3() {
         <SwiperSlide>
           <div className="tf-card-box style-3">
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/banner-13.jpg" alt="" />
               </Link>
             </div>
             <div className="button-place-bid">
-              <a onClick={handleBidModal} href="#" className="tf-button">
+              <a
+                onClick={handleBidModal}
+                href="javascript:void(0)"
+                className="tf-button"
+              >
                 <span>Place Bid</span>
               </a>
             </div>
@@ -268,12 +280,16 @@ export default function TitileSlider3() {
         <SwiperSlide>
           <div className="tf-card-box style-3">
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/banner-11.jpg" alt="" />
               </Link>
             </div>
             <div className="button-place-bid">
-              <a onClick={handleBidModal} href="#" className="tf-button">
+              <a
+                onClick={handleBidModal}
+                href="javascript:void(0)"
+                className="tf-button"
+              >
                 <span>Place Bid</span>
               </a>
             </div>
@@ -338,12 +354,16 @@ export default function TitileSlider3() {
         <SwiperSlide>
           <div className="tf-card-box style-3">
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/banner-12.jpg" alt="" />
               </Link>
             </div>
             <div className="button-place-bid">
-              <a onClick={handleBidModal} href="#" className="tf-button">
+              <a
+                onClick={handleBidModal}
+                href="javascript:void(0)"
+                className="tf-button"
+              >
                 <span>Place Bid</span>
               </a>
             </div>
@@ -408,12 +428,16 @@ export default function TitileSlider3() {
         <SwiperSlide>
           <div className="tf-card-box style-3">
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/banner-13.jpg" alt="" />
               </Link>
             </div>
             <div className="button-place-bid">
-              <a onClick={handleBidModal} href="#" className="tf-button">
+              <a
+                onClick={handleBidModal}
+                href="javascript:void(0)"
+                className="tf-button"
+              >
                 <span>Place Bid</span>
               </a>
             </div>

@@ -66,13 +66,13 @@ export default function FeaturedSlider8() {
               </div>
             </div>
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/card-item-59.jpg" alt="" />
               </Link>
               <span className="wishlist-button icon-heart" />
             </div>
             <h5 className="name">
-              <Link href="#">Dayco serpentine belt</Link>
+              <Link href="javascript:void(0)">Dayco serpentine belt</Link>
             </h5>
             <div className="meta-info flex items-center justify-between">
               <div>
@@ -83,7 +83,11 @@ export default function FeaturedSlider8() {
                 </h6>
               </div>
               <div className="button-place-bid">
-                <a onClick={handleBidModal} href="#" className="tf-button">
+                <a
+                  onClick={handleBidModal}
+                  href="javascript:void(0)"
+                  className="tf-button"
+                >
                   <span>Place Bid</span>
                 </a>
               </div>
@@ -107,13 +111,13 @@ export default function FeaturedSlider8() {
               </div>
             </div>
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/card-item-50.jpg" alt="" />
               </Link>
               <span className="wishlist-button icon-heart" />
             </div>
             <h5 className="name">
-              <Link href="#">Dayco serpentine belt</Link>
+              <Link href="javascript:void(0)">Dayco serpentine belt</Link>
             </h5>
             <div className="meta-info flex items-center justify-between">
               <div>
@@ -124,7 +128,11 @@ export default function FeaturedSlider8() {
                 </h6>
               </div>
               <div className="button-place-bid">
-                <a onClick={handleBidModal} href="#" className="tf-button">
+                <a
+                  onClick={handleBidModal}
+                  href="javascript:void(0)"
+                  className="tf-button"
+                >
                   <span>Place Bid</span>
                 </a>
               </div>
@@ -148,13 +156,13 @@ export default function FeaturedSlider8() {
               </div>
             </div>
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/card-item-51.jpg" alt="" />
               </Link>
               <span className="wishlist-button icon-heart" />
             </div>
             <h5 className="name">
-              <Link href="#">Dayco serpentine belt</Link>
+              <Link href="javascript:void(0)">Dayco serpentine belt</Link>
             </h5>
             <div className="meta-info flex items-center justify-between">
               <div>
@@ -165,7 +173,11 @@ export default function FeaturedSlider8() {
                 </h6>
               </div>
               <div className="button-place-bid">
-                <a onClick={handleBidModal} href="#" className="tf-button">
+                <a
+                  onClick={handleBidModal}
+                  href="javascript:void(0)"
+                  className="tf-button"
+                >
                   <span>Place Bid</span>
                 </a>
               </div>
@@ -189,13 +201,13 @@ export default function FeaturedSlider8() {
               </div>
             </div>
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/card-item-52.jpg" alt="" />
               </Link>
               <span className="wishlist-button icon-heart" />
             </div>
             <h5 className="name">
-              <Link href="#">Dayco serpentine belt</Link>
+              <Link href="javascript:void(0)">Dayco serpentine belt</Link>
             </h5>
             <div className="meta-info flex items-center justify-between">
               <div>
@@ -206,7 +218,11 @@ export default function FeaturedSlider8() {
                 </h6>
               </div>
               <div className="button-place-bid">
-                <a onClick={handleBidModal} href="#" className="tf-button">
+                <a
+                  onClick={handleBidModal}
+                  href="javascript:void(0)"
+                  className="tf-button"
+                >
                   <span>Place Bid</span>
                 </a>
               </div>
@@ -230,13 +246,13 @@ export default function FeaturedSlider8() {
               </div>
             </div>
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/card-item-53.jpg" alt="" />
               </Link>
               <span className="wishlist-button icon-heart" />
             </div>
             <h5 className="name">
-              <Link href="#">Dayco serpentine belt</Link>
+              <Link href="javascript:void(0)">Dayco serpentine belt</Link>
             </h5>
             <div className="meta-info flex items-center justify-between">
               <div>
@@ -247,7 +263,11 @@ export default function FeaturedSlider8() {
                 </h6>
               </div>
               <div className="button-place-bid">
-                <a onClick={handleBidModal} href="#" className="tf-button">
+                <a
+                  onClick={handleBidModal}
+                  href="javascript:void(0)"
+                  className="tf-button"
+                >
                   <span>Place Bid</span>
                 </a>
               </div>
@@ -271,13 +291,13 @@ export default function FeaturedSlider8() {
               </div>
             </div>
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/card-item-54.jpg" alt="" />
               </Link>
               <span className="wishlist-button icon-heart" />
             </div>
             <h5 className="name">
-              <Link href="#">Dayco serpentine belt</Link>
+              <Link href="javascript:void(0)">Dayco serpentine belt</Link>
             </h5>
             <div className="meta-info flex items-center justify-between">
               <div>
@@ -288,7 +308,11 @@ export default function FeaturedSlider8() {
                 </h6>
               </div>
               <div className="button-place-bid">
-                <a onClick={handleBidModal} href="#" className="tf-button">
+                <a
+                  onClick={handleBidModal}
+                  href="javascript:void(0)"
+                  className="tf-button"
+                >
                   <span>Place Bid</span>
                 </a>
               </div>
@@ -312,13 +336,13 @@ export default function FeaturedSlider8() {
               </div>
             </div>
             <div className="card-media">
-              <Link href="#">
+              <Link href="javascript:void(0)">
                 <img src="/assets/images/box-item/card-item-55.jpg" alt="" />
               </Link>
               <span className="wishlist-button icon-heart" />
             </div>
             <h5 className="name">
-              <Link href="#">Dayco serpentine belt</Link>
+              <Link href="javascript:void(0)">Dayco serpentine belt</Link>
             </h5>
             <div className="meta-info flex items-center justify-between">
               <div>
@@ -329,7 +353,11 @@ export default function FeaturedSlider8() {
                 </h6>
               </div>
               <div className="button-place-bid">
-                <a onClick={handleBidModal} href="#" className="tf-button">
+                <a
+                  onClick={handleBidModal}
+                  href="javascript:void(0)"
+                  className="tf-button"
+                >
                   <span>Place Bid</span>
                 </a>
               </div>

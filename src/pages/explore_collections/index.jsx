@@ -135,11 +135,14 @@ export default function () {
                   >
                     <h6>Sort by</h6>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
                       className="dropdown-item"
                       onClick={() => onSortByItemClicked("items", "desc")}
                     >
-                      <div className="sort-filter active" href="#">
+                      <div
+                        className="sort-filter active"
+                        href="javascript:void(0)"
+                      >
                         <span>Highest Total Items</span>
                         {sortKey === "items" && sortArrow === "desc" && (
                           <span className="icon-tick">
@@ -149,11 +152,14 @@ export default function () {
                       </div>
                     </a>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
                       className="dropdown-item"
                       onClick={() => onSortByItemClicked("items", "asc")}
                     >
-                      <div className="sort-filter active" href="#">
+                      <div
+                        className="sort-filter active"
+                        href="javascript:void(0)"
+                      >
                         <span>Lowest Total Items</span>
                         {sortKey === "items" && sortArrow === "asc" && (
                           <span className="icon-tick">
@@ -163,11 +169,14 @@ export default function () {
                       </div>
                     </a>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
                       className="dropdown-item"
                       onClick={() => onSortByItemClicked("featured", "desc")}
                     >
-                      <div className="sort-filter active" href="#">
+                      <div
+                        className="sort-filter active"
+                        href="javascript:void(0)"
+                      >
                         <span>Featured</span>
                         {sortKey === "featured" && sortArrow === "desc" && (
                           <span className="icon-tick">

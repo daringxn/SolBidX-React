@@ -22,10 +22,16 @@ export default function FlatTitle3() {
                   data-wow-delay="0.2s"
                   className="wow fadeInUp flat-button flex justify-center"
                 >
-                  <Link href="#" className="tf-button style-1 h50 w190 mr-30">
+                  <Link
+                    href="javascript:void(0)"
+                    className="tf-button style-1 h50 w190 mr-30"
+                  >
                     Discover more <i className="icon-arrow-up-right2" />
                   </Link>
-                  <Link href="#" className="tf-button style-1 h50 w190 active">
+                  <Link
+                    href="javascript:void(0)"
+                    className="tf-button style-1 h50 w190 active"
+                  >
                     All collections <i className="icon-arrow-up-right2" />
                   </Link>
                 </div>

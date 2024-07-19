@@ -32,7 +32,7 @@ export default function ({
       className={classNames("tf-card-box", "style-1", styles["item-card-1"])}
     >
       <div className="card-media">
-        <a href="#" onClick={onImageClicked}>
+        <a href="javascript:void(0)" onClick={onImageClicked}>
           <Square ratio={1}>
             <img
               src={
@@ -50,14 +50,14 @@ export default function ({
           user.wallet_address !== item?.collector?.wallet_address && (
             <div className="button-place-bid">
               <a
-                href="#"
+                href="javascript:void(0)"
                 className="tf-button"
                 onClick={onMakeOfferButtonClicked}
               >
                 <span>Make Offer</span>
               </a>
               <a
-                href="#"
+                href="javascript:void(0)"
                 className="tf-button mt-2"
                 onClick={onBuyNowButtonClicked}
               >
@@ -67,7 +67,7 @@ export default function ({
           )}
       </div>
       <h6 className="name">
-        <Link href="#">{item?.name}</Link>
+        <Link href="javascript:void(0)">{item?.name}</Link>
       </h6>
       <div className="author flex items-center">
         {/* <div className="avatar">
@@ -82,7 +82,7 @@ export default function ({
         <div className="info d-flex">
           <span>Owned by</span>
           <h6 className="ml-2">
-            <a href="#">
+            <a href="javascript:void(0)">
               {simplifyWalletAddress(item?.collector?.wallet_address)}
             </a>
           </h6>

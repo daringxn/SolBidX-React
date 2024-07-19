@@ -23,7 +23,7 @@ export default function DiscoverItem5() {
             >
               <div className="tf-card-box style-1 bg-white">
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-33.jpg"
                       alt=""
@@ -69,7 +69,7 @@ export default function DiscoverItem5() {
                   </div>
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="author flex items-center">
                   <div className="avatar">
@@ -95,7 +95,11 @@ export default function DiscoverItem5() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -108,7 +112,7 @@ export default function DiscoverItem5() {
             >
               <div className="tf-card-box style-1 bg-white">
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-34.jpg"
                       alt=""
@@ -154,7 +158,7 @@ export default function DiscoverItem5() {
                   </div>
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="author flex items-center">
                   <div className="avatar">
@@ -180,7 +184,11 @@ export default function DiscoverItem5() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -193,7 +201,7 @@ export default function DiscoverItem5() {
             >
               <div className="tf-card-box style-1 bg-white">
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-35.jpg"
                       alt=""
@@ -239,7 +247,7 @@ export default function DiscoverItem5() {
                   </div>
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="author flex items-center">
                   <div className="avatar">
@@ -265,7 +273,11 @@ export default function DiscoverItem5() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -278,7 +290,7 @@ export default function DiscoverItem5() {
             >
               <div className="tf-card-box style-1 bg-white">
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-36.jpg"
                       alt=""
@@ -324,7 +336,7 @@ export default function DiscoverItem5() {
                   </div>
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="author flex items-center">
                   <div className="avatar">
@@ -350,7 +362,11 @@ export default function DiscoverItem5() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -363,7 +379,7 @@ export default function DiscoverItem5() {
             >
               <div className="tf-card-box style-1 bg-white">
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-37.jpg"
                       alt=""
@@ -409,7 +425,7 @@ export default function DiscoverItem5() {
                   </div>
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="author flex items-center">
                   <div className="avatar">
@@ -435,7 +451,11 @@ export default function DiscoverItem5() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -448,7 +468,7 @@ export default function DiscoverItem5() {
             >
               <div className="tf-card-box style-1 bg-white">
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-38.jpg"
                       alt=""
@@ -494,7 +514,7 @@ export default function DiscoverItem5() {
                   </div>
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="author flex items-center">
                   <div className="avatar">
@@ -520,7 +540,11 @@ export default function DiscoverItem5() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -533,7 +557,7 @@ export default function DiscoverItem5() {
             >
               <div className="tf-card-box style-1 bg-white">
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-34.jpg"
                       alt=""
@@ -579,7 +603,7 @@ export default function DiscoverItem5() {
                   </div>
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="author flex items-center">
                   <div className="avatar">
@@ -605,7 +629,11 @@ export default function DiscoverItem5() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -618,7 +646,7 @@ export default function DiscoverItem5() {
             >
               <div className="tf-card-box style-1 bg-white">
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-35.jpg"
                       alt=""
@@ -664,7 +692,7 @@ export default function DiscoverItem5() {
                   </div>
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="author flex items-center">
                   <div className="avatar">
@@ -690,7 +718,11 @@ export default function DiscoverItem5() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>

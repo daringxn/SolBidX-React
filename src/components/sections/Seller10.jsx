@@ -62,7 +62,7 @@ export default function Seller10() {
                           src="/assets/images/box-item/iconcategory-01.png"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -76,7 +76,7 @@ export default function Seller10() {
                           src="/assets/images/box-item/iconcategory-02.png"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -90,7 +90,7 @@ export default function Seller10() {
                           src="/assets/images/box-item/iconcategory-03.png"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -104,7 +104,7 @@ export default function Seller10() {
                           src="/assets/images/box-item/iconcategory-04.png"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -118,7 +118,7 @@ export default function Seller10() {
                           src="/assets/images/box-item/iconcategory-05.png"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -132,7 +132,7 @@ export default function Seller10() {
                           src="/assets/images/box-item/iconcategory-06.png"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -146,7 +146,7 @@ export default function Seller10() {
                           src="/assets/images/box-item/iconcategory-01.png"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -160,7 +160,7 @@ export default function Seller10() {
                           src="/assets/images/box-item/iconcategory-02.png"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>

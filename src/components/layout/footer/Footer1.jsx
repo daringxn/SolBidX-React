@@ -23,22 +23,22 @@ export default function Footer1() {
                   <h5 className="title-widget">Marketplace</h5>
                   <ul>
                     <li>
-                      <Link href="#">All NFTs</Link>
+                      <Link href="javascript:void(0)">All NFTs</Link>
                     </li>
                     <li>
-                      <Link href="#">Virtual worlds</Link>
+                      <Link href="javascript:void(0)">Virtual worlds</Link>
                     </li>
                     <li>
-                      <Link href="#">Domain names</Link>
+                      <Link href="javascript:void(0)">Domain names</Link>
                     </li>
                     <li>
-                      <Link href="#">Photography</Link>
+                      <Link href="javascript:void(0)">Photography</Link>
                     </li>
                     <li>
-                      <Link href="#">Digital art</Link>
+                      <Link href="javascript:void(0)">Digital art</Link>
                     </li>
                     <li>
-                      <Link href="#">Music</Link>
+                      <Link href="javascript:void(0)">Music</Link>
                     </li>
                   </ul>
                 </div>
@@ -46,22 +46,22 @@ export default function Footer1() {
                   <h5 className="title-widget">Resource</h5>
                   <ul>
                     <li>
-                      <Link href="#">Help center</Link>
+                      <Link href="javascript:void(0)">Help center</Link>
                     </li>
                     <li>
-                      <Link href="#">Platform status</Link>
+                      <Link href="javascript:void(0)">Platform status</Link>
                     </li>
                     <li>
-                      <Link href="#">Partners</Link>
+                      <Link href="javascript:void(0)">Partners</Link>
                     </li>
                     <li>
-                      <Link href="#">Discount community</Link>
+                      <Link href="javascript:void(0)">Discount community</Link>
                     </li>
                     <li>
-                      <Link href="#">Live auctions</Link>
+                      <Link href="javascript:void(0)">Live auctions</Link>
                     </li>
                     <li>
-                      <Link href="#">Discover</Link>
+                      <Link href="javascript:void(0)">Discover</Link>
                     </li>
                   </ul>
                 </div>
@@ -69,22 +69,22 @@ export default function Footer1() {
                   <h5 className="title-widget">Account</h5>
                   <ul>
                     <li>
-                      <Link href="#">Authors</Link>
+                      <Link href="javascript:void(0)">Authors</Link>
                     </li>
                     <li>
-                      <Link href="#">My Collection</Link>
+                      <Link href="javascript:void(0)">My Collection</Link>
                     </li>
                     <li>
-                      <Link href="#">Author Profile</Link>
+                      <Link href="javascript:void(0)">Author Profile</Link>
                     </li>
                     <li>
-                      <Link href="#">Go to dashboard</Link>
+                      <Link href="javascript:void(0)">Go to dashboard</Link>
                     </li>
                     <li>
-                      <Link href="#">Collection</Link>
+                      <Link href="javascript:void(0)">Collection</Link>
                     </li>
                     <li>
-                      <Link href="#">Create Collection</Link>
+                      <Link href="javascript:void(0)">Create Collection</Link>
                     </li>
                   </ul>
                 </div>
@@ -93,10 +93,10 @@ export default function Footer1() {
                     <h5 className="title-widget">Company</h5>
                     <ul>
                       <li>
-                        <Link href="#">Help center</Link>
+                        <Link href="javascript:void(0)">Help center</Link>
                       </li>
                       <li>
-                        <Link href="#">Platform status</Link>
+                        <Link href="javascript:void(0)">Platform status</Link>
                       </li>
                     </ul>
                   </div>
@@ -104,19 +104,31 @@ export default function Footer1() {
                   <div className="widget-social">
                     <ul className="flex">
                       <li>
-                        <Link href="#" className="icon-facebook" />
+                        <Link
+                          href="javascript:void(0)"
+                          className="icon-facebook"
+                        />
                       </li>
                       <li>
-                        <Link href="#" className="icon-twitter" />
+                        <Link
+                          href="javascript:void(0)"
+                          className="icon-twitter"
+                        />
                       </li>
                       <li>
-                        <Link href="#" className="icon-vt" />
+                        <Link href="javascript:void(0)" className="icon-vt" />
                       </li>
                       <li>
-                        <Link href="#" className="icon-tiktok" />
+                        <Link
+                          href="javascript:void(0)"
+                          className="icon-tiktok"
+                        />
                       </li>
                       <li>
-                        <Link href="#" className="icon-youtube" />
+                        <Link
+                          href="javascript:void(0)"
+                          className="icon-youtube"
+                        />
                       </li>
                     </ul>
                   </div>
@@ -128,10 +140,10 @@ export default function Footer1() {
             <p>© {new Date().getFullYear()} OpeN9 - Made By Themesflat</p>
             <ul className="flex">
               <li>
-                <Link href="#">Privacy Policy</Link>
+                <Link href="javascript:void(0)">Privacy Policy</Link>
               </li>
               <li>
-                <Link href="#">Terms of Service</Link>
+                <Link href="javascript:void(0)">Terms of Service</Link>
               </li>
             </ul>
           </div>

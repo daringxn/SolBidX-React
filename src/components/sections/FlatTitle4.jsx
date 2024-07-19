@@ -19,11 +19,17 @@ export default function FlatTitle4() {
                   data-wow-delay="0.2s"
                   className="wow fadeInUp flat-button flex"
                 >
-                  <Link href="#" className="tf-button style-1 h50 w140 mr-16">
+                  <Link
+                    href="javascript:void(0)"
+                    className="tf-button style-1 h50 w140 mr-16"
+                  >
                     Explore
                     <i className="icon-arrow-up-right2" />
                   </Link>
-                  <Link href="#" className="tf-button style-1 h50 w140 active">
+                  <Link
+                    href="javascript:void(0)"
+                    className="tf-button style-1 h50 w140 active"
+                  >
                     Create
                     <i className="icon-arrow-up-right2" />
                   </Link>

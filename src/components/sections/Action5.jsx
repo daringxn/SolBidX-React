@@ -19,7 +19,10 @@ export default function Action5() {
                   NFTS
                 </h2>
                 <div className="flat-button flex justify-center">
-                  <Link href="#" className="tf-button style-2 h50 w190">
+                  <Link
+                    href="javascript:void(0)"
+                    className="tf-button style-2 h50 w190"
+                  >
                     Explore now
                     <i className="icon-arrow-up-right2" />
                   </Link>

@@ -57,11 +57,17 @@ export default function Favourite() {
             </div>
             <h2>Discover, create and sell your own NFT</h2>
             <div className="flat-button flex">
-              <Link href="#" className="tf-button style-2 h50 w190 mr-10">
+              <Link
+                href="javascript:void(0)"
+                className="tf-button style-2 h50 w190 mr-10"
+              >
                 Explore now
                 <i className="icon-arrow-up-right2" />
               </Link>
-              <Link href="#" className="tf-button style-2 h50 w230">
+              <Link
+                href="javascript:void(0)"
+                className="tf-button style-2 h50 w230"
+              >
                 Create your first NFT
                 <i className="icon-arrow-up-right2" />
               </Link>
@@ -514,32 +520,35 @@ export default function Favourite() {
                     aria-labelledby="dropdownMenuButton"
                   >
                     <h6>Sort by</h6>
-                    <Link href="#" className="dropdown-item">
-                      <div className="sort-filter" href="#">
+                    <Link href="javascript:void(0)" className="dropdown-item">
+                      <div className="sort-filter" href="javascript:void(0)">
                         <span>Recently added</span>
                         <span className="icon-tick">
                           <span className="path2" />
                         </span>
                       </div>
                     </Link>
-                    <Link href="#" className="dropdown-item">
-                      <div className="sort-filter active" href="#">
+                    <Link href="javascript:void(0)" className="dropdown-item">
+                      <div
+                        className="sort-filter active"
+                        href="javascript:void(0)"
+                      >
                         <span>Price: Low to High</span>
                         <span className="icon-tick">
                           <span className="path2" />
                         </span>
                       </div>
                     </Link>
-                    <Link href="#" className="dropdown-item">
-                      <div className="sort-filter" href="#">
+                    <Link href="javascript:void(0)" className="dropdown-item">
+                      <div className="sort-filter" href="javascript:void(0)">
                         <span>Price: High to Low</span>
                         <span className="icon-tick">
                           <span className="path2" />
                         </span>
                       </div>
                     </Link>
-                    <Link href="#" className="dropdown-item">
-                      <div className="sort-filter" href="#">
+                    <Link href="javascript:void(0)" className="dropdown-item">
+                      <div className="sort-filter" href="javascript:void(0)">
                         <span>Auction ending soon</span>
                         <span className="icon-tick">
                           <span className="path2" />
@@ -547,8 +556,8 @@ export default function Favourite() {
                       </div>
                     </Link>
                     <h6>Options</h6>
-                    <Link href="#" className="dropdown-item">
-                      <div className="sort-filter" href="#">
+                    <Link href="javascript:void(0)" className="dropdown-item">
+                      <div className="sort-filter" href="javascript:void(0)">
                         <span>Auction ending soon</span>
                         <input
                           className="check"
@@ -558,8 +567,8 @@ export default function Favourite() {
                         />
                       </div>
                     </Link>
-                    <Link href="#" className="dropdown-item">
-                      <div className="sort-filter" href="#">
+                    <Link href="javascript:void(0)" className="dropdown-item">
+                      <div className="sort-filter" href="javascript:void(0)">
                         <span>Show lazy minted</span>
                         <input className="check" type="checkbox" name="check" />
                       </div>
@@ -611,7 +620,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-25.jpg"
                             alt=""
@@ -628,7 +637,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -636,7 +645,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -665,7 +676,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-26.jpg"
                             alt=""
@@ -682,7 +693,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -690,7 +701,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -719,7 +732,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-27.jpg"
                             alt=""
@@ -736,7 +749,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -744,7 +757,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -773,7 +788,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-28.jpg"
                             alt=""
@@ -790,7 +805,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -798,7 +813,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -827,7 +844,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-29.jpg"
                             alt=""
@@ -844,7 +861,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -852,7 +869,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -881,7 +900,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-30.jpg"
                             alt=""
@@ -898,7 +917,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -906,7 +925,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -935,7 +956,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-31.jpg"
                             alt=""
@@ -952,7 +973,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -960,7 +981,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -989,7 +1012,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-32.jpg"
                             alt=""
@@ -1006,7 +1029,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1014,7 +1037,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1050,7 +1075,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-25.jpg"
                             alt=""
@@ -1067,7 +1092,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1075,7 +1100,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1104,7 +1131,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-26.jpg"
                             alt=""
@@ -1121,7 +1148,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1129,7 +1156,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1158,7 +1187,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-27.jpg"
                             alt=""
@@ -1175,7 +1204,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1183,7 +1212,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1212,7 +1243,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-28.jpg"
                             alt=""
@@ -1229,7 +1260,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1237,7 +1268,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1266,7 +1299,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-29.jpg"
                             alt=""
@@ -1283,7 +1316,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1291,7 +1324,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1320,7 +1355,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-30.jpg"
                             alt=""
@@ -1337,7 +1372,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1345,7 +1380,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1374,7 +1411,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-31.jpg"
                             alt=""
@@ -1391,7 +1428,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1399,7 +1436,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1428,7 +1467,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-32.jpg"
                             alt=""
@@ -1445,7 +1484,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1453,7 +1492,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1489,7 +1530,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-25.jpg"
                             alt=""
@@ -1506,7 +1547,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1514,7 +1555,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1543,7 +1586,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-26.jpg"
                             alt=""
@@ -1560,7 +1603,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1568,7 +1611,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1597,7 +1642,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-27.jpg"
                             alt=""
@@ -1614,7 +1659,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1622,7 +1667,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1651,7 +1698,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-28.jpg"
                             alt=""
@@ -1668,7 +1715,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1676,7 +1723,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1705,7 +1754,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-29.jpg"
                             alt=""
@@ -1722,7 +1771,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1730,7 +1779,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1759,7 +1810,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-30.jpg"
                             alt=""
@@ -1776,7 +1827,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1784,7 +1835,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1813,7 +1866,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-31.jpg"
                             alt=""
@@ -1830,7 +1883,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1838,7 +1891,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1867,7 +1922,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-32.jpg"
                             alt=""
@@ -1884,7 +1939,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1892,7 +1947,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1928,7 +1985,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-25.jpg"
                             alt=""
@@ -1945,7 +2002,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -1953,7 +2010,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -1982,7 +2041,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-26.jpg"
                             alt=""
@@ -1999,7 +2058,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -2007,7 +2066,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -2036,7 +2097,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-27.jpg"
                             alt=""
@@ -2053,7 +2114,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -2061,7 +2122,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -2090,7 +2153,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-28.jpg"
                             alt=""
@@ -2107,7 +2170,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -2115,7 +2178,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -2144,7 +2209,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-29.jpg"
                             alt=""
@@ -2161,7 +2226,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -2169,7 +2234,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -2198,7 +2265,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-30.jpg"
                             alt=""
@@ -2215,7 +2282,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -2223,7 +2290,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -2252,7 +2321,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-31.jpg"
                             alt=""
@@ -2269,7 +2338,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -2277,7 +2346,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -2306,7 +2377,7 @@ export default function Favourite() {
                   <div className="col-item">
                     <div className="tf-card-box style-1">
                       <div className="card-media">
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <img
                             src="assets/images/box-item/card-item-32.jpg"
                             alt=""
@@ -2323,7 +2394,7 @@ export default function Favourite() {
                         <div className="button-place-bid">
                           <a
                             onClick={handleBidModal}
-                            href="#"
+                            href="javascript:void(0)"
                             className="tf-button"
                           >
                             <span>Place Bid</span>
@@ -2331,7 +2402,9 @@ export default function Favourite() {
                         </div>
                       </div>
                       <h5 className="name">
-                        <Link href="#">Dayco serpentine belt</Link>
+                        <Link href="javascript:void(0)">
+                          Dayco serpentine belt
+                        </Link>
                       </h5>
                       <div className="author flex items-center">
                         <div className="avatar">
@@ -2369,7 +2442,7 @@ export default function Favourite() {
               <img src="assets/images/blog/sidebar-05.jpg" alt="" />
               <div className="card-bottom">
                 <h5>
-                  <Link href="#">Photography</Link>
+                  <Link href="javascript:void(0)">Photography</Link>
                 </h5>
                 <span className="date">16hr ago</span>
               </div>
@@ -2379,10 +2452,10 @@ export default function Favourite() {
                 <img src="assets/images/blog/sidebar-06.jpg" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Propw</Link>
+                    <Link href="javascript:void(0)">Propw</Link>
                   </h6>
                   <p>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </p>
                 </div>
               </div>
@@ -2393,10 +2466,10 @@ export default function Favourite() {
                 <img src="assets/images/blog/sidebar-07.jpg" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Propw</Link>
+                    <Link href="javascript:void(0)">Propw</Link>
                   </h6>
                   <p>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </p>
                 </div>
               </div>
@@ -2407,10 +2480,10 @@ export default function Favourite() {
                 <img src="assets/images/blog/sidebar-08.jpg" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Propw</Link>
+                    <Link href="javascript:void(0)">Propw</Link>
                   </h6>
                   <p>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </p>
                 </div>
               </div>
@@ -2420,7 +2493,7 @@ export default function Favourite() {
           <div className="widget widget-creators">
             <div className="flex items-center justify-between">
               <h5 className="title-widget">Top Creators</h5>
-              <Link className="see-all" href="#">
+              <Link className="see-all" href="javascript:void(0)">
                 See all
               </Link>
             </div>
@@ -2430,10 +2503,10 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-01.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -2445,10 +2518,10 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-02.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -2460,10 +2533,10 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-03.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -2475,10 +2548,10 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-04.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -2490,10 +2563,10 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-01.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -2505,38 +2578,38 @@ export default function Favourite() {
             <div className="widget-coins-item flex items-center mb-20">
               <img src="assets/images/box-icon/coin-01.png" alt="" />
               <p>
-                <Link href="#">Bitcoin</Link>
+                <Link href="javascript:void(0)">Bitcoin</Link>
               </p>
             </div>
             <div className="widget-coins-item flex items-center mb-20">
               <img src="assets/images/box-icon/coin-02.png" alt="" />
               <p>
-                <Link href="#">Ethereum</Link>
+                <Link href="javascript:void(0)">Ethereum</Link>
               </p>
             </div>
             <div className="widget-coins-item flex items-center mb-20">
               <img src="assets/images/box-icon/coin-03.png" alt="" />
               <p>
-                <Link href="#">Cardano</Link>
+                <Link href="javascript:void(0)">Cardano</Link>
               </p>
             </div>
             <div className="widget-coins-item flex items-center mb-20">
               <img src="assets/images/box-icon/coin-04.png" alt="" />
               <p>
-                <Link href="#">Solana</Link>
+                <Link href="javascript:void(0)">Solana</Link>
               </p>
             </div>
             <div className="widget-coins-item flex items-center">
               <img src="assets/images/box-icon/coin-05.png" alt="" />
               <p>
-                <Link href="#">Litecoin</Link>
+                <Link href="javascript:void(0)">Litecoin</Link>
               </p>
             </div>
           </div>
           <div className="widget widget-history">
             <div className="flex items-center justify-between">
               <h5 className="title-widget">History</h5>
-              <Link className="see-all" href="#">
+              <Link className="see-all" href="javascript:void(0)">
                 See all
               </Link>
             </div>
@@ -2545,10 +2618,10 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-01.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Lorem NFT sold</Link>
+                    <Link href="javascript:void(0)">Lorem NFT sold</Link>
                   </h6>
                   <span>
-                    <Link href="#">Sold at 1.32 ETH</Link>
+                    <Link href="javascript:void(0)">Sold at 1.32 ETH</Link>
                   </span>
                 </div>
               </div>
@@ -2559,10 +2632,10 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-02.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">New NFT uploaded</Link>
+                    <Link href="javascript:void(0)">New NFT uploaded</Link>
                   </h6>
                   <span>
-                    <Link href="#">By Marisol Pena</Link>
+                    <Link href="javascript:void(0)">By Marisol Pena</Link>
                   </span>
                 </div>
               </div>
@@ -2573,10 +2646,12 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-03.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">You followed a creator</Link>
+                    <Link href="javascript:void(0)">
+                      You followed a creator
+                    </Link>
                   </h6>
                   <span>
-                    <Link href="#">Jane Cooper</Link>
+                    <Link href="javascript:void(0)">Jane Cooper</Link>
                   </span>
                 </div>
               </div>
@@ -2587,10 +2662,10 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-04.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">You placed a bid</Link>
+                    <Link href="javascript:void(0)">You placed a bid</Link>
                   </h6>
                   <span>
-                    <Link href="#">Whirl wind NFT</Link>
+                    <Link href="javascript:void(0)">Whirl wind NFT</Link>
                   </span>
                 </div>
               </div>
@@ -2601,10 +2676,12 @@ export default function Favourite() {
                 <img src="assets/images/avatar/avatar-small-01.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">You followed a creator</Link>
+                    <Link href="javascript:void(0)">
+                      You followed a creator
+                    </Link>
                   </h6>
                   <span>
-                    <Link href="#">Courtney Henry</Link>
+                    <Link href="javascript:void(0)">Courtney Henry</Link>
                   </span>
                 </div>
               </div>

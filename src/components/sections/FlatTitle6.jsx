@@ -16,10 +16,16 @@ export default function FlatTitle6() {
                   first &amp; largest NFT marketplace
                 </p>
                 <div className="flat-button flex">
-                  <Link href="#" className="tf-button style-1 h50 w190 mr-10">
+                  <Link
+                    href="javascript:void(0)"
+                    className="tf-button style-1 h50 w190 mr-10"
+                  >
                     Explore more <i className="icon-arrow-up-right2" />
                   </Link>
-                  <Link href="#" className="tf-button style-1 h50 w190 active">
+                  <Link
+                    href="javascript:void(0)"
+                    className="tf-button style-1 h50 w190 active"
+                  >
                     Wallet connect <i className="icon-wa" />
                   </Link>
                 </div>

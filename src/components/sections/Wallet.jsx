@@ -13,11 +13,17 @@ export default function Wallet() {
             </div>
             <h2>Discover, create and sell your own NFT</h2>
             <div className="flat-button flex">
-              <Link href="#" className="tf-button style-2 h50 w190 mr-10">
+              <Link
+                href="javascript:void(0)"
+                className="tf-button style-2 h50 w190 mr-10"
+              >
                 Explore now
                 <i className="icon-arrow-up-right2" />
               </Link>
-              <Link href="#" className="tf-button style-2 h50 w230">
+              <Link
+                href="javascript:void(0)"
+                className="tf-button style-2 h50 w230"
+              >
                 Create your first NFT
                 <i className="icon-arrow-up-right2" />
               </Link>
@@ -42,7 +48,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-01.png" alt="" />
                   <h6>
-                    <Link href="#">MetaMask</Link>
+                    <Link href="javascript:void(0)">MetaMask</Link>
                   </h6>
                   <p>Throw myself down among the tall</p>
                 </div>
@@ -51,7 +57,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-02.png" alt="" />
                   <h6>
-                    <Link href="#">Coibase Wallet</Link>
+                    <Link href="javascript:void(0)">Coibase Wallet</Link>
                   </h6>
                   <p>Lorem ipsum dolor sit amet, consectetur</p>
                 </div>
@@ -60,7 +66,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-03.png" alt="" />
                   <h6>
-                    <Link href="#">WalletConnect</Link>
+                    <Link href="javascript:void(0)">WalletConnect</Link>
                   </h6>
                   <p>Sed euismod ante et leo commodo, ac faucibus</p>
                 </div>
@@ -69,7 +75,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-04.png" alt="" />
                   <h6>
-                    <Link href="#">Ledger</Link>
+                    <Link href="javascript:void(0)">Ledger</Link>
                   </h6>
                   <p>Proin suscipit sem a nunc eleifend</p>
                 </div>
@@ -78,7 +84,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-05.png" alt="" />
                   <h6>
-                    <Link href="#">Phantom</Link>
+                    <Link href="javascript:void(0)">Phantom</Link>
                   </h6>
                   <p>Vestibulum malesuada tortor vel erat</p>
                 </div>
@@ -87,7 +93,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-06.png" alt="" />
                   <h6>
-                    <Link href="#">Bitkeep</Link>
+                    <Link href="javascript:void(0)">Bitkeep</Link>
                   </h6>
                   <p>Morbi vel eros sit amet quam viverra</p>
                 </div>
@@ -96,7 +102,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-07.png" alt="" />
                   <h6>
-                    <Link href="#">Core</Link>
+                    <Link href="javascript:void(0)">Core</Link>
                   </h6>
                   <p>Mauris nec orci ac urna luctus</p>
                 </div>
@@ -105,7 +111,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-08.png" alt="" />
                   <h6>
-                    <Link href="#">Glow</Link>
+                    <Link href="javascript:void(0)">Glow</Link>
                   </h6>
                   <p>Pellentesque pretium felis vitae augue</p>
                 </div>
@@ -114,7 +120,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-09.png" alt="" />
                   <h6>
-                    <Link href="#">Fortmatic</Link>
+                    <Link href="javascript:void(0)">Fortmatic</Link>
                   </h6>
                   <p>Nunc eget eros at tellus euismod</p>
                 </div>
@@ -123,7 +129,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-10.png" alt="" />
                   <h6>
-                    <Link href="#">Kaikas</Link>
+                    <Link href="javascript:void(0)">Kaikas</Link>
                   </h6>
                   <p>Aenean quis odio ultricies ex faucibus</p>
                 </div>
@@ -132,7 +138,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-11.png" alt="" />
                   <h6>
-                    <Link href="#">Bitski</Link>
+                    <Link href="javascript:void(0)">Bitski</Link>
                   </h6>
                   <p>Fusce sed felis non purus pellentesque</p>
                 </div>
@@ -141,7 +147,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-12.png" alt="" />
                   <h6>
-                    <Link href="#">Solflare</Link>
+                    <Link href="javascript:void(0)">Solflare</Link>
                   </h6>
                   <p>Donec in diam vulputate molestie</p>
                 </div>
@@ -150,7 +156,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-13.png" alt="" />
                   <h6>
-                    <Link href="#">OperaTouch</Link>
+                    <Link href="javascript:void(0)">OperaTouch</Link>
                   </h6>
                   <p>Morbi vehicula ante eget cursus posuere</p>
                 </div>
@@ -159,7 +165,7 @@ export default function Wallet() {
                 <div className="box-wallet">
                   <img src="assets/images/box-icon/wallet-14.png" alt="" />
                   <h6>
-                    <Link href="#">OperaTouch</Link>
+                    <Link href="javascript:void(0)">OperaTouch</Link>
                   </h6>
                   <p>Morbi vehicula ante eget cursus posuere</p>
                 </div>
@@ -171,11 +177,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-01.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Glow</Link>
+                  <Link href="javascript:void(0)">Glow</Link>
                 </h6>
                 <p>Popular</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -183,10 +189,10 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-02.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Coibase Wallet</Link>
+                  <Link href="javascript:void(0)">Coibase Wallet</Link>
                 </h6>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -194,10 +200,10 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-03.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">WalletConnect</Link>
+                  <Link href="javascript:void(0)">WalletConnect</Link>
                 </h6>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -205,10 +211,10 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-04.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Ledger</Link>
+                  <Link href="javascript:void(0)">Ledger</Link>
                 </h6>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -216,11 +222,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-05.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Phantom</Link>
+                  <Link href="javascript:void(0)">Phantom</Link>
                 </h6>
                 <p>Solana</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -228,11 +234,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-06.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Bitkeep</Link>
+                  <Link href="javascript:void(0)">Bitkeep</Link>
                 </h6>
                 <p>BNB Chain</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -240,11 +246,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-07.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Core</Link>
+                  <Link href="javascript:void(0)">Core</Link>
                 </h6>
                 <p>Avalanche</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -252,11 +258,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-08.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Glow</Link>
+                  <Link href="javascript:void(0)">Glow</Link>
                 </h6>
                 <p>Solana</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -264,10 +270,10 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-09.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Fortmatic</Link>
+                  <Link href="javascript:void(0)">Fortmatic</Link>
                 </h6>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -275,11 +281,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-10.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Kaikas</Link>
+                  <Link href="javascript:void(0)">Kaikas</Link>
                 </h6>
                 <p>Klaytn</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -287,10 +293,10 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-11.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Bitski</Link>
+                  <Link href="javascript:void(0)">Bitski</Link>
                 </h6>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -298,11 +304,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-12.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">Solflare</Link>
+                  <Link href="javascript:void(0)">Solflare</Link>
                 </h6>
                 <p>Solana</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -310,11 +316,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-13.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">OperaTouch</Link>
+                  <Link href="javascript:void(0)">OperaTouch</Link>
                 </h6>
                 <p>Mobile only</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -322,11 +328,11 @@ export default function Wallet() {
               <img src="assets/images/box-icon/wallet-14.png" alt="" />
               <div className="info">
                 <h6>
-                  <Link href="#">OperaTouch</Link>
+                  <Link href="javascript:void(0)">OperaTouch</Link>
                 </h6>
                 <p>Mobile only</p>
               </div>
-              <Link href="#" className="tf-button style-3">
+              <Link href="javascript:void(0)" className="tf-button style-3">
                 Connect <i className="icon-arrow-up-right2" />
               </Link>
             </div>
@@ -339,7 +345,7 @@ export default function Wallet() {
               <img src="assets/images/blog/sidebar-05.jpg" alt="" />
               <div className="card-bottom">
                 <h5>
-                  <Link href="#">Photography</Link>
+                  <Link href="javascript:void(0)">Photography</Link>
                 </h5>
                 <span className="date">16hr ago</span>
               </div>
@@ -349,10 +355,10 @@ export default function Wallet() {
                 <img src="assets/images/blog/sidebar-06.jpg" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Propw</Link>
+                    <Link href="javascript:void(0)">Propw</Link>
                   </h6>
                   <p>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </p>
                 </div>
               </div>
@@ -363,10 +369,10 @@ export default function Wallet() {
                 <img src="assets/images/blog/sidebar-07.jpg" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Propw</Link>
+                    <Link href="javascript:void(0)">Propw</Link>
                   </h6>
                   <p>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </p>
                 </div>
               </div>
@@ -377,10 +383,10 @@ export default function Wallet() {
                 <img src="assets/images/blog/sidebar-08.jpg" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Propw</Link>
+                    <Link href="javascript:void(0)">Propw</Link>
                   </h6>
                   <p>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </p>
                 </div>
               </div>
@@ -390,7 +396,7 @@ export default function Wallet() {
           <div className="widget widget-creators">
             <div className="flex items-center justify-between">
               <h5 className="title-widget">Top Creators</h5>
-              <Link className="see-all" href="#">
+              <Link className="see-all" href="javascript:void(0)">
                 See all
               </Link>
             </div>
@@ -400,10 +406,10 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-01.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -415,10 +421,10 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-02.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -430,10 +436,10 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-03.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -445,10 +451,10 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-04.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -460,10 +466,10 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-01.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Brooklyn Simmons</Link>
+                    <Link href="javascript:void(0)">Brooklyn Simmons</Link>
                   </h6>
                   <span>
-                    <Link href="#">@themes</Link>
+                    <Link href="javascript:void(0)">@themes</Link>
                   </span>
                 </div>
               </div>
@@ -475,38 +481,38 @@ export default function Wallet() {
             <div className="widget-coins-item flex items-center mb-20">
               <img src="assets/images/box-icon/coin-01.png" alt="" />
               <p>
-                <Link href="#">Bitcoin</Link>
+                <Link href="javascript:void(0)">Bitcoin</Link>
               </p>
             </div>
             <div className="widget-coins-item flex items-center mb-20">
               <img src="assets/images/box-icon/coin-02.png" alt="" />
               <p>
-                <Link href="#">Ethereum</Link>
+                <Link href="javascript:void(0)">Ethereum</Link>
               </p>
             </div>
             <div className="widget-coins-item flex items-center mb-20">
               <img src="assets/images/box-icon/coin-03.png" alt="" />
               <p>
-                <Link href="#">Cardano</Link>
+                <Link href="javascript:void(0)">Cardano</Link>
               </p>
             </div>
             <div className="widget-coins-item flex items-center mb-20">
               <img src="assets/images/box-icon/coin-04.png" alt="" />
               <p>
-                <Link href="#">Solana</Link>
+                <Link href="javascript:void(0)">Solana</Link>
               </p>
             </div>
             <div className="widget-coins-item flex items-center">
               <img src="assets/images/box-icon/coin-05.png" alt="" />
               <p>
-                <Link href="#">Litecoin</Link>
+                <Link href="javascript:void(0)">Litecoin</Link>
               </p>
             </div>
           </div>
           <div className="widget widget-history">
             <div className="flex items-center justify-between">
               <h5 className="title-widget">History</h5>
-              <Link className="see-all" href="#">
+              <Link className="see-all" href="javascript:void(0)">
                 See all
               </Link>
             </div>
@@ -515,10 +521,10 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-01.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">Lorem NFT sold</Link>
+                    <Link href="javascript:void(0)">Lorem NFT sold</Link>
                   </h6>
                   <span>
-                    <Link href="#">Sold at 1.32 ETH</Link>
+                    <Link href="javascript:void(0)">Sold at 1.32 ETH</Link>
                   </span>
                 </div>
               </div>
@@ -529,10 +535,10 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-02.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">New NFT uploaded</Link>
+                    <Link href="javascript:void(0)">New NFT uploaded</Link>
                   </h6>
                   <span>
-                    <Link href="#">By Marisol Pena</Link>
+                    <Link href="javascript:void(0)">By Marisol Pena</Link>
                   </span>
                 </div>
               </div>
@@ -543,10 +549,12 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-03.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">You followed a creator</Link>
+                    <Link href="javascript:void(0)">
+                      You followed a creator
+                    </Link>
                   </h6>
                   <span>
-                    <Link href="#">Jane Cooper</Link>
+                    <Link href="javascript:void(0)">Jane Cooper</Link>
                   </span>
                 </div>
               </div>
@@ -557,10 +565,10 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-04.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">You placed a bid</Link>
+                    <Link href="javascript:void(0)">You placed a bid</Link>
                   </h6>
                   <span>
-                    <Link href="#">Whirl wind NFT</Link>
+                    <Link href="javascript:void(0)">Whirl wind NFT</Link>
                   </span>
                 </div>
               </div>
@@ -571,10 +579,12 @@ export default function Wallet() {
                 <img src="assets/images/avatar/avatar-small-01.png" alt="" />
                 <div className="info">
                   <h6>
-                    <Link href="#">You followed a creator</Link>
+                    <Link href="javascript:void(0)">
+                      You followed a creator
+                    </Link>
                   </h6>
                   <span>
-                    <Link href="#">Courtney Henry</Link>
+                    <Link href="javascript:void(0)">Courtney Henry</Link>
                   </span>
                 </div>
               </div>

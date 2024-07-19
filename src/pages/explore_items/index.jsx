@@ -189,7 +189,7 @@ export default function () {
                 <div className={classNames("widget-social", styles.links)}>
                   <ul className="flex">
                     <li>
-                      <a href="#" className="icon-vt" />
+                      <a href="javascript:void(0)" className="icon-vt" />
                     </li>
                   </ul>
                 </div>
@@ -283,7 +283,7 @@ export default function () {
                   />
                 </div>
                 <a
-                  href="#"
+                  href="javascript:void(0)"
                   className="tf-button style-1 w-100"
                   onClick={() => {
                     pageIndex.current = 0;
@@ -350,11 +350,14 @@ export default function () {
                       >
                         <h6>Sort by</h6>
                         <a
-                          href="#"
+                          href="javascript:void(0)"
                           className="dropdown-item"
                           onClick={() => onSortByItemClicked("price", "desc")}
                         >
-                          <div className="sort-filter active" href="#">
+                          <div
+                            className="sort-filter active"
+                            href="javascript:void(0)"
+                          >
                             <span>Highest Price</span>
                             {sortKey === "price" && sortArrow === "desc" && (
                               <span className="icon-tick">
@@ -364,11 +367,14 @@ export default function () {
                           </div>
                         </a>
                         <a
-                          href="#"
+                          href="javascript:void(0)"
                           className="dropdown-item"
                           onClick={() => onSortByItemClicked("price", "asc")}
                         >
-                          <div className="sort-filter active" href="#">
+                          <div
+                            className="sort-filter active"
+                            href="javascript:void(0)"
+                          >
                             <span>Lowest Price</span>
                             {sortKey === "price" && sortArrow === "asc" && (
                               <span className="icon-tick">
@@ -378,13 +384,16 @@ export default function () {
                           </div>
                         </a>
                         <a
-                          href="#"
+                          href="javascript:void(0)"
                           className="dropdown-item"
                           onClick={() =>
                             onSortByItemClicked("featured", "desc")
                           }
                         >
-                          <div className="sort-filter active" href="#">
+                          <div
+                            className="sort-filter active"
+                            href="javascript:void(0)"
+                          >
                             <span>Featured</span>
                             {sortKey === "featured" && sortArrow === "desc" && (
                               <span className="icon-tick">

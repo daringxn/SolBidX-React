@@ -295,32 +295,35 @@ export default function DiscoverItem6() {
                       aria-labelledby="dropdownMenuButton"
                     >
                       <h6>Sort by</h6>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Recently added</span>
                           <span className="icon-tick">
                             <span className="path2" />
                           </span>
                         </div>
                       </Link>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter active" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div
+                          className="sort-filter active"
+                          href="javascript:void(0)"
+                        >
                           <span>Price: Low to High</span>
                           <span className="icon-tick">
                             <span className="path2" />
                           </span>
                         </div>
                       </Link>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Price: High to Low</span>
                           <span className="icon-tick">
                             <span className="path2" />
                           </span>
                         </div>
                       </Link>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Auction ending soon</span>
                           <span className="icon-tick">
                             <span className="path2" />
@@ -328,8 +331,8 @@ export default function DiscoverItem6() {
                         </div>
                       </Link>
                       <h6>Options</h6>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Auction ending soon</span>
                           <input
                             className="check"
@@ -339,8 +342,8 @@ export default function DiscoverItem6() {
                           />
                         </div>
                       </Link>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Show lazy minted</span>
                           <input
                             className="check"
@@ -359,7 +362,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-41.jpg"
                           alt=""
@@ -406,7 +409,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -414,7 +417,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -443,7 +448,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0.1s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-42.jpg"
                           alt=""
@@ -490,7 +495,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -498,7 +503,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -527,7 +534,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0.2s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-43.jpg"
                           alt=""
@@ -574,7 +581,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -582,7 +589,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -611,7 +620,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0.3s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-44.jpg"
                           alt=""
@@ -658,7 +667,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -666,7 +675,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -695,7 +706,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0.4s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-45.jpg"
                           alt=""
@@ -742,7 +753,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -750,7 +761,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -779,7 +792,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-46.jpg"
                           alt=""
@@ -826,7 +839,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -834,7 +847,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -863,7 +878,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0.1s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-47.jpg"
                           alt=""
@@ -910,7 +925,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -918,7 +933,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -947,7 +964,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0.2s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-48.jpg"
                           alt=""
@@ -994,7 +1011,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -1002,7 +1019,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -1031,7 +1050,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0.3s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-41.jpg"
                           alt=""
@@ -1078,7 +1097,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -1086,7 +1105,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -1115,7 +1136,7 @@ export default function DiscoverItem6() {
                 <div data-wow-delay="0.4s" className="wow fadeInUp col-item">
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-42.jpg"
                           alt=""
@@ -1162,7 +1183,7 @@ export default function DiscoverItem6() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -1170,7 +1191,9 @@ export default function DiscoverItem6() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">

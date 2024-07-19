@@ -77,7 +77,7 @@ export default function Menu() {
               <Link href="/home-7">Home 7</Link>
             </li>
             <li className="menu-item has-item">
-              <Link href="#">Home Slider Style</Link>
+              <Link href="javascript:void(0)">Home Slider Style</Link>
               <ul className="nav-sub-menu">
                 <li className="nav-menu-item">
                   <Link href="/slider-3d">Slider 3d</Link>

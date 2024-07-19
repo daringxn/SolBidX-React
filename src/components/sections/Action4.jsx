@@ -19,7 +19,7 @@ export default function Action4({ onExploreNowButtonClicked }) {
                 </h2>
                 <div className="flat-button flex justify-center">
                   <a
-                    href="#"
+                    href="javascript:void(0)"
                     className="tf-button style-2 h50 w190"
                     onClick={onExploreNowButtonClicked}
                   >

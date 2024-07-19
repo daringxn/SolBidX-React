@@ -60,7 +60,9 @@ export default function Header2({ scroll, isMobileMenu, handleMobileMenu }) {
                             <Link href="/home-7">Home 7</Link>
                           </li>
                           <li className="menu-item has-item">
-                            <Link href="#">Home Slider Style</Link>
+                            <Link href="javascript:void(0)">
+                              Home Slider Style
+                            </Link>
                             <ul className="nav-sub-menu">
                               <li className="nav-menu-item">
                                 <Link href="/slider-3d">Slider 3d</Link>
@@ -296,25 +298,25 @@ export default function Header2({ scroll, isMobileMenu, handleMobileMenu }) {
                 <ul>
                   <li>
                     <div className="cate-item">
-                      <Link href="#">NFTs</Link>
+                      <Link href="javascript:void(0)">NFTs</Link>
                     </div>
                     <div className="number">(1.483)</div>
                   </li>
                   <li>
                     <div className="cate-item">
-                      <Link href="#">Digital Art</Link>
+                      <Link href="javascript:void(0)">Digital Art</Link>
                     </div>
                     <div className="number">(97)</div>
                   </li>
                   <li>
                     <div className="cate-item">
-                      <Link href="#">Crypto</Link>
+                      <Link href="javascript:void(0)">Crypto</Link>
                     </div>
                     <div className="number">(45)</div>
                   </li>
                   <li>
                     <div className="cate-item">
-                      <Link href="#">Technology</Link>
+                      <Link href="javascript:void(0)">Technology</Link>
                     </div>
                     <div className="number">(728)</div>
                   </li>
@@ -324,10 +326,10 @@ export default function Header2({ scroll, isMobileMenu, handleMobileMenu }) {
                 <h5 className="title-widget">Company</h5>
                 <ul>
                   <li>
-                    <Link href="#">Help center</Link>
+                    <Link href="javascript:void(0)">Help center</Link>
                   </li>
                   <li>
-                    <Link href="#">Platform status</Link>
+                    <Link href="javascript:void(0)">Platform status</Link>
                   </li>
                 </ul>
               </div>
@@ -336,19 +338,28 @@ export default function Header2({ scroll, isMobileMenu, handleMobileMenu }) {
                 <div className="widget-social">
                   <ul className="flex">
                     <li>
-                      <Link href="#" className="icon-facebook" />
+                      <Link
+                        href="javascript:void(0)"
+                        className="icon-facebook"
+                      />
                     </li>
                     <li>
-                      <Link href="#" className="icon-twitter" />
+                      <Link
+                        href="javascript:void(0)"
+                        className="icon-twitter"
+                      />
                     </li>
                     <li>
-                      <Link href="#" className="icon-vt" />
+                      <Link href="javascript:void(0)" className="icon-vt" />
                     </li>
                     <li>
-                      <Link href="#" className="icon-tiktok" />
+                      <Link href="javascript:void(0)" className="icon-tiktok" />
                     </li>
                     <li>
-                      <Link href="#" className="icon-youtube" />
+                      <Link
+                        href="javascript:void(0)"
+                        className="icon-youtube"
+                      />
                     </li>
                   </ul>
                 </div>

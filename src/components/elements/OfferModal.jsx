@@ -77,7 +77,7 @@ export default function ({ item, open, onClose, onSubmit }) {
                       </ErrorMessage>
                     </fieldset>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
                       className="tf-button style-1 h50"
                       onClick={handleSubmit}
                     >

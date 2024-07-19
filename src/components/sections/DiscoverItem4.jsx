@@ -294,32 +294,35 @@ export default function DiscoverItem4() {
                       aria-labelledby="dropdownMenuButton"
                     >
                       <h6>Sort by</h6>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Recently added</span>
                           <span className="icon-tick">
                             <span className="path2" />
                           </span>
                         </div>
                       </Link>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter active" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div
+                          className="sort-filter active"
+                          href="javascript:void(0)"
+                        >
                           <span>Price: Low to High</span>
                           <span className="icon-tick">
                             <span className="path2" />
                           </span>
                         </div>
                       </Link>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Price: High to Low</span>
                           <span className="icon-tick">
                             <span className="path2" />
                           </span>
                         </div>
                       </Link>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Auction ending soon</span>
                           <span className="icon-tick">
                             <span className="path2" />
@@ -327,8 +330,8 @@ export default function DiscoverItem4() {
                         </div>
                       </Link>
                       <h6>Options</h6>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Auction ending soon</span>
                           <input
                             className="check"
@@ -338,8 +341,8 @@ export default function DiscoverItem4() {
                           />
                         </div>
                       </Link>
-                      <Link href="#" className="dropdown-item">
-                        <div className="sort-filter" href="#">
+                      <Link href="javascript:void(0)" className="dropdown-item">
+                        <div className="sort-filter" href="javascript:void(0)">
                           <span>Show lazy minted</span>
                           <input
                             className="check"
@@ -373,7 +376,7 @@ export default function DiscoverItem4() {
                   </div>
                 </div>
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-29.jpg"
                       alt=""
@@ -382,7 +385,7 @@ export default function DiscoverItem4() {
                   <span className="wishlist-button icon-heart" />
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="meta-info flex items-center justify-between">
                   <div>
@@ -393,7 +396,11 @@ export default function DiscoverItem4() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -420,7 +427,7 @@ export default function DiscoverItem4() {
                   </div>
                 </div>
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-27.jpg"
                       alt=""
@@ -429,7 +436,7 @@ export default function DiscoverItem4() {
                   <span className="wishlist-button icon-heart" />
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="meta-info flex items-center justify-between">
                   <div>
@@ -440,7 +447,11 @@ export default function DiscoverItem4() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -467,7 +478,7 @@ export default function DiscoverItem4() {
                   </div>
                 </div>
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-30.jpg"
                       alt=""
@@ -476,7 +487,7 @@ export default function DiscoverItem4() {
                   <span className="wishlist-button icon-heart" />
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="meta-info flex items-center justify-between">
                   <div>
@@ -487,7 +498,11 @@ export default function DiscoverItem4() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -514,7 +529,7 @@ export default function DiscoverItem4() {
                   </div>
                 </div>
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-31.jpg"
                       alt=""
@@ -523,7 +538,7 @@ export default function DiscoverItem4() {
                   <span className="wishlist-button icon-heart" />
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="meta-info flex items-center justify-between">
                   <div>
@@ -534,7 +549,11 @@ export default function DiscoverItem4() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -561,7 +580,7 @@ export default function DiscoverItem4() {
                   </div>
                 </div>
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-32.jpg"
                       alt=""
@@ -570,7 +589,7 @@ export default function DiscoverItem4() {
                   <span className="wishlist-button icon-heart" />
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="meta-info flex items-center justify-between">
                   <div>
@@ -581,7 +600,11 @@ export default function DiscoverItem4() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -608,7 +631,7 @@ export default function DiscoverItem4() {
                   </div>
                 </div>
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-25.jpg"
                       alt=""
@@ -617,7 +640,7 @@ export default function DiscoverItem4() {
                   <span className="wishlist-button icon-heart" />
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="meta-info flex items-center justify-between">
                   <div>
@@ -628,7 +651,11 @@ export default function DiscoverItem4() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -655,7 +682,7 @@ export default function DiscoverItem4() {
                   </div>
                 </div>
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-26.jpg"
                       alt=""
@@ -664,7 +691,7 @@ export default function DiscoverItem4() {
                   <span className="wishlist-button icon-heart" />
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="meta-info flex items-center justify-between">
                   <div>
@@ -675,7 +702,11 @@ export default function DiscoverItem4() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>
@@ -702,7 +733,7 @@ export default function DiscoverItem4() {
                   </div>
                 </div>
                 <div className="card-media">
-                  <Link href="#">
+                  <Link href="javascript:void(0)">
                     <img
                       src="/assets/images/box-item/card-item-28.jpg"
                       alt=""
@@ -711,7 +742,7 @@ export default function DiscoverItem4() {
                   <span className="wishlist-button icon-heart" />
                 </div>
                 <h5 className="name">
-                  <Link href="#">Dayco serpentine belt</Link>
+                  <Link href="javascript:void(0)">Dayco serpentine belt</Link>
                 </h5>
                 <div className="meta-info flex items-center justify-between">
                   <div>
@@ -722,7 +753,11 @@ export default function DiscoverItem4() {
                     </h6>
                   </div>
                   <div className="button-place-bid">
-                    <a onClick={handleBidModal} href="#" className="tf-button">
+                    <a
+                      onClick={handleBidModal}
+                      href="javascript:void(0)"
+                      className="tf-button"
+                    >
                       <span>Place Bid</span>
                     </a>
                   </div>

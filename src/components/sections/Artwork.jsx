@@ -249,7 +249,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-54.jpg"
                           alt=""
@@ -259,7 +259,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -267,7 +267,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -299,7 +301,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-52.jpg"
                           alt=""
@@ -309,7 +311,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -317,7 +319,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -349,7 +353,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-56.jpg"
                           alt=""
@@ -359,7 +363,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -367,7 +371,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -399,7 +405,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-53.jpg"
                           alt=""
@@ -409,7 +415,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -417,7 +423,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -449,7 +457,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-54.jpg"
                           alt=""
@@ -459,7 +467,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -467,7 +475,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -499,7 +509,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-52.jpg"
                           alt=""
@@ -509,7 +519,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -517,7 +527,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -549,7 +561,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-56.jpg"
                           alt=""
@@ -559,7 +571,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -567,7 +579,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -599,7 +613,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-53.jpg"
                           alt=""
@@ -609,7 +623,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -617,7 +631,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -649,7 +665,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-54.jpg"
                           alt=""
@@ -659,7 +675,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -667,7 +683,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -699,7 +717,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-52.jpg"
                           alt=""
@@ -709,7 +727,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -717,7 +735,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -749,7 +769,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-56.jpg"
                           alt=""
@@ -759,7 +779,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -767,7 +787,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -799,7 +821,7 @@ export default function Artwork() {
                 >
                   <div className="tf-card-box style-1">
                     <div className="card-media">
-                      <Link href="#">
+                      <Link href="javascript:void(0)">
                         <img
                           src="/assets/images/box-item/card-item-53.jpg"
                           alt=""
@@ -809,7 +831,7 @@ export default function Artwork() {
                       <div className="button-place-bid">
                         <a
                           onClick={handleBidModal}
-                          href="#"
+                          href="javascript:void(0)"
                           className="tf-button"
                         >
                           <span>Place Bid</span>
@@ -817,7 +839,9 @@ export default function Artwork() {
                       </div>
                     </div>
                     <h5 className="name">
-                      <Link href="#">Dayco serpentine belt</Link>
+                      <Link href="javascript:void(0)">
+                        Dayco serpentine belt
+                      </Link>
                     </h5>
                     <div className="author flex items-center">
                       <div className="avatar">
@@ -847,27 +871,27 @@ export default function Artwork() {
                   <div className="widget-pagination">
                     <ul className="justify-center">
                       <li>
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-keyboard_arrow_left" />
                         </Link>
                       </li>
                       <li>
-                        <Link href="#">1</Link>
+                        <Link href="javascript:void(0)">1</Link>
                       </li>
                       <li>
-                        <Link href="#">2</Link>
+                        <Link href="javascript:void(0)">2</Link>
                       </li>
                       <li className="active">
-                        <Link href="#">3</Link>
+                        <Link href="javascript:void(0)">3</Link>
                       </li>
                       <li>
-                        <Link href="#">4</Link>
+                        <Link href="javascript:void(0)">4</Link>
                       </li>
                       <li>
-                        <Link href="#">...</Link>
+                        <Link href="javascript:void(0)">...</Link>
                       </li>
                       <li>
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-keyboard_arrow_right" />
                         </Link>
                       </li>

@@ -52,7 +52,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-02.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-03.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>
@@ -77,7 +77,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-05.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-06.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>
@@ -102,7 +102,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-08.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-09.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>
@@ -127,7 +127,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-11.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-12.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>
@@ -152,7 +152,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-14.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-15.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>
@@ -177,7 +177,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-14.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-15.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>
@@ -202,7 +202,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-17.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-18.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>
@@ -227,7 +227,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-01.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-13.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>
@@ -252,7 +252,7 @@ export default function FeaturedSlider5() {
                   <img src="/assets/images/box-item/category-b-14.jpg" alt="" />
                   <img src="/assets/images/box-item/category-b-15.jpg" alt="" />
                 </div>
-                <Link href="#">
+                <Link href="javascript:void(0)">
                   <i className="icon-arrow-up-right2" />
                 </Link>
               </div>

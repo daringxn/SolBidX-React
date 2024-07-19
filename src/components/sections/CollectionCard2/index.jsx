@@ -68,7 +68,7 @@ export default function CollectionItem1({
           {!loading && (
             <>
               <h6 className="mb-3">
-                <a href="#">{collection?.name}</a>
+                <a href="javascript:void(0)">{collection?.name}</a>
               </h6>
               <p className={classNames("h5", styles.description)}>
                 {collection?.description}

@@ -62,7 +62,7 @@ export default function Seller4() {
                           src="/assets/images/box-item/imgslider1category.jpg"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -76,7 +76,7 @@ export default function Seller4() {
                           src="/assets/images/box-item/imgslider2category.jpg"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -90,7 +90,7 @@ export default function Seller4() {
                           src="/assets/images/box-item/imgslider3category.jpg"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -104,7 +104,7 @@ export default function Seller4() {
                           src="/assets/images/box-item/imgslider4category.jpg"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -118,7 +118,7 @@ export default function Seller4() {
                           src="/assets/images/box-item/imgslider5category.jpg"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -132,7 +132,7 @@ export default function Seller4() {
                           src="/assets/images/box-item/imgslider6category.jpg"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -146,7 +146,7 @@ export default function Seller4() {
                           src="/assets/images/box-item/imgslider1category.jpg"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
@@ -160,7 +160,7 @@ export default function Seller4() {
                           src="/assets/images/box-item/imgslider2category.jpg"
                           alt=""
                         />
-                        <Link href="#">
+                        <Link href="javascript:void(0)">
                           <i className="icon-arrow-up-right2" />
                         </Link>
                       </div>
