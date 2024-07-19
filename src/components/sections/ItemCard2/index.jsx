@@ -11,6 +11,9 @@ import useIsAuth from "@/hooks/useIsAuth";
 // stores
 import useAuthStore from "@/stores/authStore";
 
+// helpers
+import { simplifyWalletAddress } from "@/helpers/utils";
+
 // styles
 import styles from "./style.module.css";
 
@@ -74,12 +77,12 @@ export default function ({
             alt="Image"
           />
         </div> */}
-        <div className="info">
-          <span>Owned by:</span>
-          <h6>
-            <Link href="/author-2">
-              {item?.collector?.name || "Cody Fisher"}
-            </Link>
+        <div className="info d-flex">
+          <span>Owned by</span>
+          <h6 className="ml-2">
+            <a href="#">
+              {simplifyWalletAddress(item?.collector?.wallet_address)}
+            </a>
           </h6>
         </div>
       </div>

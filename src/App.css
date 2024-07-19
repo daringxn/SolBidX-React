@@ -100,3 +100,11 @@
 .tf-card-collection {
   border-radius: 10px;
 }
+
+.tf-card-box {
+  border-radius: 10px;
+}
+
+.tf-card-box.style-1 .card-media {
+  border-radius: 10px;
+}
