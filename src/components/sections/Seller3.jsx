@@ -60,20 +60,15 @@ export default function Seller3({ items, loading }) {
                 <h2 className="tf-title pb-20">Featured Items</h2>
               </div>
             </div>
-            {loading && (
-              <div className="col-md-12 d-flex justify-content-center mx-100px">
-                <img src="/assets/images/loading.gif" className="w-100px" />
-              </div>
-            )}
-            {!loading && (
-              <div className="col-md-12">
-                <Swiper
-                  {...swiperOptions}
-                  className="featured pt-10 swiper-container carousel"
-                >
-                  <div className="swiper-wrapper">
-                    {items.map((item) => (
-                      <SwiperSlide key={item.id}>
+            <div className="col-md-12">
+              <Swiper
+                {...swiperOptions}
+                className="featured pt-10 swiper-container carousel"
+              >
+                <div className="swiper-wrapper">
+                  {!loading &&
+                    items.map((item) => (
+                      <SwiperSlide key={"item_" + item.id}>
                         <ItemCard2
                           item={item}
                           onImageClicked={() => {
@@ -82,10 +77,17 @@ export default function Seller3({ items, loading }) {
                         ></ItemCard2>
                       </SwiperSlide>
                     ))}
-                  </div>
-                </Swiper>
-              </div>
-            )}
+                  {loading &&
+                    Array(5)
+                      .fill(null)
+                      .map((_, index) => (
+                        <SwiperSlide key={"loading_item_" + index}>
+                          <ItemCard2 loading={true}></ItemCard2>
+                        </SwiperSlide>
+                      ))}
+                </div>
+              </Swiper>
+            </div>
           </div>
         </div>
       </div>

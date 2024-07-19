@@ -4,6 +4,7 @@ import classNames from "classnames";
 
 // components
 import Square from "@/components/sections/Square";
+import RectLoader from "@/components/elements/RectLoader";
 
 // hooks
 import useIsAuth from "@/hooks/useIsAuth";
@@ -22,6 +23,7 @@ export default function ({
   onImageClicked,
   onMakeOfferButtonClicked,
   onBuyNowButtonClicked,
+  loading,
 }) {
   const isAuth = useIsAuth();
 
@@ -34,18 +36,23 @@ export default function ({
       <div className="card-media">
         <a href="javascript:void(0)" onClick={onImageClicked}>
           <Square ratio={1}>
-            <img
-              src={
-                "/" + item?.image || "/assets/images/box-item/card-item-09.jpg"
-              }
-              alt=""
-            />
+            {!loading && (
+              <img
+                src={
+                  "/" + item?.image ||
+                  "/assets/images/box-item/card-item-09.jpg"
+                }
+                alt=""
+              />
+            )}
+            {loading && <RectLoader width="100%" height="100%" />}
           </Square>
         </a>
-        {item?.status === "list" && (
+        {!loading && item?.status === "list" && (
           <span className={styles["sale-mark"]}>Sale</span>
         )}
-        {isAuth &&
+        {!loading &&
+          isAuth &&
           item?.status === "list" &&
           user.wallet_address !== item?.collector?.wallet_address && (
             <div className="button-place-bid">
@@ -67,31 +74,27 @@ export default function ({
           )}
       </div>
       <h6 className="name">
-        <Link href="javascript:void(0)">{item?.name}</Link>
+        {!loading && <a href="javascript:void(0)">{item?.name}</a>}
+        {loading && <RectLoader width="200px" height="20px" />}
       </h6>
-      <div className="author flex items-center">
-        {/* <div className="avatar">
-          <img
-            src={
-              "/" + item?.collector?.avatar ||
-              "/assets/images/avatar/avatar-box-01.jpg"
-            }
-            alt="Image"
-          />
-        </div> */}
-        <div className="info d-flex">
-          <span>Owned by</span>
-          <h6 className="ml-2">
-            <a href="javascript:void(0)">
-              {simplifyWalletAddress(item?.collector?.wallet_address)}
-            </a>
-          </h6>
+      {!loading && (
+        <div className="author flex items-center">
+          <div className="info d-flex">
+            <span>Owned by</span>
+            <h6 className="ml-2">
+              <a href="javascript:void(0)">
+                {simplifyWalletAddress(item?.collector?.wallet_address)}
+              </a>
+            </h6>
+          </div>
         </div>
-      </div>
+      )}
+      {loading && <RectLoader width="150px" height="20px" />}
       <div className="divider" />
       <div className="meta-info flex items-center justify-between">
         <span className="text-bid">Price</span>
-        <h6 className="price gem">{item?.price} SOL</h6>
+        {!loading && <h6 className="price gem">{item?.price} SOL</h6>}
+        {loading && <RectLoader width="50px" height="20px" />}
       </div>
     </div>
   );
