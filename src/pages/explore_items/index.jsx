@@ -195,6 +195,9 @@ export default function () {
                 <div className={classNames("widget-social", styles.links)}>
                   <ul className="flex">
                     <li>
+                      <a href="javascript:void(0)" className="icon-twitter" />
+                    </li>
+                    <li>
                       <a href="javascript:void(0)" className="icon-vt" />
                     </li>
                   </ul>
