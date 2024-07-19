@@ -21,7 +21,7 @@ import useOffersStore from "@/stores/offersStore";
 import useIsAuth from "@/hooks/useIsAuth";
 
 // helpers
-import { simplifyWalletAddress } from "@/helpers/utils";
+import { getSolPrice, simplifyWalletAddress } from "@/helpers/utils";
 
 // styles
 import styles from "./style.module.css";
@@ -29,6 +29,7 @@ import styles from "./style.module.css";
 export default function () {
   const [item, setItem] = useState({});
   const [showOfferModal, setShowOfferModal] = useState(false);
+  const [solPrice, setSolPrice] = useState(0);
 
   const user = useAuthStore();
   const { createOrUpdateItem, getItem } = useItemsStore();
@@ -100,6 +101,7 @@ export default function () {
         id: item.id,
         collector_id: offer.user_id,
         status: "sale",
+        offer_id: offer.id,
       });
       if (!response.status) {
         alert(response.error);
@@ -140,6 +142,13 @@ export default function () {
   useEffect(() => {
     getItemData(params.id);
   }, [getItemData, params]);
+
+  useEffect(() => {
+    (async () => {
+      const solPrice = await getSolPrice();
+      setSolPrice(solPrice);
+    })();
+  }, []);
 
   return (
     <>
@@ -240,6 +249,9 @@ export default function () {
                                       className="mr-2"
                                     />
                                     {item.price}
+                                    <span className="ml-2">
+                                      ${solPrice * item.price}
+                                    </span>
                                   </p>
                                 )}
                                 {isAuth &&
@@ -364,7 +376,7 @@ export default function () {
                   </div>
                 </div>
               </div>
-              {user.wallet_address && item.status === "list" && (
+              {item.status === "list" && (
                 <div className="row mb-20px">
                   <div data-wow-delay="0s" className="wow fadeInUp col-12">
                     <div
@@ -385,10 +397,11 @@ export default function () {
                           <div className="column">Price</div>
                           <div className="column">From</div>
                           <div className="column">Date</div>
-                          {user.wallet_address ===
-                            item.collector?.wallet_address && (
-                            <div className="column"></div>
-                          )}
+                          {isAuth &&
+                            user.wallet_address ===
+                              item.collector?.wallet_address && (
+                              <div className="column"></div>
+                            )}
                         </div>
                         {(item.offers || []).map((offer) => (
                           <div className="table-item" key={offer.id}>
@@ -404,24 +417,27 @@ export default function () {
                             </div>
                             <div className="column">
                               <span className="tf-color">
-                                {offer.user?.name || "Unknown"}
+                                {simplifyWalletAddress(
+                                  offer.user?.wallet_address
+                                )}
                               </span>
                             </div>
                             <div className="column">
                               {moment(offer.createdAt).format("MM/DD HH:mm")}
                             </div>
-                            {user.wallet_address ===
-                              item.collector?.wallet_address && (
-                              <div className="column">
-                                <a
-                                  href="javascript:void(0)"
-                                  className="tf-button style-1 w90"
-                                  onClick={() => onAcceptButtonClicked(offer)}
-                                >
-                                  Accept
-                                </a>
-                              </div>
-                            )}
+                            {isAuth &&
+                              user.wallet_address ===
+                                item.collector?.wallet_address && (
+                                <div className="column">
+                                  <a
+                                    href="javascript:void(0)"
+                                    className="tf-button style-1 w90"
+                                    onClick={() => onAcceptButtonClicked(offer)}
+                                  >
+                                    Accept
+                                  </a>
+                                </div>
+                              )}
                           </div>
                         ))}
                         {(item.offers || []).length === 0 && (
@@ -469,13 +485,17 @@ export default function () {
                           </div>
                           <div className="column">
                             <span className="tf-color">
-                              {activity.from_user.name || "Unknown"}
+                              {simplifyWalletAddress(
+                                activity.from_user?.wallet_address
+                              )}
                             </span>
                           </div>
                           <div className="column">
                             {activity.type === "sale" ? (
                               <span className="tf-color">
-                                {activity.to_user.name || "Unknown"}
+                                {simplifyWalletAddress(
+                                  activity.to_user?.wallet_address
+                                )}
                               </span>
                             ) : (
                               "-/-"

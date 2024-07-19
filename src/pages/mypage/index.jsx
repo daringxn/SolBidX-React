@@ -7,9 +7,14 @@ import classNames from "classnames";
 import Layout from "@/components/layout/Layout";
 import ItemCard2 from "@/components/sections/ItemCard2";
 import CollectionCard1 from "@/components/sections/CollectionCard1";
+import Square from "@/components/sections/Square";
 
 // stores
 import useAuthStore from "@/stores/authStore";
+
+// helpers
+import { simplifyWalletAddress } from "@/helpers/utils";
+import useDevice from "@/hooks/useDevice";
 
 // styles
 import styles from "./style.module.css";
@@ -20,10 +25,15 @@ export default function () {
   const [collections, setCollections] = useState([]);
   const [offers, setOffers] = useState([]);
 
+  const device = useDevice();
+
   const { user, getItems, getCollections, getOffers } = useAuthStore(
     (state) => ({
       user: {
         id: state.id,
+        wallet_address: state.wallet_address,
+        name: state.name,
+        avatar: state.avatar,
       },
       getItems: state.getItems,
       getCollections: state.getCollections,
@@ -60,8 +70,40 @@ export default function () {
 
   return (
     <Layout headerStyle={3} footerStyle={1} pageCls="home-7 pt-0">
-      <div className="pl-2 pr-2 pl-lg-5 pr-lg-5">
-        <ul className="widget-menu-tab mt-5">
+      <div className="pl-2 pr-2 pl-lg-5 pr-lg-5 mt-5">
+        <div className="mb-5">
+          <Square
+            ratio={device.isBreakpoint("MD") ? 0.2 : 0.5}
+            className={styles.user}
+          >
+            <img
+              src={"/" + user.image_background}
+              alt=""
+              className={classNames("w-100", "h-100", styles.background)}
+            />
+            <div
+              className={classNames(
+                "d-flex",
+                "align-items-center",
+                styles.info
+              )}
+            >
+              <Square className={styles["base-image-square"]}>
+                <img
+                  src={"/" + user.avatar}
+                  alt=""
+                  className={classNames("w-100", "h-100", styles["base-image"])}
+                />
+              </Square>
+              <div className="ml-3">
+                <h5>
+                  {user.name || simplifyWalletAddress(user.wallet_address)}
+                </h5>
+              </div>
+            </div>
+          </Square>
+        </div>
+        <ul className="widget-menu-tab">
           <li
             className={
               activeTab === "items" ? "item-title active" : "item-title"
@@ -88,9 +130,12 @@ export default function () {
           </li>
         </ul>
         {activeTab === "items" && (
-          <div className="row">
+          <div className="row mb-5">
             {items.map((item) => (
-              <div className="col-6 col-md-4 col-lg-3 col-xl-2" key={item.id}>
+              <div
+                className="col-6 col-md-4 col-lg-3 col-xl-2"
+                key={"item_" + item.id}
+              >
                 <ItemCard2 item={item} />
               </div>
             ))}
@@ -102,11 +147,11 @@ export default function () {
           </div>
         )}
         {activeTab === "collections" && (
-          <div className="row">
+          <div className="row mb-5">
             {collections.map((collection) => (
               <div
                 className="col-6 col-md-4 col-lg-3 col-xl-2"
-                key={collection.id}
+                key={"collection_" + collection.id}
               >
                 <CollectionCard1 collection={collection} />
               </div>
@@ -119,19 +164,19 @@ export default function () {
           </div>
         )}
         {activeTab === "offers" && (
-          <div className={classNames("row", styles.offers)}>
+          <div className={classNames("row", "m-0", "mb-5", styles.offers)}>
             <div className="product-item offers w-100">
               <div className="content">
                 <div className="table-heading">
                   <div className="column">No</div>
                   <div className="column">Item</div>
-                  <div className="column">Price</div>
                   <div className="column">Send / Receive</div>
-                  <div className="column">User</div>
+                  <div className="column">From / To</div>
+                  <div className="column">Price</div>
                   <div className="column">Date</div>
                 </div>
                 {offers.map((offer, i) => (
-                  <div className="table-item" key={offer.id}>
+                  <div className="table-item" key={"offer_" + offer.id}>
                     <div className="column">{i + 1}</div>
                     <div className="column">
                       <Link to={"/item/" + offer.item?.id}>
@@ -139,23 +184,29 @@ export default function () {
                           src={"/" + offer.item?.image}
                           width="50px"
                           height="50px"
-                          style={{
-                            borderRadius: 50,
-                          }}
+                          className={styles["item-img"]}
                         />
                       </Link>
-                    </div>
-                    <div className="column">
-                      <h6 className="price gem">{offer.price} SOL</h6>
                     </div>
                     <div className="column">
                       {offer.user_id === user.id ? "Send" : "Receive"}
                     </div>
                     <div className="column">
                       <span className="tf-color">
-                        {offer.user?.name || "Unknown"}
+                        {simplifyWalletAddress(offer.user?.wallet_address)}
                       </span>
                     </div>
+                    <div className="column">
+                      <h6 className="price gem">
+                        <img
+                          src="/assets/icon/sol.svg"
+                          alt=""
+                          className="mr-2"
+                        />
+                        {offer.item?.price}
+                      </h6>
+                    </div>
+
                     <div className="column">
                       {moment(offer.createdAt).format("MM/DD HH:mm")}
                     </div>
