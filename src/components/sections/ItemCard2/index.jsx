@@ -92,8 +92,12 @@ export default function ({
       {loading && <RectLoader width="150px" height="20px" />}
       <div className="divider" />
       <div className="meta-info flex items-center justify-between">
-        <span className="text-bid">Price</span>
-        {!loading && <h6 className="price gem">{item?.price} SOL</h6>}
+        <span className="text-bid">Recent Price</span>
+        {!loading && (
+          <h6 className="price gem">
+            {item?.status !== "mint" ? item?.price + " SOL" : "-/-"}
+          </h6>
+        )}
         {loading && <RectLoader width="50px" height="20px" />}
       </div>
     </div>

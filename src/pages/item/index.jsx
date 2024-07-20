@@ -6,11 +6,13 @@ import classNames from "classnames";
 import { ErrorMessage, Formik } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 
 // components
 import Layout from "@/components/layout/Layout";
 import OfferModal from "@/components/elements/OfferModal";
 import Square from "@/components/sections/Square";
+import CardLoading from "@/components/elements/CardLoading";
 
 // stores
 import useAuthStore from "@/stores/authStore";
@@ -22,6 +24,7 @@ import useIsAuth from "@/hooks/useIsAuth";
 
 // helpers
 import { getSolPrice, simplifyWalletAddress } from "@/helpers/utils";
+import { listNFT, unlistNFT } from "@/helpers/transactions";
 
 // styles
 import styles from "./style.module.css";
@@ -37,6 +40,7 @@ export default function () {
 
   const params = useParams();
   const { t } = useTranslation();
+  const { publicKey } = useWallet();
 
   const isAuth = useIsAuth();
 
@@ -49,7 +53,13 @@ export default function () {
     setItem(response.data);
   }, []);
 
-  const sendSellTransaction = useCallback(() => {}, []);
+  // const sendSellTransaction = useCallback(async () => {
+  //   await listNFT(
+  //     "DroiDxfPKcHB1ecM1oDw4H4vvUHDgcQGMvAE5phDWjVs",
+  //     publicKey,
+  //     0.1
+  //   );
+  // }, [publicKey]);
 
   const sendMakeOfferTransaction = useCallback(() => {}, []);
 
@@ -61,19 +71,24 @@ export default function () {
 
   const onSell = useCallback(
     async (price) => {
-      sendSellTransaction();
-      const response = await createOrUpdateItem({
-        id: item.id,
-        price,
-        status: "list",
-      });
-      if (!response.status) {
-        alert(response.error);
-        return;
-      }
-      getItemData(item.id);
+      // await listNFT(item.contract_address, publicKey, price);
+      alert();
+      await unlistNFT(
+        "DroiDxfPKcHB1ecM1oDw4H4vvUHDgcQGMvAE5phDWjVs",
+        publicKey
+      );
+      // const response = await createOrUpdateItem({
+      //   id: item.id,
+      //   price,
+      //   status: "list",
+      // });
+      // if (!response.status) {
+      //   alert(response.error);
+      //   return;
+      // }
+      // getItemData(item.id);
     },
-    [sendSellTransaction, item, getItemData]
+    [item, getItemData]
   );
 
   const onOfferModalSubmitted = useCallback(

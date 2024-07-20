@@ -19,6 +19,8 @@ import { useMemo } from "react";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { useWallet } from "@solana/wallet-adapter-react";
 
+import('@solana/wallet-adapter-react-ui/styles.css' );
+
 const WalletContextProvider = ({ children }) => {
   const network = WalletAdapterNetwork.Devnet;
 

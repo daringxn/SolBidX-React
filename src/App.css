@@ -108,3 +108,20 @@
 .tf-card-box.style-1 .card-media {
   border-radius: 10px;
 }
+
+.toast-message {
+  background: rgb(66, 66, 66);
+  color: #fff;
+  font-size: 20px;
+  width: 400px;
+  /* padding: 20px 20px; */
+}
+
+.toast-link {
+  color: cornflowerblue;
+  text-decoration: none;
+}
+
+.toast-link:hover {
+  color: yellowgreen;
+}
