@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import moment from "moment";
 import classNames from "classnames";
 
@@ -20,10 +20,12 @@ import useDevice from "@/hooks/useDevice";
 import styles from "./style.module.css";
 
 export default function () {
-  const [activeTab, setActiveTab] = useState("offers");
+  const [activeTab, setActiveTab] = useState("items");
   const [items, setItems] = useState([]);
   const [collections, setCollections] = useState([]);
   const [offers, setOffers] = useState([]);
+
+  const navigate = useNavigate();
 
   const device = useDevice();
 
@@ -136,7 +138,12 @@ export default function () {
                 className="col-6 col-md-4 col-lg-3 col-xl-2"
                 key={"item_" + item.id}
               >
-                <ItemCard2 item={item} />
+                <ItemCard2
+                  item={item}
+                  onImageClicked={() => {
+                    navigate("/item/" + item.id);
+                  }}
+                />
               </div>
             ))}
             {items.length === 0 && (
