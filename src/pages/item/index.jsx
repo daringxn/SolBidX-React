@@ -79,22 +79,6 @@ export default function () {
     setItem(response.data);
   }, []);
 
-  // const sendSellTransaction = useCallback(async () => {
-  //   await listNFT(
-  //     "DroiDxfPKcHB1ecM1oDw4H4vvUHDgcQGMvAE5phDWjVs",
-  //     publicKey,
-  //     0.1
-  //   );
-  // }, [publicKey]);
-
-  const sendMakeOfferTransaction = useCallback(() => {}, []);
-
-  const sendBuyNowTransaction = useCallback(() => {}, []);
-
-  const sendAcceptTransaction = useCallback(() => {}, []);
-
-  const sendCancelTransaction = useCallback(() => {}, []);
-
   const onSell = useCallback(
     async (price) => {
       if (loadingTransaction) return;
@@ -201,7 +185,8 @@ export default function () {
     const transactionResult = await await purchaseNFT(
       item.contract_address,
       publicKey,
-      item?.collector?.wallet_address
+      item?.collector?.wallet_address,
+      (item.offers || []).map((offer) => offer.user?.wallet_address)
     );
     if (transactionResult) {
       if (import.meta.env.MODE === "development") {
@@ -233,7 +218,11 @@ export default function () {
   const onCancelButtonClicked = useCallback(async () => {
     if (loadingTransaction) return;
     setLoadingTransaction(true);
-    const transactionResult = await unlistNFT(item.contract_address, publicKey);
+    const transactionResult = await unlistNFT(
+      item.contract_address,
+      publicKey,
+      (item.offers || []).map((offer) => offer.user?.wallet_address)
+    );
     if (transactionResult) {
       if (import.meta.env.MODE === "development") {
         const response = await createOrUpdateItem({

@@ -96,7 +96,11 @@ export const listNFT = async (mint_key_str, user_key_str, item_price) => {
   }
 };
 
-export const unlistNFT = async (mint_key_str, user_key_str) => {
+export const unlistNFT = async (
+  mint_key_str,
+  user_key_str,
+  decline_offerer_keys
+) => {
   try {
     const mint_key = new web3.PublicKey(mint_key_str);
     const user_key = new web3.PublicKey(user_key_str);
@@ -113,7 +117,8 @@ export const unlistNFT = async (mint_key_str, user_key_str) => {
     console.log(marketplace_pda.toString(), treasury_pda.toString());
     console.log(maker_ata.toString(), listing_pda.toString());
     console.log(vault_ata.toString());
-    const txHash = await program.methods
+    const transaction = new web3.Transaction();
+    const unlistIx = await program.methods
       .delist()
       .accounts({
         maker: user_key,
@@ -125,7 +130,18 @@ export const unlistNFT = async (mint_key_str, user_key_str) => {
         systemProgram: web3.SystemProgram.programId,
         tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
       })
-      .rpc();
+      .instruction();
+
+    const declineOfferIxs = await declineInstructionInx(
+      program,
+      transaction,
+      user_key,
+      mint_key,
+      listing_pda,
+      decline_offerer_keys
+    );
+    transaction.add(unlistIx);
+    const txHash = await provider.sendAndConfirm(transaction, []);
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished delisting");
     return 1;
@@ -138,7 +154,8 @@ export const unlistNFT = async (mint_key_str, user_key_str) => {
 export const purchaseNFT = async (
   mint_key_str,
   user_key_str,
-  seller_key_str
+  seller_key_str,
+  decline_offerer_keys
 ) => {
   try {
     const mint_key = new web3.PublicKey(mint_key_str);
@@ -157,7 +174,8 @@ export const purchaseNFT = async (
     console.log(marketplace_pda.toString(), treasury_pda.toString());
     console.log(user_ata.toString(), listing_pda.toString());
     console.log(vault_ata.toString());
-    const txHash = await program.methods
+    const transaction = new web3.Transaction();
+    const purchaseIx = await program.methods
       .purchase()
       .accounts({
         taker: user_key,
@@ -172,7 +190,18 @@ export const purchaseNFT = async (
         tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
         associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
       })
-      .rpc();
+      .instruction();
+
+    const declineOfferIxs = await declineInstructionInx(
+      program,
+      transaction,
+      user_key,
+      mint_key,
+      listing_pda,
+      decline_offerer_keys
+    );
+    transaction.add(purchaseIx);
+    const txHash = await provider.sendAndConfirm(transaction, []);
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished delisting");
     return 1;
@@ -305,23 +334,34 @@ export const acceptOfferNFT = async (
       .instruction();
     const transaction = new web3.Transaction().add(acceptOfferIx);
 
-    for (const decline_offerer_key of decline_offerer_keys) {
-      const de_offerer_key = new web3.PublicKey(decline_offerer_key);
-      const declineOfferIx = await program.methods
-        .declineOffer()
-        .accounts({
-          maker: user_key,
-          offerer: de_offerer_key,
-          marketplace: marketplace_pda,
-          makerMint: mint_key,
-          listing: listing_pda,
-          treasury: treasury_pda,
-          systemProgram: web3.SystemProgram.programId,
-          tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
-        })
-        .instruction();
-      transaction.add(declineOfferIx);
-    }
+    // for (const decline_offerer_key of decline_offerer_keys) {
+    //   const de_offerer_key = new web3.PublicKey(decline_offerer_key);
+    //   const declineOfferIx = await program.methods
+    //     .declineOffer()
+    //     .accounts({
+    //       maker: user_key,
+    //       offerer: de_offerer_key,
+    //       marketplace: marketplace_pda,
+    //       makerMint: mint_key,
+    //       listing: listing_pda,
+    //       treasury: treasury_pda,
+    //       systemProgram: web3.SystemProgram.programId,
+    //       tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+    //     })
+    //     .instruction();
+    //   transaction.add(declineOfferIx);
+    // }
+    const declineOfferIxs = await declineInstructionInx(
+      program,
+      transaction,
+      user_key,
+      mint_key,
+      listing_pda,
+      decline_offerer_keys
+    );
+    // declineOfferIxs.map((x) => {
+    //   transaction.add(x);
+    // });
     const txHash = await provider.sendAndConfirm(transaction, []);
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished delisting");
@@ -330,4 +370,35 @@ export const acceptOfferNFT = async (
     console.log("unoffer", e);
     return 0;
   }
+};
+
+const declineInstructionInx = async (
+  program,
+  transaction,
+  user_key,
+  mint_key,
+  listing_pda,
+  decline_offerer_keys
+) => {
+  const declineOfferIxs = [];
+  for (const decline_offerer_key of decline_offerer_keys) {
+    const de_offerer_key = new web3.PublicKey(decline_offerer_key);
+    const declineOfferIx = await program.methods
+      .declineOffer()
+      .accounts({
+        maker: user_key,
+        offerer: de_offerer_key,
+        marketplace: marketplace_pda,
+        makerMint: mint_key,
+        listing: listing_pda,
+        treasury: treasury_pda,
+        systemProgram: web3.SystemProgram.programId,
+        tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+      })
+      .instruction();
+    declineOfferIxs.push(declineOfferIx);
+    transaction.add(declineOfferIx);
+  }
+  console.log(declineOfferIxs);
+  return declineOfferIxs;
 };
