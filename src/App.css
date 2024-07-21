@@ -56,6 +56,14 @@
   margin-bottom: 20px;
 }
 
+.f-1 {
+  flex: 1;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
 .tf-card-collection.selected {
   border: 1px solid #dee8e8;
 }
@@ -109,7 +117,8 @@
   border-radius: 10px;
 }
 
-.tf-button.style-1 {
+.tf-button.style-1,
+.tf-button.style-3 {
   color: #161616;
 }
 
