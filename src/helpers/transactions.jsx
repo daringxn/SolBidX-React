@@ -9,7 +9,7 @@ import {
   TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 import IDL from "./idl.json";
-import { successAlert } from "./toastGroup";
+// import { successAlert } from "./toastGroup";
 
 const PROGRAM_ID = new web3.PublicKey(
   "CF2FBoCnN6bHgSUT1stncf9TwpgG5nAgntBRJp4eXChD"
@@ -61,7 +61,7 @@ export const listNFT = async (mint_key_str, user_key_str, item_price) => {
     console.log(maker_ata.toString(), listing_pda.toString());
     console.log(vault_ata.toString());
     const txHash = await program.methods
-      .list(new BN(item_price).mul(new BN(10 ** 9)))
+      .list(new BN(item_price * 10 ** 9))
       .accounts({
         maker: user_key,
         marketplace: marketplace_pda,
@@ -76,21 +76,23 @@ export const listNFT = async (mint_key_str, user_key_str, item_price) => {
       .rpc();
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished listing");
-    successAlert(
-      <div>
-        Your NFT is listed successfully{" "}
-        <a
-          href="https://example.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="toast-link"
-        >
-          link
-        </a>
-      </div>
-    );
+    // successAlert(
+    //   <div>
+    //     Your NFT is listed successfully{" "}
+    //     <a
+    //       href="https://example.com"
+    //       target="_blank"
+    //       rel="noopener noreferrer"
+    //       className="toast-link"
+    //     >
+    //       link
+    //     </a>
+    //   </div>
+    // );
+    return 1;
   } catch (e) {
     console.log("list", e);
+    return 0;
   }
 };
 
@@ -126,8 +128,10 @@ export const unlistNFT = async (mint_key_str, user_key_str) => {
       .rpc();
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished delisting");
+    return 1;
   } catch (e) {
     console.log("unlist", e);
+    return 0;
   }
 };
 
@@ -171,8 +175,10 @@ export const purchaseNFT = async (
       .rpc();
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished delisting");
+    return 1;
   } catch (e) {
     console.log("purchase", e);
+    return 0;
   }
 };
 
@@ -194,8 +200,9 @@ export const offerNFT = async (mint_key_str, user_key_str, offer_price) => {
     console.log(marketplace_pda.toString(), treasury_pda.toString());
     console.log(user_ata.toString(), listing_pda.toString());
     console.log(vault_ata.toString());
+    console.log(new BN(offer_price));
     const txHash = await program.methods
-      .makeOffer(new BN(offer_price).mul(10 ** 9))
+      .makeOffer(new BN(offer_price * 10 ** 9))
       .accounts({
         offerer: user_key,
         marketplace: marketplace_pda,
@@ -210,8 +217,10 @@ export const offerNFT = async (mint_key_str, user_key_str, offer_price) => {
       .rpc();
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished delisting");
+    return 1;
   } catch (e) {
     console.log("offer", e);
+    return 0;
   }
 };
 
@@ -247,8 +256,10 @@ export const unofferNFT = async (mint_key_str, user_key_str) => {
       .rpc();
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished delisting");
+    return 1;
   } catch (e) {
     console.log("unoffer", e);
+    return 0;
   }
 };
 
@@ -296,7 +307,7 @@ export const acceptOfferNFT = async (
 
     for (const decline_offerer_key of decline_offerer_keys) {
       const de_offerer_key = new web3.PublicKey(decline_offerer_key);
-      const declineOfferIx = await pg.program.methods
+      const declineOfferIx = await program.methods
         .declineOffer()
         .accounts({
           maker: user_key,
@@ -311,10 +322,12 @@ export const acceptOfferNFT = async (
         .instruction();
       transaction.add(declineOfferIx);
     }
-    const txHash = await provider.sendAndConfirm(transaction, [user_key]);
+    const txHash = await provider.sendAndConfirm(transaction, []);
     await connection.confirmTransaction(txHash, "finalized");
     console.log("finished delisting");
+    return 1;
   } catch (e) {
     console.log("unoffer", e);
+    return 0;
   }
 };

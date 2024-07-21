@@ -2,6 +2,7 @@
   "errors": {
     "form": {
       "required": "{{name}} is required."
-    }
+    },
+    "something_went_wrong": "something went wrong"
   }
 }

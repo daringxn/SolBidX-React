@@ -1,45 +1,43 @@
-
-import { toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import { toast } from "react-toastify";
 
 export const errorAlert = (text) => {
   toast.error(text, {
     position: "bottom-center",
     className: "toast-message",
     autoClose: 5000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored"
-  })
-}
+    theme: "colored",
+  });
+};
 
 export const errorAlertCenter = (text) => {
   toast.error(text, {
     position: "bottom-center",
     className: "toast-message",
     autoClose: 5000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored"
-  })
-}
+    theme: "colored",
+  });
+};
 
 export const warningAlert = (text) => {
   toast.warning(text, {
     position: "bottom-center",
     className: "toast-message",
     autoClose: 5000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored"
-  })
-}
+    theme: "colored",
+  });
+};
 
 export const successAlert = (text, state) => {
   if (state) {
@@ -51,8 +49,8 @@ export const successAlert = (text, state) => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      theme: "dark"
-    })
+      theme: "dark",
+    });
   } else {
     toast.success(text, {
       position: "bottom-center",
@@ -62,10 +60,10 @@ export const successAlert = (text, state) => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      theme: "dark"
-    })
+      theme: "dark",
+    });
   }
-}
+};
 
 export const infoAlert = (text) => {
   toast.info(text, {
@@ -75,6 +73,6 @@ export const infoAlert = (text) => {
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    theme: "colored"
-  })
-}
+    theme: "colored",
+  });
+};

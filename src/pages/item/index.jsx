@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import moment from "moment";
@@ -7,12 +7,12 @@ import { ErrorMessage, Formik } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { SyncLoader } from "react-spinners";
 
 // components
 import Layout from "@/components/layout/Layout";
 import OfferModal from "@/components/elements/OfferModal";
 import Square from "@/components/sections/Square";
-import CardLoading from "@/components/elements/CardLoading";
 
 // stores
 import useAuthStore from "@/stores/authStore";
@@ -23,26 +23,52 @@ import useOffersStore from "@/stores/offersStore";
 import useIsAuth from "@/hooks/useIsAuth";
 
 // helpers
-import { getSolPrice, simplifyWalletAddress } from "@/helpers/utils";
-import { listNFT, unlistNFT } from "@/helpers/transactions";
+import {
+  delay,
+  getSolPrice,
+  simplifyWalletAddress,
+  toFixed,
+} from "@/helpers/utils";
+import {
+  listNFT,
+  unlistNFT,
+  offerNFT,
+  unofferNFT,
+  acceptOfferNFT,
+  purchaseNFT,
+} from "@/helpers/transactions";
+import { errorAlert, successAlert } from "@/helpers/toastGroup";
 
 // styles
 import styles from "./style.module.css";
+
+const Loader = ({ loading }) => (
+  <SyncLoader loading={loading} size={7} margin={3} speedMultiplier={0.75} />
+);
 
 export default function () {
   const [item, setItem] = useState({});
   const [showOfferModal, setShowOfferModal] = useState(false);
   const [solPrice, setSolPrice] = useState(0);
+  const [loadingTransaction, setLoadingTransaction] = useState(false);
 
   const user = useAuthStore();
   const { createOrUpdateItem, getItem } = useItemsStore();
-  const { createOffer } = useOffersStore();
+  const { createOrUpdateOffer } = useOffersStore();
 
   const params = useParams();
   const { t } = useTranslation();
   const { publicKey } = useWallet();
 
   const isAuth = useIsAuth();
+
+  const isOffered = useMemo(() => {
+    return (
+      (item.offers || []).filter(
+        (offer) => offer.user?.wallet_address === user.wallet_address
+      ).length > 0
+    );
+  }, [item, user]);
 
   const getItemData = useCallback(async (id) => {
     const response = await getItem(id);
@@ -71,88 +97,195 @@ export default function () {
 
   const onSell = useCallback(
     async (price) => {
-      // await listNFT(item.contract_address, publicKey, price);
-      alert();
-      await unlistNFT(
-        "DroiDxfPKcHB1ecM1oDw4H4vvUHDgcQGMvAE5phDWjVs",
-        publicKey
+      if (loadingTransaction) return;
+      setLoadingTransaction(true);
+      const transactionResult = await listNFT(
+        item.contract_address,
+        publicKey,
+        price
       );
-      // const response = await createOrUpdateItem({
-      //   id: item.id,
-      //   price,
-      //   status: "list",
-      // });
-      // if (!response.status) {
-      //   alert(response.error);
-      //   return;
-      // }
-      // getItemData(item.id);
+      if (transactionResult) {
+        if (import.meta.env.MODE === "development") {
+          const response = await createOrUpdateItem({
+            id: item.id,
+            price,
+            status: "list",
+          });
+          if (!response.status) {
+            errorAlert(response.error);
+          }
+        } else {
+          await delay(5000);
+        }
+      } else {
+        errorAlert(t("errors.something_went_wrong"));
+      }
+      setLoadingTransaction(false);
+      getItemData(item.id);
     },
-    [item, getItemData]
+    [item, getItemData, publicKey, loadingTransaction, createOrUpdateItem]
   );
 
   const onOfferModalSubmitted = useCallback(
     async (values) => {
-      sendMakeOfferTransaction();
-      const response = await createOffer({
-        item_id: item.id,
-        from_wallet_address: user.wallet_address,
-        price: values.price,
-      });
-      if (!response.status) {
-        alert(response.error);
-        return;
-      }
       setShowOfferModal(false);
+      if (loadingTransaction) return;
+      setLoadingTransaction(true);
+      const transactionResult = await offerNFT(
+        item.contract_address,
+        publicKey,
+        values.price
+      );
+      if (transactionResult) {
+        if (import.meta.env.MODE === "development") {
+          const response = await createOrUpdateOffer({
+            item_id: item.id,
+            from_wallet_address: user.wallet_address,
+            price: values.price,
+          });
+          if (!response.status) {
+            errorAlert(response.error);
+          }
+        } else {
+          await delay(5000);
+        }
+      } else {
+        errorAlert(t("errors.something_went_wrong"));
+      }
+      setLoadingTransaction(false);
       getItemData(item.id);
     },
-    [sendMakeOfferTransaction, item, user]
+    [item, getItemData, publicKey, loadingTransaction, createOrUpdateItem, user]
   );
 
   const onAcceptButtonClicked = useCallback(
-    async (offer) => {
-      sendAcceptTransaction();
-      const response = await createOrUpdateItem({
-        id: item.id,
-        collector_id: offer.user_id,
-        status: "sale",
-        offer_id: offer.id,
-      });
-      if (!response.status) {
-        alert(response.error);
-        return;
+    async (acceptedOffer) => {
+      const declinedOffers = (item.offers || [])?.filter(
+        (offer) =>
+          offer.user?.wallet_address !== acceptedOffer.user?.wallet_address
+      );
+      if (loadingTransaction) return;
+      setLoadingTransaction(true);
+      const transactionResult = await acceptOfferNFT(
+        item.contract_address,
+        publicKey,
+        acceptedOffer?.user?.wallet_address,
+        declinedOffers.map((offer) => offer.user?.wallet_address)
+      );
+      if (transactionResult) {
+        if (import.meta.env.MODE === "development") {
+          const response = await createOrUpdateItem({
+            id: item.id,
+            collector_id: acceptedOffer.user_id,
+            status: "sale",
+            offer_id: acceptedOffer.id,
+          });
+          if (!response.status) {
+            errorAlert(response.error);
+          }
+        } else {
+          await delay(5000);
+        }
+      } else {
+        errorAlert(t("errors.something_went_wrong"));
       }
+      setLoadingTransaction(false);
       getItemData(item.id);
     },
-    [sendMakeOfferTransaction, item, user]
+    [item, getItemData, publicKey, loadingTransaction, createOrUpdateItem]
   );
 
   const onBuyNowButtonClicked = useCallback(async () => {
-    sendBuyNowTransaction();
-    const response = await createOrUpdateItem({
-      id: item.id,
-      buyer_wallet_address: user.wallet_address,
-      status: "sale",
-    });
-    if (!response.status) {
-      alert(response.error);
-      return;
+    if (loadingTransaction) return;
+    setLoadingTransaction(true);
+    const transactionResult = await await purchaseNFT(
+      item.contract_address,
+      publicKey,
+      item?.collector?.wallet_address
+    );
+    if (transactionResult) {
+      if (import.meta.env.MODE === "development") {
+        const response = await createOrUpdateItem({
+          id: item.id,
+          buyer_wallet_address: user.wallet_address,
+          status: "sale",
+        });
+        if (!response.status) {
+          errorAlert(response.error);
+        }
+      } else {
+        await delay(5000);
+      }
+    } else {
+      errorAlert(t("errors.something_went_wrong"));
     }
+    setLoadingTransaction(false);
     getItemData(item.id);
-  }, [sendBuyNowTransaction, item, user]);
+  }, [
+    item,
+    getItemData,
+    publicKey,
+    loadingTransaction,
+    createOrUpdateItem,
+    user,
+  ]);
 
   const onCancelButtonClicked = useCallback(async () => {
-    sendCancelTransaction();
-    const response = await createOrUpdateItem({
-      id: item.id,
-      status: "cancel",
-    });
-    if (!response.status) {
-      alert(response.error);
-      return;
+    if (loadingTransaction) return;
+    setLoadingTransaction(true);
+    const transactionResult = await unlistNFT(item.contract_address, publicKey);
+    if (transactionResult) {
+      if (import.meta.env.MODE === "development") {
+        const response = await createOrUpdateItem({
+          id: item.id,
+          status: "cancel",
+        });
+        if (!response.status) {
+          errorAlert(response.error);
+        }
+      } else {
+        await delay(5000);
+      }
+    } else {
+      errorAlert(t("errors.something_went_wrong"));
     }
+    setLoadingTransaction(false);
     getItemData(item.id);
-  }, [sendCancelTransaction, item]);
+  }, [item, getItemData, publicKey, loadingTransaction, createOrUpdateItem]);
+
+  const onMakeOfferButtonClicked = useCallback(() => {
+    if (loadingTransaction) return;
+    setShowOfferModal(true);
+  }, []);
+
+  const onCancelOfferButtonClicked = useCallback(
+    async (offer) => {
+      if (loadingTransaction) return;
+      setLoadingTransaction(true);
+      const transactionResult = await unofferNFT(
+        item.contract_address,
+        publicKey
+      );
+      if (transactionResult) {
+        if (import.meta.env.MODE === "development") {
+          const response = await createOrUpdateOffer({
+            id: offer.id,
+            status: "processed",
+          });
+          if (!response.status) {
+            errorAlert(response.error);
+          }
+        } else {
+          await delay(5000);
+        }
+      } else {
+        errorAlert(t("errors.something_went_wrong"));
+      }
+      setLoadingTransaction(false);
+      getItemData(item.id);
+    },
+    [item, getItemData, publicKey, loadingTransaction, createOrUpdateOffer]
+  );
 
   useEffect(() => {
     getItemData(params.id);
@@ -265,7 +398,7 @@ export default function () {
                                     />
                                     {item.price}
                                     <span className="ml-2">
-                                      ${solPrice * item.price}
+                                      ${toFixed(solPrice * item.price, 2)}
                                     </span>
                                   </p>
                                 )}
@@ -304,7 +437,10 @@ export default function () {
                                             className="tf-button style-1 h50 w216"
                                             onClick={onCancelButtonClicked}
                                           >
-                                            Cancel
+                                            <Loader
+                                              loading={loadingTransaction}
+                                            />
+                                            {!loadingTransaction && "Cancel"}
                                           </a>
                                         )}
                                         {item.status !== "list" && (
@@ -313,7 +449,10 @@ export default function () {
                                             className="tf-button style-1 h50 w216"
                                             onClick={handleSubmit}
                                           >
-                                            Sell
+                                            <Loader
+                                              loading={loadingTransaction}
+                                            />
+                                            {!loadingTransaction && "Sell"}
                                           </a>
                                         )}
                                       </>
@@ -327,17 +466,24 @@ export default function () {
                                             className="tf-button style-1 h50 mr-2"
                                             onClick={onBuyNowButtonClicked}
                                           >
-                                            Buy Now
+                                            <Loader
+                                              loading={loadingTransaction}
+                                            />
+                                            {!loadingTransaction && "Buy Now"}
                                           </a>
-                                          <a
-                                            href="javascript:void(0)"
-                                            className="tf-button style-1 h50"
-                                            onClick={() =>
-                                              setShowOfferModal(true)
-                                            }
-                                          >
-                                            Make offer
-                                          </a>
+                                          {!isOffered && (
+                                            <a
+                                              href="javascript:void(0)"
+                                              className="tf-button style-1 h50"
+                                              onClick={onMakeOfferButtonClicked}
+                                            >
+                                              <Loader
+                                                loading={loadingTransaction}
+                                              />
+                                              {!loadingTransaction &&
+                                                "Make Offer"}
+                                            </a>
+                                          )}
                                         </div>
                                       )}
                                   </>
@@ -413,10 +559,9 @@ export default function () {
                           <div className="column">From</div>
                           <div className="column">Date</div>
                           {isAuth &&
-                            user.wallet_address ===
-                              item.collector?.wallet_address && (
-                              <div className="column"></div>
-                            )}
+                            (user.wallet_address ===
+                              item.collector?.wallet_address ||
+                              isOffered) && <div className="column"></div>}
                         </div>
                         {(item.offers || []).map((offer) => (
                           <div className="table-item" key={offer.id}>
@@ -440,19 +585,43 @@ export default function () {
                             <div className="column">
                               {moment(offer.createdAt).format("MM/DD HH:mm")}
                             </div>
-                            {isAuth &&
-                              user.wallet_address ===
-                                item.collector?.wallet_address && (
-                                <div className="column">
-                                  <a
-                                    href="javascript:void(0)"
-                                    className="tf-button style-1 w90"
-                                    onClick={() => onAcceptButtonClicked(offer)}
-                                  >
-                                    Accept
-                                  </a>
-                                </div>
-                              )}
+                            {isAuth && (
+                              <>
+                                {user.wallet_address ===
+                                  item.collector?.wallet_address && (
+                                  <div className="column">
+                                    <a
+                                      href="javascript:void(0)"
+                                      className="tf-button style-1 w90"
+                                      onClick={() =>
+                                        onAcceptButtonClicked(offer)
+                                      }
+                                    >
+                                      <Loader loading={loadingTransaction} />
+                                      {!loadingTransaction && "Accept"}
+                                    </a>
+                                  </div>
+                                )}
+                                {isOffered &&
+                                  (offer.user?.wallet_address ===
+                                  user.wallet_address ? (
+                                    <div className="column">
+                                      <a
+                                        href="javascript:void(0)"
+                                        className="tf-button style-1 w90"
+                                        onClick={() =>
+                                          onCancelOfferButtonClicked(offer)
+                                        }
+                                      >
+                                        <Loader loading={loadingTransaction} />
+                                        {!loadingTransaction && "Cancel"}
+                                      </a>
+                                    </div>
+                                  ) : (
+                                    <div className="column"></div>
+                                  ))}
+                              </>
+                            )}
                           </div>
                         ))}
                         {(item.offers || []).length === 0 && (

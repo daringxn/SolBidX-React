@@ -5,7 +5,7 @@ export default create(() => ({
   data: [],
   loading: false,
   error: null,
-  createOffer: async (offer) => {
+  createOrUpdateOffer: async (offer) => {
     const response = await axios.post("/api/offers", offer);
     return response.data;
   },
