@@ -102,7 +102,7 @@
 }
 
 .tf-button {
-  border-radius: 5px;
+  border-radius: 5px !important;
 }
 
 .tf-card-collection {
@@ -137,4 +137,8 @@
 
 .toast-link:hover {
   color: yellowgreen;
+}
+
+#footer .widget {
+  margin-right: 170px;
 }

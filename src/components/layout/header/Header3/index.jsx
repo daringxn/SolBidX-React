@@ -229,7 +229,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                               src={
                                 user.avatar
                                   ? "/" + user.avatar
-                                  : "assets/images/avatar/avatar-small-09.png"
+                                  : "/assets/images/avatar/avatar-small-09.png"
                               }
                               alt=""
                             />

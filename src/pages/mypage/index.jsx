@@ -79,7 +79,8 @@ export default function () {
             className={styles.user}
           >
             <img
-              src={"/" + user.image_background}
+              // src={"/" + user.image_background}
+              src="/assets/images/backgroup-section/bg-5.jpg"
               alt=""
               className={classNames("w-100", "h-100", styles.background)}
             />

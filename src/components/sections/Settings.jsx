@@ -185,7 +185,7 @@ export default function Settings({ className, onSubmit }) {
                     </ErrorMessage>
                   </fieldset>
                   <div className="btn-submit">
-                    <button className="w242" type="submit">
+                    <button className="tf-button style-1 w242" type="submit">
                       Save
                     </button>
                   </div>

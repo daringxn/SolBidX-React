@@ -15,6 +15,10 @@ import Item from "./pages/item";
 import Setting from "./pages/setting";
 import MyPage from "./pages/mypage";
 import NotFound from "./pages/404";
+import About from "./pages/about";
+import Contact from "./pages/contact";
+// import Privacy from "./pages/privacy";
+// import Terms from "./pages/terms";
 
 export default createBrowserRouter([
   {
@@ -86,6 +90,22 @@ export default createBrowserRouter([
           </ProtectedPage>
         ),
       },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      // {
+      //   path: "/privacy",
+      //   element: <Privacy />,
+      // },
+      // {
+      //   path: "/terms",
+      //   element: <Terms />,
+      // },
     ],
     errorElement: <NotFound />,
   },

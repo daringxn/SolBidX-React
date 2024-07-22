@@ -23,80 +23,36 @@ export default function Footer1() {
                   <h5 className="title-widget">Marketplace</h5>
                   <ul>
                     <li>
-                      <Link href="javascript:void(0)">All NFTs</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Virtual worlds</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Domain names</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Photography</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Digital art</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Music</Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="widget widget-menu style-2">
-                  <h5 className="title-widget">Resource</h5>
-                  <ul>
-                    <li>
-                      <Link href="javascript:void(0)">Help center</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Platform status</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Partners</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Discount community</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Live auctions</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Discover</Link>
+                      <Link to="/explore/collections">Explore</Link>
                     </li>
                   </ul>
                 </div>
                 <div className="widget widget-menu style-3">
-                  <h5 className="title-widget">Account</h5>
+                  <h5 className="title-widget">Company</h5>
                   <ul>
                     <li>
-                      <Link href="javascript:void(0)">Authors</Link>
+                      <Link to="/about">About us</Link>
                     </li>
                     <li>
-                      <Link href="javascript:void(0)">My Collection</Link>
+                      <Link to="/about#faq">FAQ</Link>
                     </li>
                     <li>
-                      <Link href="javascript:void(0)">Author Profile</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Go to dashboard</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Collection</Link>
-                    </li>
-                    <li>
-                      <Link href="javascript:void(0)">Create Collection</Link>
+                      <Link to="/contact">Contact</Link>
                     </li>
                   </ul>
                 </div>
                 <div className="widget-last">
                   <div className="widget-menu style-4">
-                    <h5 className="title-widget">Company</h5>
+                    <h5 className="title-widget">Account</h5>
                     <ul>
                       <li>
-                        <Link href="javascript:void(0)">Help center</Link>
+                        <Link to="/setting">My Profile</Link>
                       </li>
                       <li>
-                        <Link href="javascript:void(0)">Platform status</Link>
+                        <Link to="/me#items">My Items</Link>
+                      </li>
+                      <li>
+                        <Link to="/me#collections">My Collections</Link>
                       </li>
                     </ul>
                   </div>
@@ -137,13 +93,15 @@ export default function Footer1() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© {new Date().getFullYear()} OpeN9 - Made By Themesflat</p>
+            <p>
+              © {new Date().getFullYear()} NFT Marketplace Combined with Blink
+            </p>
             <ul className="flex">
               <li>
-                <Link href="javascript:void(0)">Privacy Policy</Link>
+                <Link to="/privacy">Privacy Policy</Link>
               </li>
               <li>
-                <Link href="javascript:void(0)">Terms of Service</Link>
+                <Link to="/terms">Terms of Service</Link>
               </li>
             </ul>
           </div>

@@ -25,6 +25,7 @@ export default function Layout({
   const handleMobileMenu = () => setMobileMenu(!isMobileMenu);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.addEventListener("scroll", () => {
       const scrollCheck = window.scrollY > 100;
       if (scrollCheck !== scroll) {
