@@ -101,7 +101,28 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                           },
                         ])}
                       >
-                        <Link to="/explore/collections">Collections</Link>
+                        <Link to="/explore/collections">Explore</Link>
+                      </li>
+                      <li
+                        className={classNames([
+                          "menu-item",
+                          {
+                            "current-menu-item": location.pathname === "/about",
+                          },
+                        ])}
+                      >
+                        <Link to="/about">About us</Link>
+                      </li>
+                      <li
+                        className={classNames([
+                          "menu-item",
+                          {
+                            "current-menu-item":
+                              location.pathname === "/contact",
+                          },
+                        ])}
+                      >
+                        <Link to="/contact">Contact</Link>
                       </li>
                     </ul>
                   </nav>

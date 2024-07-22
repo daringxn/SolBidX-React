@@ -14,6 +14,7 @@ import ExploreItems from "./pages/explore_items";
 import Item from "./pages/item";
 import Setting from "./pages/setting";
 import MyPage from "./pages/mypage";
+import NotFound from "./pages/404";
 
 export default createBrowserRouter([
   {
@@ -86,5 +87,6 @@ export default createBrowserRouter([
         ),
       },
     ],
+    errorElement: <NotFound />,
   },
 ]);
