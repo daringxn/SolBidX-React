@@ -102,7 +102,7 @@ export default function () {
             errorAlert(response.error);
           }
         } else {
-          await delay(5000);
+          await delay(10000);
         }
         successAlert(t("listed"));
       } else {
@@ -135,7 +135,7 @@ export default function () {
             errorAlert(response.error);
           }
         } else {
-          await delay(5000);
+          await delay(10000);
         }
         successAlert(t("offered"));
       } else {
@@ -173,7 +173,7 @@ export default function () {
             errorAlert(response.error);
           }
         } else {
-          await delay(5000);
+          await delay(10000);
         }
         successAlert(t("accepted"));
       } else {
@@ -206,7 +206,7 @@ export default function () {
         }
         successAlert(t("purchased"));
       } else {
-        await delay(5000);
+        await delay(10000);
       }
     } else {
       errorAlert(t("errors.something_went_wrong"));
@@ -240,7 +240,7 @@ export default function () {
           errorAlert(response.error);
         }
       } else {
-        await delay(5000);
+        await delay(10000);
       }
       successAlert(t("canceled"));
     } else {
@@ -273,7 +273,7 @@ export default function () {
             errorAlert(response.error);
           }
         } else {
-          await delay(5000);
+          await delay(10000);
         }
         successAlert(t("canceled"));
       } else {
