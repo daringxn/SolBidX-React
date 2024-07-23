@@ -107,6 +107,6 @@ export default createBrowserRouter([
       //   element: <Terms />,
       // },
     ],
-    errorElement: <NotFound />,
+    // errorElement: <NotFound />,
   },
 ]);

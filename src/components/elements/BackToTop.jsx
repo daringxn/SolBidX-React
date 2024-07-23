@@ -21,7 +21,7 @@ export default function BackToTop() {
   return (
     <>
       {hasScrolled && (
-        <a className="progress-wrap active-progress" href="javascript:void(0)">
+        <a className="progress-wrap active-progress" href="#">
           <svg
             className="progress-circle svg-content"
             width="100%"

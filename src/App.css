@@ -142,3 +142,7 @@
 #footer .widget {
   margin-right: 170px;
 }
+
+.menu_card .dropdown-menu.show a {
+  background-color: #232323;
+}

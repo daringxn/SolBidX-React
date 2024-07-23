@@ -1,6 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 
+// styles
+import styles from "./style.module.css";
+
 export default function ({
   className,
   placeholder,
@@ -28,7 +31,11 @@ export default function ({
           onChange={(e) => onChange(e.target.value)}
         />
         <button
-          className="search search-submit"
+          className={classNames(
+            "search",
+            "search-submit",
+            styles["btn-search"]
+          )}
           type="button"
           title="Search"
           onClick={onSearch}

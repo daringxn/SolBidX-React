@@ -8,11 +8,13 @@ import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { SyncLoader } from "react-spinners";
+import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 
 // components
 import Layout from "@/components/layout/Layout";
 import OfferModal from "@/components/elements/OfferModal";
 import Square from "@/components/sections/Square";
+import BlinkModal from "@/components/elements/BlinkModal";
 
 // stores
 import useAuthStore from "@/stores/authStore";
@@ -51,6 +53,7 @@ export default function () {
   const [showOfferModal, setShowOfferModal] = useState(false);
   const [solPrice, setSolPrice] = useState(0);
   const [loadingTransaction, setLoadingTransaction] = useState(false);
+  const [showBlinkModal, setShowBlinkModal] = useState(false);
 
   const user = useAuthStore();
   const { createOrUpdateItem, getItem } = useItemsStore();
@@ -101,6 +104,7 @@ export default function () {
         } else {
           await delay(5000);
         }
+        successAlert(t("listed"));
       } else {
         errorAlert(t("errors.something_went_wrong"));
       }
@@ -133,6 +137,7 @@ export default function () {
         } else {
           await delay(5000);
         }
+        successAlert(t("offered"));
       } else {
         errorAlert(t("errors.something_went_wrong"));
       }
@@ -170,6 +175,7 @@ export default function () {
         } else {
           await delay(5000);
         }
+        successAlert(t("accepted"));
       } else {
         errorAlert(t("errors.something_went_wrong"));
       }
@@ -198,6 +204,7 @@ export default function () {
         if (!response.status) {
           errorAlert(response.error);
         }
+        successAlert(t("purchased"));
       } else {
         await delay(5000);
       }
@@ -235,6 +242,7 @@ export default function () {
       } else {
         await delay(5000);
       }
+      successAlert(t("canceled"));
     } else {
       errorAlert(t("errors.something_went_wrong"));
     }
@@ -267,6 +275,7 @@ export default function () {
         } else {
           await delay(5000);
         }
+        successAlert(t("canceled"));
       } else {
         errorAlert(t("errors.something_went_wrong"));
       }
@@ -311,6 +320,36 @@ export default function () {
                     data-wow-delay="0s"
                     className="wow fadeInRight infor-product mb-5"
                   >
+                    {isAuth &&
+                      item.collector?.wallet_address === user.wallet_address &&
+                      item.status === "list" && (
+                        <div className="menu_card">
+                          <Menu as="div" className="dropdown">
+                            <div className="icon">
+                              <MenuButton
+                                as="a"
+                                className="btn-link"
+                                aria-expanded="false"
+                              >
+                                <i className="icon-link-1" />
+                              </MenuButton>
+                              <MenuItems
+                                as="div"
+                                className="dropdown-menu show d-block"
+                              >
+                                <a
+                                  className="dropdown-item mb-0"
+                                  href="javascript:void(0)"
+                                  onClick={() => setShowBlinkModal(true)}
+                                >
+                                  <i className="icon-twitter" />
+                                  Share on twitter
+                                </a>
+                              </MenuItems>
+                            </div>
+                          </Menu>
+                        </div>
+                      )}
                     <h3 className="mb-2">{item.name}</h3>
                     <p className="mb-3" title={item.description}>
                       {item.description}
@@ -704,12 +743,25 @@ export default function () {
           </div>
         </div>
       </Layout>
-      <OfferModal
-        item={item}
-        onClose={() => setShowOfferModal(false)}
-        open={showOfferModal}
-        onSubmit={onOfferModalSubmitted}
-      />
+      {isAuth &&
+        item.collector?.wallet_address !== user.wallet_address &&
+        item.status === "list" && (
+          <OfferModal
+            item={item}
+            onClose={() => setShowOfferModal(false)}
+            open={showOfferModal}
+            onSubmit={onOfferModalSubmitted}
+          />
+        )}
+      {isAuth &&
+        item.collector?.wallet_address === user.wallet_address &&
+        item.status === "list" && (
+          <BlinkModal
+            item={item}
+            onClose={() => setShowBlinkModal(false)}
+            open={showBlinkModal}
+          />
+        )}
     </>
   );
 }
