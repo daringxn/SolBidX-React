@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 
 // components
 import Square from "@/components/sections/Square";
@@ -25,6 +26,8 @@ export default function ({
   onBuyNowButtonClicked,
   loading,
 }) {
+  const { setVisible } = useWalletModal();
+
   const isAuth = useIsAuth();
 
   const user = useAuthStore();
@@ -52,21 +55,33 @@ export default function ({
           <span className={styles["sale-mark"]}>Sale</span>
         )}
         {!loading &&
-          isAuth &&
           item?.status === "list" &&
-          user.wallet_address !== item?.collector?.wallet_address && (
+          (!isAuth ||
+            user.wallet_address !== item?.collector?.wallet_address) && (
             <div className="button-place-bid">
               <a
                 href="javascript:void(0)"
                 className="tf-button"
-                onClick={onMakeOfferButtonClicked}
+                onClick={() => {
+                  if (!isAuth) {
+                    setVisible(true);
+                    return;
+                  }
+                  onMakeOfferButtonClicked();
+                }}
               >
                 <span>Make Offer</span>
               </a>
               <a
                 href="javascript:void(0)"
                 className="tf-button mt-2"
-                onClick={onBuyNowButtonClicked}
+                onClick={() => {
+                  if (!isAuth) {
+                    setVisible(true);
+                    return;
+                  }
+                  onBuyNowButtonClicked();
+                }}
               >
                 <span>Buy Now</span>
               </a>
@@ -95,7 +110,7 @@ export default function ({
         <span className="text-bid">Recent Price</span>
         {!loading && (
           <h6 className="price gem">
-            {item?.status !== "mint" ? item?.price + " SOL" : "-/-"}
+            {item?.status !== "import" ? item?.price + " SOL" : "-/-"}
           </h6>
         )}
         {loading && <RectLoader width="50px" height="20px" />}

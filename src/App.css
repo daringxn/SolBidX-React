@@ -117,9 +117,8 @@
   border-radius: 10px;
 }
 
-.tf-button.style-1,
-.tf-button.style-3 {
-  color: #161616;
+.tf-button {
+  color: #161616 !important;
 }
 
 .toast-message {

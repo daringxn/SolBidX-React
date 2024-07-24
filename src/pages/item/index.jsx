@@ -688,7 +688,7 @@ export default function () {
                           <div className="column flex items-center">
                             {
                               {
-                                mint: "Mint",
+                                import: "Import",
                                 list: "List",
                                 sale: "Sale",
                                 cancel: "Cancel",
