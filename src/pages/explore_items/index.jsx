@@ -203,7 +203,7 @@ export default function () {
                   </ul>
                 </div>
                 <img
-                  src={"/" + collection?.image_background}
+                  src={collection?.image_background}
                   alt=""
                   className={classNames("w-100", "h-100", styles.background)}
                 />
@@ -216,7 +216,7 @@ export default function () {
                 >
                   <Square className={styles["base-image-square"]}>
                     <img
-                      src={"/" + collection?.image}
+                      src={collection?.image}
                       alt=""
                       className={classNames(
                         "w-100",

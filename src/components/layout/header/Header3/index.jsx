@@ -175,7 +175,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                                     <img
                                       src={
                                         item.image
-                                          ? "/" + item.image
+                                          ? item.image
                                           : "assets/images/avatar/avatar-small-01.png"
                                       }
                                       alt=""
@@ -228,7 +228,7 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                             <img
                               src={
                                 user.avatar
-                                  ? "/" + user.avatar
+                                  ? user.avatar
                                   : "/assets/images/avatar/avatar-small-09.png"
                               }
                               alt=""

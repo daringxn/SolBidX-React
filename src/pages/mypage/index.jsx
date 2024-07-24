@@ -79,7 +79,7 @@ export default function () {
             className={styles.user}
           >
             <img
-              // src={"/" + user.image_background}
+              // src={user.image_background}
               src="/assets/images/backgroup-section/bg-5.jpg"
               alt=""
               className={classNames("w-100", "h-100", styles.background)}
@@ -93,7 +93,7 @@ export default function () {
             >
               <Square className={styles["base-image-square"]}>
                 <img
-                  src={"/" + user.avatar}
+                  src={user.avatar}
                   alt=""
                   className={classNames("w-100", "h-100", styles["base-image"])}
                 />
@@ -189,7 +189,7 @@ export default function () {
                     <div className="column">
                       <Link to={"/item/" + offer.item?.id}>
                         <img
-                          src={"/" + offer.item?.image}
+                          src={offer.item?.image}
                           width="50px"
                           height="50px"
                           className={styles["item-img"]}

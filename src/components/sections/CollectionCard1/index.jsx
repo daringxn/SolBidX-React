@@ -26,7 +26,7 @@ export default function CollectionItem1({
     >
       <div className={styles.image} onClick={onImageClicked}>
         <Square ratio={1}>
-          {!loading && <img src={"/" + collection?.image} alt="" />}
+          {!loading && <img src={collection?.image} alt="" />}
           {loading && <RectLoader width="100%" height="100%" />}
         </Square>
       </div>
@@ -47,7 +47,7 @@ export default function CollectionItem1({
               {!loading && (
                 <img
                   src={
-                    "/" + collection?.user.avatar ||
+                    collection?.user.avatar ||
                     "assets/images/avatar/avatar-box-02.jpg"
                   }
                   alt=""

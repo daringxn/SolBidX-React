@@ -309,7 +309,7 @@ export default function () {
                 >
                   <Square ratio={1}>
                     <img
-                      src={"/" + item.image}
+                      src={item.image}
                       alt=""
                       className={styles["item-image"]}
                     />
@@ -359,7 +359,7 @@ export default function () {
                         <img
                           src={
                             item.collector?.avatar
-                              ? "/" + item.collector?.avatar
+                              ? item.collector?.avatar
                               : "/assets/images/avatar/avatar-box-05.jpg"
                           }
                           alt="Image"

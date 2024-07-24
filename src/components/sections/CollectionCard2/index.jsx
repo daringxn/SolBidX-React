@@ -28,7 +28,7 @@ export default function CollectionItem1({
         <Square ratio={0.5}>
           {!loading && (
             <img
-              src={"/" + collection?.image_background}
+              src={collection?.image_background}
               alt=""
               className={styles.background}
             />
@@ -38,7 +38,7 @@ export default function CollectionItem1({
         <Square className={styles["base-image-square"]}>
           {!loading && (
             <img
-              src={"/" + collection?.image}
+              src={collection?.image}
               alt=""
               className={styles["base-image"]}
             />

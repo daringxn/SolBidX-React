@@ -41,10 +41,7 @@ export default function ({
           <Square ratio={1}>
             {!loading && (
               <img
-                src={
-                  "/" + item?.image ||
-                  "/assets/images/box-item/card-item-09.jpg"
-                }
+                src={item?.image || "/assets/images/box-item/card-item-09.jpg"}
                 alt=""
               />
             )}
