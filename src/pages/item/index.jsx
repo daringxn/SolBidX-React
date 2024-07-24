@@ -198,7 +198,7 @@ export default function () {
       if (import.meta.env.MODE === "development") {
         const response = await createOrUpdateItem({
           id: item.id,
-          buyer_wallet_address: user.wallet_address,
+          buyer_public_key: user.wallet_address,
           status: "sale",
         });
         if (!response.status) {
