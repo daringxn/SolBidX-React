@@ -9,12 +9,14 @@ import { useTranslation } from "react-i18next";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { SyncLoader } from "react-spinners";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
+import Blockies from "react-blockies";
 
 // components
 import Layout from "@/components/layout/Layout";
 import OfferModal from "@/components/elements/OfferModal";
 import Square from "@/components/sections/Square";
 import BlinkModal from "@/components/elements/BlinkModal";
+import ButtonLoader from "@/components/elements/ButtonLoader";
 
 // stores
 import useAuthStore from "@/stores/authStore";
@@ -43,10 +45,6 @@ import { errorAlert, successAlert } from "@/helpers/toastGroup";
 
 // styles
 import styles from "./style.module.css";
-
-const Loader = ({ loading }) => (
-  <SyncLoader loading={loading} size={7} margin={3} speedMultiplier={0.75} />
-);
 
 export default function () {
   const [item, setItem] = useState({});
@@ -356,14 +354,19 @@ export default function () {
                     </p>
                     <div className="author flex items-center">
                       <div className="avatar">
-                        <img
-                          src={
-                            item.collector?.avatar
-                              ? item.collector?.avatar
-                              : "/assets/images/avatar/avatar-box-05.jpg"
-                          }
-                          alt="Image"
-                        />
+                        {item.collector?.avatar && (
+                          <img
+                            src={
+                              item.collector?.avatar
+                                ? item.collector?.avatar
+                                : "/assets/images/avatar/avatar-box-05.jpg"
+                            }
+                            alt="Image"
+                          />
+                        )}
+                        {!item.collector?.avatar && (
+                          <Blockies seed={item.collector?.avatar} size={10} />
+                        )}
                       </div>
                       <div className="info">
                         <span>Owned by:</span>
@@ -465,7 +468,7 @@ export default function () {
                                             className="tf-button style-1 h50 w216"
                                             onClick={onCancelButtonClicked}
                                           >
-                                            <Loader
+                                            <ButtonLoader
                                               loading={loadingTransaction}
                                             />
                                             {!loadingTransaction && "Cancel"}
@@ -477,7 +480,7 @@ export default function () {
                                             className="tf-button style-1 h50 w216"
                                             onClick={handleSubmit}
                                           >
-                                            <Loader
+                                            <ButtonLoader
                                               loading={loadingTransaction}
                                             />
                                             {!loadingTransaction && "Sell"}
@@ -494,7 +497,7 @@ export default function () {
                                             className="tf-button style-1 h50 mr-2"
                                             onClick={onBuyNowButtonClicked}
                                           >
-                                            <Loader
+                                            <ButtonLoader
                                               loading={loadingTransaction}
                                             />
                                             {!loadingTransaction && "Buy Now"}
@@ -505,7 +508,7 @@ export default function () {
                                               className="tf-button style-1 h50"
                                               onClick={onMakeOfferButtonClicked}
                                             >
-                                              <Loader
+                                              <ButtonLoader
                                                 loading={loadingTransaction}
                                               />
                                               {!loadingTransaction &&
@@ -625,7 +628,9 @@ export default function () {
                                         onAcceptButtonClicked(offer)
                                       }
                                     >
-                                      <Loader loading={loadingTransaction} />
+                                      <ButtonLoader
+                                        loading={loadingTransaction}
+                                      />
                                       {!loadingTransaction && "Accept"}
                                     </a>
                                   </div>
@@ -641,7 +646,9 @@ export default function () {
                                           onCancelOfferButtonClicked(offer)
                                         }
                                       >
-                                        <Loader loading={loadingTransaction} />
+                                        <ButtonLoader
+                                          loading={loadingTransaction}
+                                        />
                                         {!loadingTransaction && "Cancel"}
                                       </a>
                                     </div>

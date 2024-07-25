@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { SyncLoader } from "react-spinners";
 
 // components
 import Square from "@/components/sections/Square";
 import RectLoader from "@/components/elements/RectLoader";
+import ButtonLoader from "@/components/elements/ButtonLoader";
 
 // hooks
 import useIsAuth from "@/hooks/useIsAuth";
@@ -25,6 +27,7 @@ export default function ({
   onMakeOfferButtonClicked,
   onBuyNowButtonClicked,
   loading,
+  loadingTransaction,
 }) {
   const { setVisible } = useWalletModal();
 
@@ -67,7 +70,8 @@ export default function ({
                   onMakeOfferButtonClicked();
                 }}
               >
-                <span>Make Offer</span>
+                <ButtonLoader loading={loadingTransaction} />
+                {!loadingTransaction && <span>Make Offer</span>}
               </a>
               <a
                 href="javascript:void(0)"
@@ -80,7 +84,8 @@ export default function ({
                   onBuyNowButtonClicked();
                 }}
               >
-                <span>Buy Now</span>
+                <ButtonLoader loading={loadingTransaction} />
+                {!loadingTransaction && <span>Buy Now</span>}
               </a>
             </div>
           )}

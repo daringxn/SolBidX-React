@@ -34,7 +34,7 @@ export default function ({ item, open, onClose, onSubmit }) {
               <div className="d-flex align-items-center mb-5">
                 <div style={{ width: 70, height: 70 }}>
                   <img
-                    src={"/" + item?.image}
+                    src={item?.image}
                     alt=""
                     style={{
                       borderRadius: "50%",

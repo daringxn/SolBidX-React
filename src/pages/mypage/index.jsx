@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import moment from "moment";
 import classNames from "classnames";
+import Blockies from "react-blockies";
 
 // components
 import Layout from "@/components/layout/Layout";
@@ -91,13 +92,26 @@ export default function () {
                 styles.info
               )}
             >
-              <Square className={styles["base-image-square"]}>
-                <img
-                  src={user.avatar}
-                  alt=""
-                  className={classNames("w-100", "h-100", styles["base-image"])}
-                />
-              </Square>
+              <div className={styles["base-image-square"]}>
+                {user.avatar && (
+                  <img
+                    src={user.avatar}
+                    alt=""
+                    className={classNames(
+                      "w-100",
+                      "h-100",
+                      styles["base-image"]
+                    )}
+                  />
+                )}
+                {!user.avatar && (
+                  <Blockies
+                    seed={user.wallet_address}
+                    size={10}
+                    className={styles["blockies-image"]}
+                  />
+                )}
+              </div>
               <div className="ml-3">
                 <h5>
                   {user.name || simplifyWalletAddress(user.wallet_address)}

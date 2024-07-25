@@ -34,6 +34,13 @@
   border-radius: 10px;
 }
 
+.user .info .base-image-square .blockies-image {
+  border: 3px solid #cfcfcf;
+  border-radius: 10px;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .user .info .description {
   max-width: 400px;
   overflow: hidden;

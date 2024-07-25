@@ -10,5 +10,6 @@
   "offered": "Offered successfully!",
   "accepted": "Accepted successfully!",
   "canceled": "Canceled successfully!",
-  "purchased": "Purchased successfully!"
+  "purchased": "Purchased successfully!",
+  "submitted": "Submitted successfully!"
 }

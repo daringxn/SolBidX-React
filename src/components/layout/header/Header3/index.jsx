@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import Blockies from "react-blockies";
 
 // components
 import MobileMenu from "../../MobileMenu";
@@ -225,14 +226,15 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                             className="user"
                             onClick={() => setShowUserMenu((state) => !state)}
                           >
-                            <img
-                              src={
-                                user.avatar
-                                  ? user.avatar
-                                  : "/assets/images/avatar/avatar-small-09.png"
-                              }
-                              alt=""
-                            />
+                            {/* <img src={user.avatar} alt="" /> */}
+                            {user.avatar && <img src={user.avatar} alt="" />}
+                            {!user.avatar && (
+                              <Blockies
+                                seed={user.wallet_address}
+                                size={10}
+                                className={styles["blockies-image"]}
+                              />
+                            )}
                             <span>
                               {user.name ||
                                 simplifyWalletAddress(user.wallet_address)}

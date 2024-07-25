@@ -121,6 +121,10 @@
   color: #161616 !important;
 }
 
+.tf-button.style-2 {
+  color: rgba(221, 242, 71, 1) !important;
+}
+
 .toast-message {
   background: rgb(66, 66, 66);
   color: #fff;

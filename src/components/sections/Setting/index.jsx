@@ -3,9 +3,13 @@ import classNames from "classnames";
 import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+import Blockies from "react-blockies";
 
 // stores
 import useAuthStore from "@/stores/authStore";
+
+// styles
+import styles from "./style.module.css";
 
 export default function Settings({ className, onSubmit }) {
   const [userAvatar, setUserAvatar] = useState();
@@ -33,16 +37,24 @@ export default function Settings({ className, onSubmit }) {
           <div className="widget-edit mb-30 avatar">
             <div className="title">
               <h4>Edit your avatar</h4>
-              <i className="icon-keyboard_arrow_up" />
             </div>
             <form action="#">
               <div className="uploadfile flex">
-                <img
-                  src={userAvatar || "assets/images/avatar/avatar-07.png"}
-                  alt=""
-                  width="128px"
-                  height="128px"
-                />
+                {userAvatar && (
+                  <img
+                    src={userAvatar || "assets/images/avatar/avatar-07.png"}
+                    alt=""
+                    width="128px"
+                    height="128px"
+                  />
+                )}
+                {!userAvatar && (
+                  <Blockies
+                    seed={user.wallet_address}
+                    size={10}
+                    className={styles["blockies-image"]}
+                  />
+                )}
                 <div>
                   <h6>Upload a new avatar”</h6>
                   <label>
@@ -61,7 +73,6 @@ export default function Settings({ className, onSubmit }) {
           <div className="widget-edit mb-30 profile">
             <div className="title">
               <h4>Edit your profile</h4>
-              <i className="icon-keyboard_arrow_up" />
             </div>
             <Formik
               initialValues={{

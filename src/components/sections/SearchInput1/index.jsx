@@ -18,6 +18,10 @@ export default function ({
         method="get"
         role="search"
         className="search-form relative"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSearch();
+        }}
       >
         <input
           type="search"
@@ -26,7 +30,6 @@ export default function ({
           placeholder={placeholder}
           name="s"
           title="Search for"
-          required
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />

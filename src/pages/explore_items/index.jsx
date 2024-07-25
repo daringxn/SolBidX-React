@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import InfiniteScroll from "react-infinite-scroller";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 
 // components
 import Layout from "@/components/layout/Layout";
@@ -20,6 +21,7 @@ import useAuthStore from "@/stores/authStore";
 // helpers
 import useDevice from "@/hooks/useDevice";
 import { delay } from "@/helpers/utils";
+import { offerNFT, purchaseNFT } from "@/helpers/transactions";
 
 // styles
 import styles from "./style.module.css";
@@ -39,6 +41,7 @@ export default function () {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showOfferModal, setShowOfferModal] = useState(false);
   const [loadingCollections, setLoadingCollections] = useState([]);
+  const [loadingTransaction, setLoadingTransaction] = useState(false);
   const pageIndex = useRef(0);
   const loading = useRef(false);
 
@@ -46,6 +49,7 @@ export default function () {
 
   const { id: collectionId } = useParams();
   const navigate = useNavigate();
+  const { publicKey } = useWallet();
 
   const { getItems, createOrUpdateItem } = useItemsStore();
   const { getCollection } = useCollectionsStore();
@@ -137,34 +141,75 @@ export default function () {
 
   const onOfferModalSubmitted = useCallback(
     async (values) => {
-      const response = await createOffer({
-        item_id: selectedItem.id,
-        from_wallet_address: user.wallet_address,
-        price: values.price,
-      });
-      if (!response.status) {
-        alert(response.error);
-        return;
-      }
       setShowOfferModal(false);
+      if (loadingTransaction) return;
+      setLoadingTransaction(true);
+      const transactionResult = await offerNFT(
+        selectedItem.contract_address,
+        publicKey,
+        values.price
+      );
+      if (transactionResult) {
+        if (import.meta.env.MODE === "development") {
+          const response = await createOrUpdateOffer({
+            item_id: selectedItem.id,
+            from_wallet_address: user.wallet_address,
+            price: values.price,
+          });
+          if (!response.status) {
+            errorAlert(response.error);
+          }
+        } else {
+          await delay(10000);
+        }
+        successAlert(t("offered"));
+      } else {
+        errorAlert(t("errors.something_went_wrong"));
+      }
+      setLoadingTransaction(false);
+      onRefreshItems();
     },
-    [selectedItem]
+    [
+      selectedItem,
+      onRefreshItems,
+      publicKey,
+      loadingTransaction,
+      createOrUpdateItem,
+      user,
+    ]
   );
 
   const onBuyNowButtonClicked = useCallback(
     async (item) => {
-      const response = await createOrUpdateItem({
-        id: item.id,
-        buyer_public_key: user.wallet_address,
-        status: "sale",
-      });
-      if (!response.status) {
-        alert(response.error);
-        return;
+      if (loadingTransaction) return;
+      setLoadingTransaction(true);
+      const transactionResult = await await purchaseNFT(
+        item.contract_address,
+        publicKey,
+        item.collector?.wallet_address,
+        (item.offers || []).map((offer) => offer.user?.wallet_address)
+      );
+      if (transactionResult) {
+        if (import.meta.env.MODE === "development") {
+          const response = await createOrUpdateItem({
+            id: item.id,
+            buyer_public_key: user.wallet_address,
+            status: "sale",
+          });
+          if (!response.status) {
+            errorAlert(response.error);
+          }
+          successAlert(t("purchased"));
+        } else {
+          await delay(10000);
+        }
+      } else {
+        errorAlert(t("errors.something_went_wrong"));
       }
+      setLoadingTransaction(false);
       onRefreshItems();
     },
-    [user, onRefreshItems]
+    [onRefreshItems, publicKey, loadingTransaction, createOrUpdateItem, user]
   );
 
   useEffect(() => {
@@ -214,7 +259,7 @@ export default function () {
                     styles.info
                   )}
                 >
-                  <Square className={styles["base-image-square"]}>
+                  <div className={styles["base-image-square"]}>
                     <img
                       src={collection?.image}
                       alt=""
@@ -224,7 +269,7 @@ export default function () {
                         styles["base-image"]
                       )}
                     />
-                  </Square>
+                  </div>
                   <div className="ml-3">
                     <h5 className="mb-2">{collection?.name}</h5>
                     <p
@@ -438,6 +483,7 @@ export default function () {
                         onBuyNowButtonClicked={() => {
                           onBuyNowButtonClicked(item);
                         }}
+                        loadingTransaction={loadingTransaction}
                       />
                     </div>
                   ))}

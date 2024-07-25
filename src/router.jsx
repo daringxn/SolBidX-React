@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 
 // components
 import AddClassBody from "./components/elements/AddClassBody";
+import Lock from "./components/elements/Lock";
 
 // pages
 import ProtectedPage from "./components/elements/ProtectedPage";
@@ -19,6 +20,7 @@ import About from "./pages/about";
 import Contact from "./pages/contact";
 // import Privacy from "./pages/privacy";
 // import Terms from "./pages/terms";
+import Import from "./pages/import";
 
 export default createBrowserRouter([
   {
@@ -97,6 +99,14 @@ export default createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/import",
+        element: (
+          <Lock>
+            <Import />
+          </Lock>
+        ),
       },
       // {
       //   path: "/privacy",

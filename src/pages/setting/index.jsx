@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 // components
 import Layout from "@/components/layout/Layout";
-import Settings from "@/components/sections/Settings";
+import Settings from "@/components/sections/Setting";
 
 // stores
 import useAuthStore from "@/stores/authStore";
