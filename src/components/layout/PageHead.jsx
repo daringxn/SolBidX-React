@@ -4,9 +4,7 @@ const PageHead = ({ headTitle }) => {
   return (
     <>
       <Helmet>
-        <title>
-          {headTitle ? headTitle : "Open9 | NFT Marketplace Nextjs Template"}
-        </title>
+        <title>{headTitle ? headTitle : "NFTLOL | NFT Marketplace"}</title>
       </Helmet>
     </>
   );

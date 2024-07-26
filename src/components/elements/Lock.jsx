@@ -4,16 +4,11 @@ import { sha256 } from "crypto-hash";
 
 export default function ({ children }) {
   const [locked, setLocked] = useState(true);
-  const loading = useRef(true);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
-      if (loading.current) {
-        loading.current = false;
-        return;
-      }
       const code = prompt("Please enter code to unlock");
       const hash = await sha256(code);
       if (
