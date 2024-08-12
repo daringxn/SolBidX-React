@@ -4,7 +4,7 @@ const PageHead = ({ headTitle }) => {
   return (
     <>
       <Helmet>
-        <title>{headTitle ? headTitle : "NFTLOL | NFT Marketplace"}</title>
+        <title>{headTitle ? headTitle : "SOLBIDX | NFT Marketplace"}</title>
       </Helmet>
     </>
   );

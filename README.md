@@ -1,8 +1,11 @@
-# React + Vite
+npm version: 9.8.1, node version: 18.18.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. install packages "npm install"
 
-Currently, two official plugins are available:
+2. make .env file based on .env.example
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3. run development server "npm run dev"
+
+4. in vite.config.js file, enable 12, 28, 29, 30, 31, 32 lines when building, and disable in development mode
+
+5. after building, follow backend guide for deployment
