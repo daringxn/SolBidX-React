@@ -26,7 +26,7 @@ export default function Home() {
                     <div className="title">
                       <Link href="javascript:void(0)">Office address</Link>
                     </div>
-                    <p>1901 Thornridge Cir. Shiloh, Hawaii 81063</p>
+                    <p>Nova Iguaçu, State of Rio de Janeiro, Brazil, 26087-100</p>
                   </div>
                 </div>
                 <div data-wow-delay="0.1s" className="wow fadeInUp col-md-4">
@@ -35,7 +35,7 @@ export default function Home() {
                     <div className="title">
                       <Link href="javascript:void(0)">Email</Link>
                     </div>
-                    <p>open9@support.com open9vietnam@support.com</p>
+                    <p>support@solbidx.xyz eliezer@solbidx.xyz</p>
                   </div>
                 </div>
                 <div data-wow-delay="0.2s" className="wow fadeInUp col-md-4">
@@ -45,8 +45,7 @@ export default function Home() {
                       <Link href="javascript:void(0)">Phone number</Link>
                     </div>
                     <p>
-                      (316) 555-0116 <br />
-                      (219) 555-0114
+                      +5521982305503
                     </p>
                   </div>
                 </div>
