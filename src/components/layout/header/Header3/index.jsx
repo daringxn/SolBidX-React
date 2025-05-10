@@ -77,13 +77,14 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
                 <div className="wrap-box flex">
                   <div id="site-logo">
                     <div id="site-logo-inner">
-                      <Link to="/home" rel="home" className="main-logo">
+                      {/* <Link to="/home" rel="home" className="main-logo">
                         <img
                           id="logo_header"
                           src="/assets/images/logo/logo.png"
                           data-retina="assets/images/logo/logo@2x.png"
                         />
-                      </Link>
+                      </Link> */}
+                      <h1>SolBidX</h1>
                     </div>
                   </div>
                   {/* logo */}
@@ -285,13 +286,14 @@ export default function ({ scroll, isMobileMenu, handleMobileMenu }) {
         <div className={`mobile-nav-wrap ${isMobileMenu ? "active" : ""}`}>
           <div className="overlay-mobile-nav" onClick={handleMobileMenu} />
           <div className="inner-mobile-nav">
-            <Link to="/" rel="home" className="main-logo">
+            {/* <Link to="/" rel="home" className="main-logo">
               <img
                 id="mobile-logo_header"
                 src="/assets/images/logo/logo.png"
                 data-retina="/assets/images/logo/logo-dark@2x.png"
               />
-            </Link>
+            </Link> */}
+            <h1>SolBidX</h1>
             <div className="mobile-nav-close" onClick={handleMobileMenu}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
