@@ -465,7 +465,7 @@ export default function Home() {
                   <div className="widget-income">
                     <div className="title">
                       Generate passive income with the platform{" "}
-                      <span className="tf-color">Open9</span>
+                      <span className="tf-color">SolbidX</span>
                     </div>
                     <p>
                       get started with the easiest and most secure platform to
