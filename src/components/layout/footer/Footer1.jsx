@@ -11,11 +11,12 @@ export default function Footer1() {
                 <div className="widget-logo flex-grow">
                   <div className="logo-footer" id="logo-footer">
                     <Link to="/">
-                      <img
+                      {/* <img
                         id="logo_footer"
                         src="/assets/images/logo/logo.png"
                         data-retina="assets/images/logo/logo@2x.png"
-                      />
+                      /> */}
+                      <h1>SolBidX</h1>
                     </Link>
                   </div>
                 </div>
